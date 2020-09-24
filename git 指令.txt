@@ -1,0 +1,12 @@
+git pull
+git checkout city-router
+npm run dev
+
+
+
+git add .
+git commit -m 'city router'
+git push
+git checkout master
+git merge city-router
+git push
