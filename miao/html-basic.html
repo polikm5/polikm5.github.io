@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>html练习</title>
+</head>
+
+<body>
+  <h1>Lorem.</h1>
+  <h2>Lorem ipsum.</h2>
+  <h3>Lorem ipsum dolor.</h3>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id maxime corrupti, nulla earum possimus vitae omnis odio
+    pariatur officia! Odit ipsa alias labore nostrum sint ex non repellendus, doloremque et.</p>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit quaerat sint commodi est itaque vero, incidunt,
+    quisquam obcaecati iusto minus inventore voluptatum.<br /> Consequuntur, at sequi ut nihil fugit amet possimus.</p>
+  <a href="https://www.jd.com/" target="_blank">在新窗口打开京东</a>
+  <a href="mailto:aaa@qq.com">点击给我发邮件</a>
+  <a href="#bottom">跳转到本页的底部</a>
+  <a href="./Grape.jpg" download="Grape ">点我可以下载一个文件</a>
+  <div><img src="./Grape.jpg" alt="Grape" title="图片描述" width="200" height="200"></div>
+  <hr />
+  <hr />
+  <marquee>飘~~~</marquee>
+  <p>这几种强调<strong>有什么区别呢？</strong><u>这个呢</u><em>这个呢？</em></p>
+  <p>&lt;!-- 这段注释需要出现在页面里面 --></p>
+  <p>下面是一段javascript代码，最合适用何种标签表示呢？</p>
+  <pre>
+    <code>
+      function a() {
+        return 8;
+      }
+    </code>
+  </pre>
+  <hr />
+  <ul>
+    <li>小学
+      <ol>
+        <li>一年级
+          <ol>
+            <li>上学期</li>
+            <li>下学期</li>
+          </ol>
+        </li>
+        <li>二年级</li>
+        <li>三年级</li>
+      </ol>
+    </li>
+    <li>中学</li>
+    <li>大学</li>
+  </ul>
+  <hr />
+  <dl>
+    <dt>班级</dt>
+    <dd>三年二班</dd>
+
+    <dt>老师</dt>
+    <dd>张老师</dd>
+    <dd>李老师</dd>
+    <dd>王老师</dd>
+
+    <dt>学生</dt>
+    <dd>小明</dd>
+    <dd>豆豆</dd>
+  </dl>
+  <hr />
+  <p><strong>Google搜索</strong></p>
+  <form action="https://www.google.com.hk/search">
+    <input type="text" name="q" placeholder="请输入想要搜索的内容" />
+    <input type="hidden" name="ie" value="UTF-8" />
+    <input type="hidden" name="sourceid" value="chrome" />
+    <input type="submit" value="提交">
+    <hr />
+    <p>个人信息调查表</p>
+    <dl>
+      <dt>性别</dt>
+      <dd>
+        <input type="radio" name="sex" value="男" />男
+        <input type="radio" name="sex" value="女" />女
+      </dd>
+      <dt>年龄</dt>
+      <dd>
+        <select name="age">
+          <option value selected hidden>请选择</option>
+          <optgroup label="少年">
+            <option value="1-6">1-6岁</option>
+            <option value="6-12">6-12岁</option>
+          </optgroup>
+          <optgroup label="青年">
+            <option value="13-15">13-15岁</option>
+            <option value="16-18">16-18岁</option>
+          </optgroup>
+          <optgroup label="壮年">
+            <option value="18-22">18-22岁</option>
+            <option value="23-30">壮年</option>
+          </optgroup>
+        </select>
+      </dd>
+      <dt>生日</dt>
+      <dd><input type="date"></dd>
+      <dt>生辰</dt>
+      <dd><input type="time"></dd>
+      <dt>照片</dt>
+      <dd><input type="file" hidden>点我上传照片，我比文件上传按钮好看</dd>
+      <dt>肤色</dt>
+      <dd><input type="color"></dd>
+      <dt>自我介绍</dt>
+      <dd><textarea style="width: 232px;height: 155px;">&lt;/textarea></textarea></dd>
+    </dl>
+    <fieldset disabled>
+      <legend>这里面全部禁用了</legend>
+      <input type="text">
+      <input type="text">
+      <input type="text">
+    </fieldset>
+    <input type="submit" name="submit" value="提交" />
+    <input type="reset" name="reset" value="重置" />
+    <hr />
+  </form>
+  <table border>
+    <colgroup>
+      <col>
+      <col style="background-color: red;">
+    </colgroup>
+    <caption>货品列表</caption>
+    <tr>
+      <th>编号</th>
+      <th>品名</th>
+      <th>进价</th>
+      <th>出价</th>
+    </tr>
+    <tr>
+      <td>001</td>
+      <td>苹果</td>
+      <td rowspan="2">5</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <td>001</td>
+      <td>桔子</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <td>001</td>
+      <td>香蕉</td>
+      <td>5</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <td>001</td>
+      <td>山竹</td>
+      <td>5</td>
+      <td>8</td>
+    </tr>
+
+  </table>
+  <hr />
+  <img src="./stock-photo.jpg" alt="image" title="image title" width="300"  usemap="#pic" />
+  <map name="pic">
+    <area shape="rect" coords="55, 108, 208, 200" href="https://mi.com" alt="abc" title="abc">
+    <area shape="circle" coords="132, 272, 90" href="#" alt="">
+    <area shape="poly" coords="56, 80 ,9, 264, 162, 394, 225, 254, 187, 81" href="#" alt="">
+  </map>
+  <hr />
+  <a href="https://www.mi.com" target="iframe1">点击我会在下面的iframe打开小米商城，但为什么打不开呢？</a>
+  <br />
+  <iframe src="https://nodejs.org/en/" frameborder="1" width="303" height="156" name="iframe1">
+  </iframe>
+  <div>怎样 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在这两个字之间空这么大呢？</div>
+  <div>怎样在页面中显示下面的内容呢？</div>
+  <div id="bottom">&lt;span>&lt;/span></div>
+</body>
+
+</html>
