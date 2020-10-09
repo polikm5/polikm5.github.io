@@ -15,19 +15,20 @@
       margin: 0 auto;
     }
     .b {
-      width: 600px;
+      max-width: 600px;
+      box-sizing: border-box;
       margin:0 auto;
       border: 2px solid #000;
       margin-top: 18px;
     }
     .b .p1,.b .p3 {
-      width: 576px;
+      /* width: 576px; */
       height: 60px;
       overflow: auto;
       margin: 20px 12px 17px 12px;
     }
     .b .p2 {
-      width: 576px;
+      /* width: 576px; */
       height: 52px;
       background-color: #EE82EE;
       margin: 20px 12px 17px 12px;
@@ -44,6 +45,10 @@
       margin: 20px auto 0;
       border-color: transparent transparent #FFA500;
     }
+    .triangle + .triangle {
+      margin: 0 auto;
+      border-color: #FFA500 transparent transparent;
+    }
   </style>
 </head>
 <body>
@@ -55,8 +60,7 @@
       <p class="p2"></p>
       <p class="p3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos modi accusantium deleniti consequuntur, enim nulla voluptatum qui ducimus esse rem eius eligendi consequatur sint. Sunt ut, est iusto neque numquam. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam animi perspiciatis eos, molestias provident, quae ullam! Obcaecati suscipit optio labore iusto veniam facere, amet officiis, eveniet voluptatibus molestiae, dignissimos dolor!</p>
   </div>
-  <div class="triangle">
-
-  </div>
+  <div class="triangle"></div>
+  <div class="triangle"></div>
 </body>
 </html>
