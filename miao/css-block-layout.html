@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+    .header {
+      background-color: #000;
+      min-width: 600px;
+    }
+    .header > p {
+      color: #fff;
+      width: 600px;
+      margin: 0 auto;
+    }
+    .main {
+      width: 600px;
+      margin: 0 auto;
+    }
+    .box {
+      text-align: center  ;
+    }
+    .box .box1 div,.box .box2 div,.box .box3 div{
+      width: 180px;
+      height: 40px;
+      box-sizing: border-box;
+      border: 3px solid #000;
+      background-color: #FFC0CB;
+      color: #000;
+      margin-top: 15px;
+      line-height: 34px;
+    }
+    .box .box1 div:hover,.box .box2 div:hover,.box .box3 div:hover{
+      background-color: #FF0000;
+    }
+    .box1 {
+      margin-bottom: -220px;
+    }
+    .box2 {
+      margin-left: 210px;
+      margin-bottom: -220px;
+    }
+    .box3 {
+      margin-left: 420px;
+    }
+    .inline-box {
+      font-size: 0;
+    }
+    .inline-box div {
+      width: 180px;
+      height: 40px;
+      display: inline-block;
+      margin-right: 30px;
+      margin-top: 15px;
+      box-sizing: border-box;
+      border: 3px solid #000;
+      background-color: #FFC0CB;
+      font-size: 16px;
+      color: #000;
+      line-height: 40px;
+      text-align: center;
+    }
+    .inline-box .last {
+      margin: 0;
+    }
+    .inline-box div:hover {
+      background-color: #FF0000;
+    }
+    .link ul {
+      padding: 0;
+    }
+    .link ul li {
+      border-bottom: 1px dotted #000;
+      list-style: none;
+    }
+    .link ul li:last-child {
+      border: none;
+    }
+    .footer {
+      min-width: 600px;
+      background-color: #EE8AEE;
+      margin-bottom: 110px;
+    }
+    .footer p {
+      width: 200px;
+      color: #000;
+      text-align: center;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <p>hello world 请调整浏览器窗口大小查看效果</p>
+  </div>
+  <div class="main">
+    <p>页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px</p>
+    <div class="box">
+      <div class="box1">
+        <div>宽180高40(包含边框)</div>
+        <div>水平间隙30px</div>
+        <div>垂直间隙15px</div>
+        <div>边框宽度3px</div>
+      </div>
+      <div class="box2">
+        <div>产品</div>
+        <div>产品</div>
+        <div>产品</div>
+        <div>产品</div>
+      </div>
+      <div class="box3">
+        <div>产品</div>
+        <div>产品</div>
+        <div>产品</div>
+        <div>产品</div>
+      </div>
+    </div>
+    <div class="inline-box">
+      <div>宽180高40(包含边框)</div>
+      <div>产品</div>
+      <div class="last">产品</div>
+      <div>水平间隙30px</div>
+      <div>产品</div>
+      <div class="last">产品</div>
+      <div>垂直间隙15px</div>
+      <div>产品</div>
+      <div class="last">产品</div>
+      <div>边框宽度3px</div>
+      <div>产品</div>
+      <div class="last">产品</div>
+    </div>
+    <div class="link">
+      <ul>
+        <li>link</li>
+        <li>link</li>
+        <li>link</li>
+        <li>link</li>
+        <li>link</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer">
+    <p>&copy;版权所有</p>
+    <p>本页所有布局均使用块元素</p>
+  </div>
+</body>
+</html>
