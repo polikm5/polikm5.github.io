@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .abs-center {
+      padding: 0;
+      margin: 0 auto;
+      width: 500px;
+      height: 500px;
+      border: 1px solid red;
+    }
+    .center {
+      text-align: center;
+    }
+    em {
+      line-height: 500px;
+      vertical-align: middle;
+    }
+    .box1 {
+      display: inline-block;
+      width: 100px;
+      height: 100px;
+      border: 1px solid blue;
+      vertical-align: middle;
+    }
+    .pos {
+      position: relative;
+    }
+    .box2 {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      border: 1px solid blue;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      margin: auto;
+    }
+    .flex {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .box3 {
+      width: 100px;
+      height: 100px;
+      border: 1px solid blue;
+    }
+    .box4 {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      border: 1px solid blue;
+      transform: translate(-50%,-50%);
+    }
+    .tablecell {
+      display: table-cell;
+      width: 500px;
+      height: 500px;
+      margin: 0 auto;
+      border: 1px solid red;
+      vertical-align: middle;
+      text-align: center;
+    }
+    .box5 {
+      display: inline-block;
+    }
+    .outer {
+      width: 500px;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+    <div class="abs-center center">
+      <em></em>
+      <span class="box1"></span>
+    </div>
+    <hr />
+    <div class="abs-center pos">
+      <div class="box2">
+      </div>
+    </div>
+    <hr />
+    <div class="abs-center flex">
+      <div class="box3"></div>
+    </div>
+    <hr />
+    <div class="abs-center pos">
+      <div class="box4">11111111111111111111111111111</div>
+    </div>
+    <hr />
+    <div class="outer">
+      <div class="tablecell">
+        <div class="box5">111</div>
+      </div>
+    </div>
+</body>
+</html>

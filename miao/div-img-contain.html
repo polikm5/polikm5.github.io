@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .box1 {
+      width: 200px;
+      height: 200px;
+      background: url("./Grape.jpg") no-repeat;
+      background-size: contain;
+      border: 1px solid red;
+    }
+    .box2 {
+      width: 200px;
+      height: 200px;
+    }
+    .box2 > img {
+      width: 200px;
+      height: 200px;
+      object-fit: contain;
+      border: 1px solid red;
+    }
+    .box3 {
+      position: relative;
+      width: 200px;
+      height: 200px;
+      border: 1px solid red;
+    }
+    .box3 > img {
+      width: 134px;
+      height: 100%;
+      position: absolute;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+    }
+    .box4 {
+      position: relative;
+      width: 200px;
+      height: 200px;
+      border: 1px solid red;
+    }
+    .box4 > img {
+      width: 100%;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      margin: auto 0;
+    }
+    .box5 {
+      width: 200px;
+      height: 200px;
+      background: url("./t.png") no-repeat;
+      background-size: contain;
+      border: 1px solid red;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="box1">
+    </div>
+    <hr>
+    <div class="box2">
+      <img src="./Grape.jpg" alt="">
+    </div>
+    <hr>
+    <div class="box3">
+      <img src="./Grape.jpg" alt="">
+    </div>
+    <div class="box4">
+      <img src="./t.png" alt="">
+    </div>
+    <div class="box5">
+    </div>
+  </div>
+</body>
+</html>
