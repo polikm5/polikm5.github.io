@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    html,body {
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      position: relative;
+      width: 100%;
+      height: 300px;
+      margin: 0 auto;
+    }
+    .pic {
+      position: relative;
+      width: 300px;
+      height: 300px;
+      margin: 0 auto;
+    }
+    .pic input {
+      margin: 0;
+      padding: 0;
+      display: none;
+    }
+    .pic img{
+      display: none;
+      position: absolute;
+      object-fit: contain;
+      width: 300px;
+      height: 300px;
+    }
+    .pic .radio {
+      position: absolute;
+      width: 100%;
+      height: 30px;
+      line-height: 30px;
+      text-align: center;
+      top: 215px;
+      z-index: 999;
+    }
+    .pic .radio label {
+      display: inline-block;
+      width: 13px;
+      height: 13px;
+      border-radius: 6px;
+      margin-left: 16px;
+      border: 1px solid #000;
+      background-color:#aaa;
+    }
+    .left-button {
+      position: absolute;
+      width: 30px;
+      height: 50px;
+      background-color: rgba(80,80,80, 0.7);
+      top: 0;
+      bottom: 0;
+      left: 0;
+      margin:auto;
+      cursor: pointer;
+    }
+    .left-arrow {
+      width: 0;
+      height: 0;
+      position: absolute;
+      margin: auto 0;
+      top: 0;
+      bottom: 0;
+      border-top: 10px solid transparent;
+      border-right: 10px solid #fff;
+      border-bottom: 10px solid transparent;
+      border-left: 10px solid transparent;
+    }
+    .left-arrow label{
+      /* display: inline-block; */
+      display: none;
+      position: absolute;
+      width: 30px;
+      height: 50px;
+      top: 0;
+      bottom: 0;
+      left: -10px;
+      margin:auto;
+      cursor: pointer;
+    }
+    .right-button {
+      position: absolute;
+      width: 30px;
+      height: 50px;
+      background-color: rgba(80,80,80, 0.7);
+      top: 0;
+      bottom: 0;
+      right: 0;
+      margin:auto;
+      cursor: pointer;
+    }
+    .right-arrow {
+      width: 0;
+      height: 0;
+      position: absolute;
+      margin: auto;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      border-top: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-bottom: 10px solid transparent;
+      border-left: 10px solid #fff;
+    }
+    .right-arrow label{
+      display: inline-block;
+      display: none;
+      position: absolute;
+      width: 30px;
+      height: 50px;
+      top: 0;
+      bottom: 0;
+      right: -10px;
+      margin:auto;
+      cursor: pointer;
+    }
+    .pic .radio label:nth-child(1) {
+      margin-left: 0;
+      
+    }
+    input:nth-child(1):checked ~ .radio > label:nth-child(1) {
+      background-color: #fff;
+    }
+    input:nth-child(2):checked ~ .radio > label:nth-child(2) {
+      background-color: #fff;
+    }
+    input:nth-child(3):checked ~ .radio > label:nth-child(3) {
+      background-color: #fff;
+    }
+    input:nth-child(4):checked ~ .radio > label:nth-child(4) {
+      background-color: #fff;
+    }
+    input:nth-child(5):checked ~ .radio > label:nth-child(5) {
+      background-color: #fff;
+    }
+    input:nth-child(1):checked  ~ .test > img:nth-child(1),
+    input:nth-child(2):checked  ~ .test > img:nth-child(2),
+    input:nth-child(3):checked  ~ .test > img:nth-child(3),
+    input:nth-child(4):checked  ~ .test > img:nth-child(4),
+    input:nth-child(5):checked  ~ .test > img:nth-child(5) {
+      display: block;
+    }
+    input:nth-child(1):checked ~ .left-button > .left-arrow label:nth-child(5),
+    input:nth-child(1):checked ~ .right-button > .right-arrow label:nth-child(2) {
+      display: inline-block;
+    }
+    input:nth-child(2):checked ~ .left-button > .left-arrow label:nth-child(1),
+    input:nth-child(2):checked ~ .right-button > .right-arrow label:nth-child(3) {
+      display: inline-block;
+    }
+    input:nth-child(3):checked ~ .left-button > .left-arrow label:nth-child(2),
+    input:nth-child(3):checked ~ .right-button > .right-arrow label:nth-child(4) {
+      display: inline-block;
+    }
+    input:nth-child(4):checked ~ .left-button > .left-arrow label:nth-child(3),
+    input:nth-child(4):checked ~ .right-button > .right-arrow label:nth-child(5) {
+      display: inline-block;
+    }
+    input:nth-child(5):checked ~ .left-button > .left-arrow label:nth-child(4),
+    input:nth-child(5):checked ~ .right-button > .right-arrow label:nth-child(1) {
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="pic">
+      <input type="radio" name="radio" id="img1" checked>
+      <input type="radio" name="radio" id="img2">
+      <input type="radio" name="radio" id="img3">
+      <input type="radio" name="radio" id="img4">
+      <input type="radio" name="radio" id="img5">
+      <div class="test">
+        <img src="https://travel.12306.cn/imgs/resources/uploadfiles/images/243945e6-c45d-4870-9cf5-77e488068646_product_W572_H370.jpg" alt="">
+        <img src="https://travel.12306.cn/imgs/resources/uploadfiles/images/fcd7173f-7651-46e7-a126-bdc199e1f6f7_product_W572_H370.jpg" alt="">
+        <img src="https://travel.12306.cn/imgs/resources/uploadfiles/images/b0c76b21-531b-4af4-a607-cf5672c72ded_product_W572_H370.jpg" alt="">
+        <img src="https://travel.12306.cn/imgs/resources/uploadfiles/images/8b36f9a7-f780-4e71-b719-9300109a9ff2_product_W572_H370.jpg" alt="">
+        <img src="https://travel.12306.cn/imgs/resources/uploadfiles/images/1716878f-79a2-4db1-af8c-b9c2039f0b3c_product_W572_H370.jpg" alt="">
+      </div> 
+      <div class="radio">
+        <label for="img1"></label>
+        <label for="img2"></label>
+        <label for="img3"></label>
+        <label for="img4"></label>
+        <label for="img5"></label>
+      </div>
+      <div class="left-button">
+        <div class="left-arrow">
+          <label for="img1"></label>
+          <label for="img2"></label>
+          <label for="img3"></label>
+          <label for="img4"></label>
+          <label for="img5"></label>
+        </div>
+      </div>
+      <div class="right-button">
+        <div class="right-arrow">
+          <label for="img1"></label>
+          <label for="img2"></label>
+          <label for="img3"></label>
+          <label for="img4"></label>
+          <label for="img5"></label>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

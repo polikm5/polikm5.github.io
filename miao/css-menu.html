@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body,html {
+      margin: 0;
+      padding: 0;
+    }
+    .header {
+      width: 100%;
+      height: 60px;
+      line-height: 60px;
+      background-color: #3C3C3C;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+    .header > li {
+      display: inline-block;
+      position: relative;
+      margin-left: 150px;
+      white-space: nowrap;
+    }
+    .header  ul {
+      position: absolute;
+      display: none;
+      padding: 0;
+      margin: 0;
+      left: 0;
+      min-width: 150px;
+      background-color: #1E1E1E;
+      list-style: none;
+    }
+    .header li ul li {
+      position: relative;
+    }
+    .header  ul  ul {
+      display: none;
+      background-color: #878787;
+      left: 100%;
+      top: 0;
+    }
+     li:hover > ul{
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <ul class="header">
+    <li>文件
+      <ul>
+        <li>新建文件
+          <ul>
+            <li>新建html文件</li>
+            <li>新建css文件</li>
+            <li>新建js文件</li>
+          </ul>
+        </li>
+        <li>打开最近文件
+          <ul>
+            <li>文件111</li>
+            <li>文件202010141713</li>
+            <li>文件123</li>
+          </ul>
+        </li>
+        <li>将文件夹添加到工作区
+          <ul>
+            <li>添加XXX文件夹</li>
+            <li>添加aaaaaaaaaaaaaaaaaaaaaaaaaaaaa文件夹</li>
+            <li>添加文件夹</li>
+          </ul>
+        </li>
+        <li>另存为</li>
+        <li>退出</li>
+      </ul>
+    </li>
+    <li>编辑
+      <ul>
+        <li>在文件中查找
+          <ul>
+            <li>查找aaaaaa</li>
+            <li>查找bbbbbb</li>
+            <li>查找cccccccccc</li>
+          </ul>
+        </li>
+        <li>在文件中替换
+          <ul>
+            <li>替换aaaaaaaaaa</li>
+            <li>替换aaaaaaaaaa</li>
+            <li>替换aaaaaaaaaa</li>
+          </ul>
+        </li>
+        <li>撤销</li>
+        <li>恢复</li>
+        <li>复制</li>
+      </ul>
+    </li>
+    <li>选择
+      <ul>
+        <li>全选</li>
+        <li>展开选定范围</li>
+        <li>在上面添加光标</li>
+        <li>在行尾添加光标</li>
+        <li>列选择模式</li>
+      </ul>
+    </li>
+    <li>启动调试
+      <ul>
+        <li>打开配置</li>
+        <li>添加配置</li>
+        <li>添加断点</li>
+        <li>新建断点</li>
+        <li>删除所有断点</li>
+      </ul>
+    </li>
+    <li>打开进程管理器
+      <ul>
+        <li>运行任务</li>
+        <li>运行活动文本</li>
+        <li>运行所选文本</li>
+        <li>配置任务</li>
+        <li>配置默认生成任务</li>
+      </ul>
+    </li>
+  </ul>
+</body>
+</html>
