@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      overflow: hidden;
+    }
+    tr:hover {
+      background-color: red;
+    }
+    td {
+      position: relative;
+      width: 50px;
+    }
+    td:hover span {
+      position: absolute;
+      height: 9999px;
+      width: 100%;
+      top: -999px;
+      left: 0;
+      z-index: -9;
+      background-color: red;
+    }
+  </style>
+</head>
+<body>
+  <table border>
+    <col>
+    <col>
+    <tr>
+      <td>1<span></span></td>
+      <td>1<span></span></td>
+      <td>1<span></span></td>
+      <td>1<span></span></td>
+      <td>1<span></span></td>
+    </tr>
+    <tr>
+      <td>2<span></span></td>
+      <td>2<span></span></td>
+      <td>2<span></span></td>
+      <td>2<span></span></td>
+      <td>2<span></span></td>
+    </tr>
+    <tr>
+      <td>3<span></span></td>
+      <td>3<span></span></td>
+      <td>3<span></span></td>
+      <td>3<span></span></td>
+      <td>3<span></span></td>
+    </tr>
+    <tr>
+      <td>4<span></span></td>
+      <td>4<span></span></td>
+      <td>4<span></span></td>
+      <td>4<span></span></td>
+      <td>4<span></span></td>
+    </tr>
+    <tr>
+      <td>5<span></span></td>
+      <td>5<span></span></td>
+      <td>5<span></span></td>
+      <td>5<span></span></td>
+      <td>5<span></span></td>
+    </tr>
+  </table>
+</body>
+</html>
