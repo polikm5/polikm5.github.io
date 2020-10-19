@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+ html,body {
+      margin: 0;
+      text-align: center;
+    }
+    input {
+      display: none;
+    }
+    input + span {
+      transition: 1.2s;
+    }
+    input + span label {
+      transition: left 1s,width .5s .3s,padding .5s ;
+    }
+    input:checked + span {
+      /* background-color: #30F349; */
+      box-shadow: 0 0 0 110px inset #30F349;
+      border-color: #30F349;
+    }
+    input:checked + span > label {
+      left: 128px;
+      width:134px;
+      padding:0 0;
+      right: 100px;
+      background-color: #fff;
+      transition: left 1s,width .5s,padding .5s .3s;
+    }
+    span {
+      position: relative;
+      display: inline-block;
+      width: 268px;
+      height: 152px;
+      border: 4px solid #CBC7CA;
+      border-radius: 80px;
+      text-align: center;
+      /* box-shadow: 0 0 200px 0 outset #fff; */
+    }
+ 
+    label {
+      position: absolute;
+      display: inline-block;
+      left: 11px;
+      top: 8px;
+      /* background-color: red; */
+      width: 104px;
+      height: 134px;
+      padding: 0 15px;
+      border-radius: 72px;
+      box-shadow: 0 2px 20px #BABABA;
+      background-color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <input type="checkbox" name="a" id="a">
+  <span>
+    <label for="a"></label>
+  </span>
+</body>
+</html>
