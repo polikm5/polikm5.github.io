@@ -24,6 +24,7 @@
       position: relative;
       margin-left: 150px;
       white-space: nowrap;
+      
     }
     .header  ul {
       position: absolute;
@@ -31,21 +32,33 @@
       padding: 0;
       margin: 0;
       left: 0;
+      text-align: left;
       min-width: 150px;
       background-color: #1E1E1E;
       list-style: none;
     }
     .header li ul li {
       position: relative;
+      padding-right: 30px;
     }
     .header  ul  ul {
-      display: none;
+      display: block;
       background-color: #878787;
-      left: 100%;
+        left: 100%;
+      /* font-size: 0; */
+      visibility: hidden;
       top: 0;
+      /* transition: 1s; */
     }
      li:hover > ul{
       display: block;
+      visibility: visible;
+    }
+    ul ul ul::before  {
+      content: ">";
+      position: absolute;
+      visibility: visible;
+      left: -20px;
     }
   </style>
 </head>

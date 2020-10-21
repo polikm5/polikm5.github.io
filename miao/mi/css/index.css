@@ -1,0 +1,745 @@
+.header {
+  width: 100%;
+}
+.top-img {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/a2a9e6db5e3c5374301827435d8595c6.jpg?w=5120&h=240) no-repeat center center;
+  background-size: cover;
+  width: 100%;
+  height: 120px;
+}
+.header-wrapper {
+  width: 100%;
+  background-color: #333333;
+}
+.header .header-nav {
+  width: 1226px;
+  height: 40px;
+  margin: 0 auto;
+  background-color: #333333;
+}
+
+.header .header-nav > ul > li{
+  float: left;
+  height: 40px;
+  line-height: 40px;
+  font-size: 12px;
+  margin-left: .5em;
+}
+.header .header-nav ul li a:hover {
+  color: #F4F4F4;
+}
+.header .header-nav ul li:first-child {
+  margin: 0;
+}
+.header .header-nav ul li a {
+  color: #B0B0B0;
+}
+.header .header-nav > ul > li::after {
+  content: "|";
+  color: #424242;
+  margin: 0.3em;
+}
+.header .header-nav ul .left-end::after {
+  content: "";
+  margin-left: 15em;
+}
+.header .header-nav ul .right-end::after {
+  content: "";
+  margin-left: 12px;
+}
+.header .header-nav ul .shopcar {
+  position: relative;
+  width: 120px;
+  text-align: center;
+  line-height: 40px;
+  height: 40px;
+  background-color: #424242;
+  color:  #B0B0B0;
+  /* overflow: hidden; */
+}
+.header .header-nav ul .shopcar a {
+  color:  #B0B0B0;
+}
+.header .header-nav ul .shopcar a::before{
+  content: "\e600";
+  margin-right: 4px;
+  margin-left: 8px;
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.download-app {
+  position: relative;
+  text-align: center;
+}
+.download-app > ul::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  border: 8px solid red;
+  border-color: transparent transparent red transparent;
+  left: 50px;
+  top: -16px;
+  z-index: 999;
+}
+.download-app ul {
+  position: absolute;
+  right: -34px;
+  width: 126px;
+  height: 0;
+  box-shadow: 0 0 0 0px #DBDBDB;
+  overflow: hidden;
+  transition: height .5s;
+}
+.download-app ul .img {
+  width: 100%;
+  position: absolute;
+  top: 22px;
+}
+.download-app ul .img-title {
+  width: 100%;
+  position: absolute;
+  top: 108px;
+  font-size: 14px;
+}
+.download-app ul li img {
+  width: 86px;
+  height: 86px;
+}
+.download-app:hover > ul{
+  display: block;
+  height: 149px;
+  background-color: #fff;
+  box-shadow: 0 0 1px 1px inset #DBDBDB;
+  z-index: 99;
+}
+.header .header-nav ul .shopcar::after {
+  content: "";
+}
+.header .header-nav ul .shopcar:hover{
+  background-color: #FFFFFF;
+}
+.header .header-nav ul .shopcar a:hover{
+  color: #FF6700;
+}
+.header .header-nav ul .shopcar ul {
+  width: 316px;
+  display: block;
+  height: 0;
+  position: absolute;
+  box-shadow: 0 0 0 1px #DBDBDB;
+  left: -196px;
+  margin-top: -1px;
+  transition: height .5s;
+  color: #424242;
+  overflow: hidden;
+  z-index: 99;
+  background-color: #fff;
+}
+.header .header-nav ul .shopcar ul li {
+  margin: auto;
+  line-height: 100px;
+}
+.header .header-nav ul .shopcar a:hover + ul{
+  display: block;
+  height: 100px;
+}
+
+.container {
+  width: 100%;
+}
+.wrapper {
+  width: 1226px;
+  margin: 0 auto;
+  position: relative;
+  box-sizing: border-box;
+}
+.subnav {
+  height: 100px;
+}
+.subnav > ul > li {
+  display: inline-block;
+  /* line-height: 100px; */
+  font-size: 16px;
+  color: #333;
+  padding:0 8px;
+  cursor: pointer;
+}
+.subnav > ul > li:hover  a{
+  color: #FF6700;
+}
+.subnav ul ul {
+  position: absolute;
+  left: 0;
+  width: 1260px;
+  height: 0;
+  /* height: 250px; */
+  overflow: hidden;
+  transition: height .3s .2s;
+  margin-top: 42px;
+}
+.subnav ul li:hover ul {
+  height: 250px;
+  z-index:100;
+  background-color: #fff;
+}
+.subnav ul  ul  li {
+  width: 160px;
+  height: 250px;
+  display: inline-block;
+  margin: 40px 64px 0;
+}
+.subnav ul  ul  li .phone::after {
+  content: "";
+  position: absolute;
+  height: 100px;
+  width: 1px;
+  right: -23px;
+  background-color:#E0E0E0;
+}
+.subnav ul  ul  li:last-child .phone::after {
+  display: none;
+}
+.subnav ul  ul  li:first-child {
+  margin-left: 14px;
+}
+.subnav ul  ul  li .phone {
+  position: absolute;
+  left: 24px;
+  top: 40px;
+  width: 160px;
+  height: 250px;
+}
+.subnav ul  ul  li .phone-2 {
+  left: 227px;
+}
+.subnav ul  ul  li .phone-3 {
+  left: 432px;
+}
+.subnav ul  ul  li .phone-4 {
+  left: 634px;
+}
+.subnav ul  ul  li .phone-5 {
+  left: 824px;
+}
+.subnav ul  ul  li .phone-6 {
+  left: 1040px;
+}
+/* 小米手机图片 */
+.subnav ul  ul  li .phone-1 .iphone-img {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/b11742a0be47f9d97bb6a13ea580018d.png?thumb=1&w=160&h=110&f=webp&q=90) no-repeat;
+}
+.subnav ul  ul  li .phone-2 .iphone-img {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/82ddffd7562c54f9166fa876c143ff22.png?thumb=1&w=160&h=110&f=webp&q=90) no-repeat;
+}
+.subnav ul  ul  li .phone-3 .iphone-img {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/a4a76ee684e51f0ee531ef3dc7f0aeaf.png?thumb=1&w=160&h=110&f=webp&q=90) no-repeat;
+}
+.subnav ul  ul  li .phone-4 .iphone-img {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/3bf20f1df3f2e22c5b29ff07634f3c59.png?thumb=1&w=160&h=110&f=webp&q=90) no-repeat;
+}
+.subnav ul  ul  li .phone-5 .iphone-img {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/5d19da60f9f62eb2aa5dcdbd7df19f0f.png?thumb=1&w=160&h=110&f=webp&q=90) no-repeat;
+}
+/* 红米手机图片 */
+.subnav .red-mi .phone-1 .iphone-img {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/31d0dc82068abcaa46464b4baa9fbbdf.jpg?thumb=1&w=160&h=110&f=webp&q=90) no-repeat;
+}
+.subnav .red-mi .phone-2 .iphone-img {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/0203f4e7dafcc0c9016a1b48556abf30.jpg?thumb=1&w=160&h=110&f=webp&q=90) no-repeat;
+}
+.subnav .red-mi .phone-3 .iphone-img {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/cff2977b8aab1e43b94b2f00083f4ae1.jpg?thumb=1&w=160&h=110&f=webp&q=90) no-repeat;
+}
+.subnav .red-mi .phone-4 .iphone-img {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/6a6548361871303764d6c66142074524.png?thumb=1&w=160&h=110&f=webp&q=90) no-repeat;
+}
+.subnav .red-mi .phone-5 .iphone-img {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/dacd6a3d8440b7a038e9778702bd6db6.png?thumb=1&w=160&h=110&f=webp&q=90) no-repeat;
+}
+.subnav .red-mi .phone-6 .iphone-img {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/9ddc8849eaf164aac333bfd10627867f.png?thumb=1&w=160&h=110&f=webp&q=90) no-repeat;
+}
+/* 小米电视图片 */
+.subnav .tv-mi .phone-1 .iphone-img {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/174a2f9256a44b98f9e08bbe30528329.png?thumb=1&w=160&h=110&f=webp&q=90) no-repeat;
+}
+.subnav .tv-mi .phone-2 .iphone-img {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/e513ac03d0ebb594bf42f7d6b1b44944.png?thumb=1&w=160&h=110&f=webp&q=90) no-repeat;
+}
+.subnav .tv-mi .phone-3 .iphone-img {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/932b583c6eccd8aabfa0771f8a854940.jpg?thumb=1&w=160&h=110&f=webp&q=90) no-repeat;
+}
+.subnav .tv-mi .phone-4 .iphone-img {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/ea3390a20547c7298a258528e4aa69ad.png?thumb=1&w=160&h=110&f=webp&q=90) no-repeat;
+}
+.subnav .tv-mi .phone-5 .iphone-img {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/0112cb7e2ea8489fbd36ce3a781d5232.jpg?thumb=1&w=160&h=110&f=webp&q=90) no-repeat;
+}
+.subnav .tv-mi .phone-6 .iphone-img {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/f0f2d1079c767a834f098dd824bb6fee.png?thumb=1&w=160&h=110&f=webp&q=90) no-repeat;
+}
+/* 小米笔记本图片 */
+.subnav .laptops-mi .phone-1 .iphone-img {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/0bfdd3b985b4a9da58a1f5a861c5895f.png?thumb=1&w=160&h=110&f=webp&q=90) no-repeat;
+}
+.subnav .laptops-mi .phone-2 .iphone-img {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/3e6c9a677acbb3b0c75d4d0d83e8a695.png?thumb=1&w=160&h=110&f=webp&q=90) no-repeat;
+}
+.subnav .laptops-mi .phone-3 .iphone-img {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/e27b3211230c2b8c21c0ef4efcbc17bc.png?thumb=1&w=160&h=110&f=webp&q=90) no-repeat;
+}
+.subnav .laptops-mi .phone-4 .iphone-img {
+  background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/d712f71b3c4a3b562601c2b956a660ad.png?thumb=1&w=160&h=110) no-repeat;
+}
+.subnav .laptops-mi .phone-5 .iphone-img {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/682027c81244d5244d72990cc8b5341f.png?thumb=1&w=160&h=110&f=webp&q=90) no-repeat;
+}
+.subnav .laptops-mi .phone-6 .iphone-img {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/0f0f2175b9a6d4fdb0f0eeb843398044.png?thumb=1&w=160&h=110&f=webp&q=90) no-repeat;
+}
+/* 小米家电图片 */
+.subnav .appliances-mi .phone-1 .iphone-img {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/03dc85cd792904ddc8027b2d781beed8.png?thumb=1&w=160&h=110&f=webp&q=90) no-repeat;
+}
+.subnav .appliances-mi .phone-2 .iphone-img {
+  background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/e06b219c5bced9256467b17738a943c6.png?thumb=1&w=160&h=110) no-repeat;
+}
+.subnav .appliances-mi .phone-3 .iphone-img {
+  background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/c5d772b7c2a159c3ed7d4e31bd293f18.jpg?thumb=1&w=160&h=110) no-repeat;
+}
+.subnav .appliances-mi .phone-4 .iphone-img {
+  background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/11b8bca444aba2994fe852993eac9203.png?thumb=1&w=160&h=110) no-repeat;
+}
+.subnav .appliances-mi .phone-5 .iphone-img {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/b7a4e3ff7919ca2407ad970b78abd09a.jpg?thumb=1&w=160&h=110&f=webp&q=90) no-repeat;
+}
+.subnav .appliances-mi .phone-6 .iphone-img {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/40ad6e8398095e97309a5538b516a2de.jpg?thumb=1&w=160&h=110&f=webp&q=90) no-repeat;
+}
+/* 小米路由器图片 */
+.subnav .router-mi .phone-1 .iphone-img {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/54de949334c3d794a6ca55b76e4bb379.png?thumb=1&w=160&h=110&f=webp&q=90) no-repeat;
+}
+.subnav .router-mi .phone-2 .iphone-img {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/681a92d3e5f03a109558396c99f6a4df.png?thumb=1&w=160&h=110&f=webp&q=90) no-repeat;
+}
+.subnav .router-mi .phone-3 .iphone-img {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/27da43294889d049a111e5ff2cdfafe7.png?thumb=1&w=160&h=110&f=webp&q=90) no-repeat;
+}
+.subnav .router-mi .phone-4 .iphone-img {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/359d3c63cc159949d8fe147a11b4bc40.png?thumb=1&w=160&h=110&f=webp&q=90) no-repeat;
+}
+.subnav .router-mi .phone-5 .iphone-img {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/aa1e0a4860cf40d34e1192d86691c82c.png?thumb=1&w=160&h=110&f=webp&q=90) no-repeat;
+}
+.subnav .router-mi .phone-6 .iphone-img {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/5dd23c09b7eb6471968537fdce629194.png?thumb=1&w=160&h=110&f=webp&q=90) no-repeat;
+}
+/* 小米智能硬件图片 */
+.subnav .hardware-mi .phone-1 .iphone-img {
+  background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/2a500be4264c692899b25d86c16403f7.jpg?thumb=1&w=160&h=110) no-repeat;
+}
+.subnav .hardware-mi .phone-2 .iphone-img {
+  background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/e3fb0886fdb13e5ae784b9713b9a0038.jpg?thumb=1&w=160&h=110) no-repeat;
+}
+.subnav .hardware-mi .phone-3 .iphone-img {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/2b87ae4a36beef69bb2018eb1f8bce9b.png?thumb=1&w=160&h=110&f=webp&q=90) no-repeat;
+}
+.subnav .hardware-mi .phone-4 .iphone-img {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/dccc32d8e36685485fa89e0f2a580975.png?thumb=1&w=160&h=110&f=webp&q=90) no-repeat;
+}
+.subnav .hardware-mi .phone-5 .iphone-img {
+  background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/f6e585a4bf5c0f744ca60f19ecd6fadf.jpg?thumb=1&w=160&h=110) no-repeat;
+}
+.subnav .hardware-mi .phone-6 .iphone-img {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/17c0c91317ec0def3ecc072fa9480192.png?thumb=1&w=160&h=110&f=webp&q=90) no-repeat;
+}
+.subnav ul  ul  li .iphone-img{
+  width: 160px;
+  height: 110px;
+  position: absolute;
+}
+.subnav ul  ul  li .phone-info {
+  position: absolute;
+  left: 0px;
+  top: 126px;
+  width: 160px;
+  font-size: 12px;
+  color: #333;
+}
+.subnav ul  ul  li .phone-price {
+  color: #ff6700;
+}
+.subnav ul  ul  li .phone-title,.phone-price {
+  text-align: center;
+
+}
+.subnav ul .mi {
+  position: relative;
+  margin-right: 180px;
+  padding: 0;
+}
+.mi-logo {
+  display: inline-block;
+  position: relative;
+  width: 55px;
+  height: 55px;
+  background-color:#FF6700;
+  top: 23px;
+  cursor: pointer;
+}
+.mi-logo::before {
+  content: '';
+  position: absolute;
+  width: 55px;
+  height: 55px;
+  background: url(https://s02.mifile.cn/assets/static/image/mi-home.png) no-repeat;
+  top: 3px;
+  left: -100%;
+  transition: .2s;
+}
+.mi-logo::after {
+  content: '';
+  position: absolute;
+  width: 55px;
+  height: 55px;
+  background: url(http://s02.mifile.cn/assets/static/image/mi-logo.png) no-repeat;
+  top: 3px;
+  left: 3px;
+  transition: .2s;
+}
+.mi:hover .mi-logo::before {
+  left: 3px;
+}
+.mi:hover .mi-logo::after {
+  left: 60px;
+} 
+.subnav ul .search {
+  position: absolute;
+  right: 0;
+  width: 296px;
+  height: 50px;
+  top: 23px;
+}
+.subnav ul .search .text,.submit{
+  position: absolute;
+  width: 245px;
+  height: 50px;
+  border: 1px solid #E0E0E0;
+}
+.subnav ul .search .text:hover {
+  border-color: #B0B0B0;
+}
+.subnav ul .search .text:hover ~ .submit {
+  border-color: #B0B0B0;
+}
+.subnav ul .search .text:focus {
+  border: 1px solid #FF6700;
+  outline: none;
+}
+.subnav ul .search .text:focus ~ .submit {
+  border: 1px solid #FF6700;
+  outline: none;
+}
+.submit {
+  position: absolute;
+  width: 52px;
+  height: 50px;
+  right: 0;
+  border: 1px solid #E0E0E0;
+  background-color: #fff;
+  cursor: pointer;
+}
+.search span::after {
+  content: '\e650';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  right: 14px;
+  top: 14px;
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.search .submit:hover {
+  background-color: #FF6700;
+}
+.search .submit:hover ~ span::after {
+  color: #fff;
+}
+/* .submit::after {
+  content: '\e650';
+  display: block;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  z-index: 99;
+  background-color: red;
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+} */
+
+/* banner轮播图 */
+
+.banner {
+  margin-top: 0px;
+  height: 460px;
+  margin-bottom: 500px;
+  position: relative;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+.left-banner {
+  position: absolute;
+  width: 235px;
+  height: 460px;
+  background-color:rgba(69,80,88, .5);
+  padding: 20px 0;
+}
+.left-banner > ul.banner-wapper {
+  position: relative;
+  width: 100%;
+  height: 460px;
+}
+.left-banner > ul > li {
+  height: 42px;
+  line-height: 42px;
+  padding-left: 30px;
+  cursor: pointer;
+}
+.left-banner > ul > li:hover {
+  background-color: #FF6700;
+}
+.left-banner > ul > li::after {
+  content: '\e7f9';
+  font-family: "iconfont" !important;
+  font-size: 20px;
+  font-style: normal;
+  position: absolute;
+  right: 18px;
+  color: #BEBFC1;
+}
+.left-banner > ul > li > a{
+  color: #fff;
+}
+.left-banner > ul > li ul {
+  position: absolute;
+  left: 235px;
+  top: 0;
+  width: 991px;
+  height: 460px;
+  background-color: #fff;
+  /* 图片显示隐藏 */
+  display: none;
+}
+.left-banner > ul > li:hover ul {
+  display: block;
+  z-index: 99;
+}
+.left-banner > ul > li .list {
+  display: inline-block;
+  position: absolute;
+  width: 265px;
+  height: 460px;
+}
+.left-banner > ul > li  .list-2 {
+  left: 248px;
+}
+.left-banner > ul > li  .list-3 {
+  left: 496px;
+}
+.left-banner > ul > li  .list-4 {
+  left: 743px;
+}
+.left-banner > ul > li .list a {
+  display: block;
+}
+.left-banner > ul > li .list a .product-info:hover .product-title{
+  color: #ff6700;
+}
+.left-banner > ul > li .list a .product-info {
+  width: 265px;
+  height: 76px;
+  top: 0;
+  left: 0;
+  position: absolute;
+  padding: 23px 20px;
+}
+.left-banner > ul > li .list a .product-2 {
+  top:76px;
+}
+.left-banner > ul > li .list a .product-3 {
+  top:152px;
+}
+.left-banner > ul > li .list a .product-4 {
+  top:228px;
+}
+.left-banner > ul > li .list a .product-5 {
+  top:304px;
+}
+.left-banner > ul > li .list a .product-6 {
+  top:380px;
+}
+.left-banner > ul > li .list a .product-title {
+  height: 40px;
+  color: #000;
+  position: absolute;
+  left: 72px;
+}
+.left-banner > ul > li .list a .product-info div,span {
+  display: inline-block;
+}
+.left-banner > ul > li .list a .product-img {
+  width: 40px;
+  height: 40px;
+}
+.left-banner > ul > li .list a .img-1 {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/5ca871528d3420622f21f25be7aba58c.png?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+}
+.left-banner > ul > li .list a .img-2 {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/f5aad5f708998e76742d75d7c6b1394c.png?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+}
+.left-banner > ul > li .list a .img-3 {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/4a7a4f24061860901f724b6ba6d75fd9.png?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+}
+.left-banner > ul > li .list a .img-4 {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/cc563c76a7383d8030d1c23f31c60cb9.png?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+}
+.left-banner > ul > li .list a .img-5 {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/f382e29367ad5852fc1adfdae1332d5c.png?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+}
+.left-banner > ul > li .list a .img-6 {
+  background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/8ade0163e9fdbd92a4b7d7ee3aeab905.jpg?thumb=1&w=40&h=40) no-repeat;
+}
+.left-banner > ul > li .list-2 a .img-1 {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/0803dc7125ffa3447b04b1ae60f57a2b.jpg?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+}
+.left-banner > ul > li .list-2 a .img-2 {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/461bf013d08a7a91423cafcbc5ff9339.jpg?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+}
+.left-banner > ul > li .list-2 a .img-3 {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/92b463f8e502e5d26ac488a252a05b58.jpg?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+}
+.left-banner > ul > li .list-2 a .img-4 {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/7a98170e97ca5df8f5ad2470a8a2d01e.jpg?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+}
+.left-banner > ul > li .list-2 a .img-5 {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/b2b8b609aab05d9ad184bbe5c8e8be28.jpg?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+}
+.left-banner > ul > li .list-2 a .img-6 {
+  background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/84e19ece0125992449a6276e2ba333e9.png?thumb=1&w=40&h=40) no-repeat;
+}
+.left-banner > ul > li .list-3 a .img-1 {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/22419dee5ddfa9f4a91782231d07e189.png?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+}
+.left-banner > ul > li .list-3 a .img-2 {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/f774ef8332f2204a7c8fbf1b92f29e8a.png?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+}
+.left-banner > ul > li .list-3 a .img-3 {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/afa28e7477639537f556eb46e3ca5f43.jpeg?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+}
+.left-banner > ul > li .list-3 a .img-4 {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/cba27e53367b74271a38a4515a692816.png?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+}
+.left-banner > ul > li .list-3 a .img-5 {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/b4534b9fd22f478314f3cbbf286b7338.png?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+}
+.left-banner > ul > li .list-3 a .img-6 {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/4d8753c35974699754af66388fc03a16.jpg?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+}
+.left-banner > ul > li .list-4 a .img-1 {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/0cadc8b00dbe3b5615bd6ab657715baf.png?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+}
+.left-banner > ul > li .list-4 a .img-2 {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/1db88cd66ff1a6a3e75116988b7f3e12.jpg?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+}
+.left-banner > ul > li .list-4 a .img-3 {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/47057d897ee2c05c9215e059e1308dc6.png?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+}
+.left-banner > ul > li .list-4 a .img-4 {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/77bfd346ad97807237beca297cfe2fba.png?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+}
+.left-banner > ul > li .list-4 a .img-5 {
+  background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/85d746207b997873ddfcdca0da025f78.jpg?thumb=1&w=40&h=40) no-repeat;
+}
+.left-banner ul  li.banner-2 .list-1 a .img-1 {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/37576cef378ef2805c20b9ab2a9d6d3d.png?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+}
+.left-banner ul  li.banner-2 .list-1 a .img-2 {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/942d4f28d406f3946f0ce551c125c641.png?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+}
+.left-banner ul  li.banner-2 .list-1 a .img-3 {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/d8264eb9b900ead63eea69f6fc1e413a.png?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+}
+.left-banner ul  li.banner-2 .list-1 a .img-4 {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/d8264eb9b900ead63eea69f6fc1e413a.png?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+}
+.left-banner ul  li.banner-2 .list-1 a .img-5 {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/da1680fb62238cb5b01998d80fc34e25.png?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+}
+.left-banner ul  li.banner-2 .list-1 a .img-6 {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/070b329c18c1ab167df2a42564a67813.png?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+}
+.left-banner ul  li.banner-2 .list-2 a .img-1 {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/b8f12c8d20878e88b66047ef32566e48.png?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+}
+.left-banner ul  li.banner-2 .list-2 a .img-2 {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/d096389e19ba6b79b324b7d0acfab7ca.png?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+}
+.left-banner ul  li.banner-2 .list-2 a .img-3 {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/23316088a9182a08c624958319924d8d.png?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+}
+.left-banner ul  li.banner-2 .list-2 a .img-4 {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/319700f48d268f522664e1fc876b0044.png?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+}
+.left-banner ul  li.banner-2 .list-2 a .img-5 {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/d219d8b9c4a74eda4ae6c0222d194cd2.png?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+}
+.left-banner ul  li.banner-2 .list-2 a .img-6 {
+  background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/554a4f8ea0c2c3ed19d843bea7321203.jpg?thumb=1&w=40&h=40) no-repeat;
+}
+.left-banner ul  li.banner-2 .list-3 a .img-1 {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/7da49e7ada2229c963c9c7353a58d49b.png?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+}
+.left-banner ul  li.banner-2 .list-3 a .img-2 {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/da1680fb62238cb5b01998d80fc34e25.png?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+}
+.left-banner ul  li.banner-2 .list-3 a .img-3 {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/1df560d16cc983b0f34d24fc484bd697.png?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+}
+.left-banner ul  li.banner-2 .list-3 a .img-4 {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/070b329c18c1ab167df2a42564a67813.png?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+}
+.left-banner ul  li.banner-2 .list-3 a .img-5 {
+  background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/8aeae36f5d088f22c84b8953bd0d08b4.jpg?thumb=1&w=40&h=40) no-repeat;
+}
+.left-banner ul  li.banner-2 .list-3 a .img-6 {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/381acfeddeebcce4720ea7b8e481252f.png?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+}
+.left-banner ul  li.banner-2 .list-4 a .img-1 {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/9d649ec3d7d14da7090e396d56b7cc92.jpg?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+}
+.left-banner ul  li.banner-2 .list-4 a .img-2 {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/d707cdac2a19703b57e65212f32fd25b.png?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+}
+.left-banner ul  li.banner-2 .list-4 a .img-3 {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/6797917392e912577135d9eb8ad92f1f.png?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+}
+.left-banner ul  li.banner-2 .list-4 a .img-4 {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/8cb5791161d8b25897f60385f0ec7ab2.png?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+}
+.left-banner ul  li.banner-2 .list-4 a .img-5 {
+  background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/5732e8f317eb86bfcb174fbb49d00c4a.jpg?thumb=1&w=40&h=40) no-repeat;
+}
+.left-banner ul  li.banner-2 .list-4 a .img-6 {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/4fa264c15d3829e6de4283a552651e22.png?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+}

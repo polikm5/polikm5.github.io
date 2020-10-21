@@ -1,0 +1,72 @@
+{
+  "id": "2145362",
+  "name": "mi",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "614834",
+      "name": "24_话费",
+      "font_class": "24huafei",
+      "unicode": "e66f",
+      "unicode_decimal": 58991
+    },
+    {
+      "icon_id": "1990040",
+      "name": "时钟",
+      "font_class": "clock",
+      "unicode": "e6be",
+      "unicode_decimal": 59070
+    },
+    {
+      "icon_id": "6801914",
+      "name": "Sim-Card",
+      "font_class": "Sim-Card",
+      "unicode": "e6d4",
+      "unicode_decimal": 59092
+    },
+    {
+      "icon_id": "6936784",
+      "name": "兑换钱币",
+      "font_class": "-exchange-",
+      "unicode": "e60d",
+      "unicode_decimal": 58893
+    },
+    {
+      "icon_id": "11239041",
+      "name": "企业",
+      "font_class": "qiye",
+      "unicode": "e646",
+      "unicode_decimal": 58950
+    },
+    {
+      "icon_id": "15323496",
+      "name": "F_round_字母f",
+      "font_class": "F_round",
+      "unicode": "e632",
+      "unicode_decimal": 58930
+    },
+    {
+      "icon_id": "1917118",
+      "name": "右",
+      "font_class": "right",
+      "unicode": "e7f9",
+      "unicode_decimal": 59385
+    },
+    {
+      "icon_id": "993786",
+      "name": "搜索",
+      "font_class": "sousuo",
+      "unicode": "e650",
+      "unicode_decimal": 58960
+    },
+    {
+      "icon_id": "1306",
+      "name": "购物车空",
+      "font_class": "gouwuchekong",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    }
+  ]
+}
