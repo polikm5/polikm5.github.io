@@ -1,0 +1,1649 @@
+.header {
+  width: 100%;
+}
+.top-img {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/a2a9e6db5e3c5374301827435d8595c6.jpg?w=5120&h=240) no-repeat center center;
+  background-size: cover;
+  width: 100%;
+  height: 120px;
+}
+.header-wrapper {
+  width: 100%;
+  background-color: #333333;
+}
+.header .header-nav {
+  width: 1226px;
+  height: 40px;
+  margin: 0 auto;
+  background-color: #333333;
+}
+
+.header .header-nav > ul > li{
+  float: left;
+  height: 40px;
+  line-height: 40px;
+  font-size: 12px;
+  margin-left: .5em;
+}
+.header .header-nav ul li a:hover {
+  color: #F4F4F4;
+}
+.header .header-nav ul li:first-child {
+  margin: 0;
+}
+.header .header-nav ul li a {
+  color: #B0B0B0;
+}
+.header .header-nav > ul > li::after {
+  content: "|";
+  color: #424242;
+  margin: 0.3em;
+}
+.header .header-nav ul .left-end::after {
+  content: "";
+  margin-left: 15em;
+}
+.header .header-nav ul .right-end::after {
+  content: "";
+  margin-left: 12px;
+}
+.header .header-nav ul .shopcar {
+  position: relative;
+  width: 120px;
+  text-align: center;
+  line-height: 40px;
+  height: 40px;
+  background-color: #424242;
+  color:  #B0B0B0;
+  /* overflow: hidden; */
+}
+.header .header-nav ul .shopcar a {
+  color:  #B0B0B0;
+}
+.header .header-nav ul .shopcar a::before{
+  content: "\e600";
+  margin-right: 4px;
+  margin-left: 8px;
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.download-app {
+  position: relative;
+  text-align: center;
+}
+.download-app > ul::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  border: 8px solid red;
+  border-color: transparent transparent red transparent;
+  left: 50px;
+  top: -16px;
+  z-index: 999;
+}
+.download-app ul {
+  position: absolute;
+  right: -34px;
+  width: 126px;
+  height: 0;
+  box-shadow: 0 0 0 0px #DBDBDB;
+  overflow: hidden;
+  transition: height .5s;
+}
+.download-app ul .img {
+  width: 100%;
+  position: absolute;
+  top: 22px;
+}
+.download-app ul .img-title {
+  width: 100%;
+  position: absolute;
+  top: 108px;
+  font-size: 14px;
+}
+.download-app ul li img {
+  width: 86px;
+  height: 86px;
+}
+.download-app:hover > ul{
+  display: block;
+  height: 149px;
+  background-color: #fff;
+  box-shadow: 0 0 1px 1px inset #DBDBDB;
+  z-index: 99;
+}
+.header .header-nav ul .shopcar::after {
+  content: "";
+}
+.header .header-nav ul .shopcar:hover{
+  background-color: #FFFFFF;
+}
+.header .header-nav ul .shopcar a:hover{
+  color: #FF6700;
+}
+.header .header-nav ul .shopcar ul {
+  width: 316px;
+  display: block;
+  height: 0;
+  position: absolute;
+  box-shadow: 0 0 0 1px #DBDBDB;
+  left: -196px;
+  margin-top: -1px;
+  transition: height .5s;
+  color: #424242;
+  overflow: hidden;
+  z-index: 99;
+  background-color: #fff;
+}
+.header .header-nav ul .shopcar ul li {
+  margin: auto;
+  line-height: 100px;
+}
+.header .header-nav ul .shopcar a:hover + ul{
+  display: block;
+  height: 100px;
+}
+
+.container {
+  width: 100%;
+}
+.wrapper {
+  width: 1226px;
+  margin: 0 auto;
+  position: relative;
+  box-sizing: border-box;
+}
+.subnav {
+  height: 100px;
+}
+.subnav > ul > li {
+  display: inline-block;
+  /* line-height: 100px; */
+  font-size: 16px;
+  color: #333;
+  padding:0 8px;
+  cursor: pointer;
+}
+.subnav > ul > li a {
+  color: #333;
+}
+.subnav > ul > li:hover  a{
+  color: #FF6700;
+}
+.subnav ul ul {
+  position: absolute;
+  left: 0;
+  width: 1260px;
+  height: 0;
+  /* height: 250px; */
+  overflow: hidden;
+  transition: height .3s .2s;
+  margin-top: 32px;
+}
+.subnav ul li:hover ul {
+  height: 250px;
+  z-index:100;
+  background-color: #fff;
+}
+.subnav ul  ul  li {
+  width: 160px;
+  height: 250px;
+  display: inline-block;
+  margin: 40px 64px 0;
+}
+.subnav ul  ul  li .phone::after {
+  content: "";
+  position: absolute;
+  height: 100px;
+  width: 1px;
+  right: -23px;
+  background-color:#E0E0E0;
+}
+.subnav ul  ul  li:last-child .phone::after {
+  display: none;
+}
+.subnav ul  ul  li:first-child {
+  margin-left: 14px;
+}
+.subnav ul  ul  li .phone {
+  position: absolute;
+  left: 24px;
+  top: 40px;
+  width: 160px;
+  height: 250px;
+}
+.subnav ul  ul  li .phone-2 {
+  left: 227px;
+}
+.subnav ul  ul  li .phone-3 {
+  left: 432px;
+}
+.subnav ul  ul  li .phone-4 {
+  left: 634px;
+}
+.subnav ul  ul  li .phone-5 {
+  left: 824px;
+}
+.subnav ul  ul  li .phone-6 {
+  left: 1040px;
+}
+/* 小米手机图片 */
+.subnav ul  ul  li .phone-1 .iphone-img {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/b11742a0be47f9d97bb6a13ea580018d.png?thumb=1&w=160&h=110&f=webp&q=90) no-repeat;
+}
+.subnav ul  ul  li .phone-2 .iphone-img {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/82ddffd7562c54f9166fa876c143ff22.png?thumb=1&w=160&h=110&f=webp&q=90) no-repeat;
+}
+.subnav ul  ul  li .phone-3 .iphone-img {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/a4a76ee684e51f0ee531ef3dc7f0aeaf.png?thumb=1&w=160&h=110&f=webp&q=90) no-repeat;
+}
+.subnav ul  ul  li .phone-4 .iphone-img {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/3bf20f1df3f2e22c5b29ff07634f3c59.png?thumb=1&w=160&h=110&f=webp&q=90) no-repeat;
+}
+.subnav ul  ul  li .phone-5 .iphone-img {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/5d19da60f9f62eb2aa5dcdbd7df19f0f.png?thumb=1&w=160&h=110&f=webp&q=90) no-repeat;
+}
+/* 红米手机图片 */
+.subnav .red-mi .phone-1 .iphone-img {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/31d0dc82068abcaa46464b4baa9fbbdf.jpg?thumb=1&w=160&h=110&f=webp&q=90) no-repeat;
+}
+.subnav .red-mi .phone-2 .iphone-img {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/0203f4e7dafcc0c9016a1b48556abf30.jpg?thumb=1&w=160&h=110&f=webp&q=90) no-repeat;
+}
+.subnav .red-mi .phone-3 .iphone-img {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/cff2977b8aab1e43b94b2f00083f4ae1.jpg?thumb=1&w=160&h=110&f=webp&q=90) no-repeat;
+}
+.subnav .red-mi .phone-4 .iphone-img {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/6a6548361871303764d6c66142074524.png?thumb=1&w=160&h=110&f=webp&q=90) no-repeat;
+}
+.subnav .red-mi .phone-5 .iphone-img {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/dacd6a3d8440b7a038e9778702bd6db6.png?thumb=1&w=160&h=110&f=webp&q=90) no-repeat;
+}
+.subnav .red-mi .phone-6 .iphone-img {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/9ddc8849eaf164aac333bfd10627867f.png?thumb=1&w=160&h=110&f=webp&q=90) no-repeat;
+}
+/* 小米电视图片 */
+.subnav .tv-mi .phone-1 .iphone-img {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/174a2f9256a44b98f9e08bbe30528329.png?thumb=1&w=160&h=110&f=webp&q=90) no-repeat;
+}
+.subnav .tv-mi .phone-2 .iphone-img {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/e513ac03d0ebb594bf42f7d6b1b44944.png?thumb=1&w=160&h=110&f=webp&q=90) no-repeat;
+}
+.subnav .tv-mi .phone-3 .iphone-img {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/932b583c6eccd8aabfa0771f8a854940.jpg?thumb=1&w=160&h=110&f=webp&q=90) no-repeat;
+}
+.subnav .tv-mi .phone-4 .iphone-img {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/ea3390a20547c7298a258528e4aa69ad.png?thumb=1&w=160&h=110&f=webp&q=90) no-repeat;
+}
+.subnav .tv-mi .phone-5 .iphone-img {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/0112cb7e2ea8489fbd36ce3a781d5232.jpg?thumb=1&w=160&h=110&f=webp&q=90) no-repeat;
+}
+.subnav .tv-mi .phone-6 .iphone-img {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/f0f2d1079c767a834f098dd824bb6fee.png?thumb=1&w=160&h=110&f=webp&q=90) no-repeat;
+}
+/* 小米笔记本图片 */
+.subnav .laptops-mi .phone-1 .iphone-img {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/0bfdd3b985b4a9da58a1f5a861c5895f.png?thumb=1&w=160&h=110&f=webp&q=90) no-repeat;
+}
+.subnav .laptops-mi .phone-2 .iphone-img {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/3e6c9a677acbb3b0c75d4d0d83e8a695.png?thumb=1&w=160&h=110&f=webp&q=90) no-repeat;
+}
+.subnav .laptops-mi .phone-3 .iphone-img {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/e27b3211230c2b8c21c0ef4efcbc17bc.png?thumb=1&w=160&h=110&f=webp&q=90) no-repeat;
+}
+.subnav .laptops-mi .phone-4 .iphone-img {
+  background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/d712f71b3c4a3b562601c2b956a660ad.png?thumb=1&w=160&h=110) no-repeat;
+}
+.subnav .laptops-mi .phone-5 .iphone-img {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/682027c81244d5244d72990cc8b5341f.png?thumb=1&w=160&h=110&f=webp&q=90) no-repeat;
+}
+.subnav .laptops-mi .phone-6 .iphone-img {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/0f0f2175b9a6d4fdb0f0eeb843398044.png?thumb=1&w=160&h=110&f=webp&q=90) no-repeat;
+}
+/* 小米家电图片 */
+.subnav .appliances-mi .phone-1 .iphone-img {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/03dc85cd792904ddc8027b2d781beed8.png?thumb=1&w=160&h=110&f=webp&q=90) no-repeat;
+}
+.subnav .appliances-mi .phone-2 .iphone-img {
+  background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/e06b219c5bced9256467b17738a943c6.png?thumb=1&w=160&h=110) no-repeat;
+}
+.subnav .appliances-mi .phone-3 .iphone-img {
+  background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/c5d772b7c2a159c3ed7d4e31bd293f18.jpg?thumb=1&w=160&h=110) no-repeat;
+}
+.subnav .appliances-mi .phone-4 .iphone-img {
+  background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/11b8bca444aba2994fe852993eac9203.png?thumb=1&w=160&h=110) no-repeat;
+}
+.subnav .appliances-mi .phone-5 .iphone-img {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/b7a4e3ff7919ca2407ad970b78abd09a.jpg?thumb=1&w=160&h=110&f=webp&q=90) no-repeat;
+}
+.subnav .appliances-mi .phone-6 .iphone-img {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/40ad6e8398095e97309a5538b516a2de.jpg?thumb=1&w=160&h=110&f=webp&q=90) no-repeat;
+}
+/* 小米路由器图片 */
+.subnav .router-mi .phone-1 .iphone-img {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/54de949334c3d794a6ca55b76e4bb379.png?thumb=1&w=160&h=110&f=webp&q=90) no-repeat;
+}
+.subnav .router-mi .phone-2 .iphone-img {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/681a92d3e5f03a109558396c99f6a4df.png?thumb=1&w=160&h=110&f=webp&q=90) no-repeat;
+}
+.subnav .router-mi .phone-3 .iphone-img {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/27da43294889d049a111e5ff2cdfafe7.png?thumb=1&w=160&h=110&f=webp&q=90) no-repeat;
+}
+.subnav .router-mi .phone-4 .iphone-img {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/359d3c63cc159949d8fe147a11b4bc40.png?thumb=1&w=160&h=110&f=webp&q=90) no-repeat;
+}
+.subnav .router-mi .phone-5 .iphone-img {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/aa1e0a4860cf40d34e1192d86691c82c.png?thumb=1&w=160&h=110&f=webp&q=90) no-repeat;
+}
+.subnav .router-mi .phone-6 .iphone-img {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/5dd23c09b7eb6471968537fdce629194.png?thumb=1&w=160&h=110&f=webp&q=90) no-repeat;
+}
+/* 小米智能硬件图片 */
+.subnav .hardware-mi .phone-1 .iphone-img {
+  background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/2a500be4264c692899b25d86c16403f7.jpg?thumb=1&w=160&h=110) no-repeat;
+}
+.subnav .hardware-mi .phone-2 .iphone-img {
+  background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/e3fb0886fdb13e5ae784b9713b9a0038.jpg?thumb=1&w=160&h=110) no-repeat;
+}
+.subnav .hardware-mi .phone-3 .iphone-img {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/2b87ae4a36beef69bb2018eb1f8bce9b.png?thumb=1&w=160&h=110&f=webp&q=90) no-repeat;
+}
+.subnav .hardware-mi .phone-4 .iphone-img {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/dccc32d8e36685485fa89e0f2a580975.png?thumb=1&w=160&h=110&f=webp&q=90) no-repeat;
+}
+.subnav .hardware-mi .phone-5 .iphone-img {
+  background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/f6e585a4bf5c0f744ca60f19ecd6fadf.jpg?thumb=1&w=160&h=110) no-repeat;
+}
+.subnav .hardware-mi .phone-6 .iphone-img {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/17c0c91317ec0def3ecc072fa9480192.png?thumb=1&w=160&h=110&f=webp&q=90) no-repeat;
+}
+.subnav ul  ul  li .iphone-img{
+  width: 160px;
+  height: 110px;
+  position: absolute;
+}
+.subnav ul  ul  li .phone-info {
+  position: absolute;
+  left: 0px;
+  top: 126px;
+  width: 160px;
+  font-size: 12px;
+  color: #333;
+}
+.subnav ul  ul  li .phone-price {
+  color: #ff6700;
+}
+.subnav ul  ul  li .phone-title,.phone-price {
+  text-align: center;
+
+}
+.subnav ul .mi {
+  position: relative;
+  margin-right: 180px;
+  padding: 0;
+}
+.mi-logo {
+  display: inline-block;
+  position: relative;
+  width: 55px;
+  height: 55px;
+  background-color:#FF6700;
+  top: 23px;
+  cursor: pointer;
+}
+.mi-logo::before {
+  content: '';
+  position: absolute;
+  width: 55px;
+  height: 55px;
+  background: url(https://s02.mifile.cn/assets/static/image/mi-home.png) no-repeat;
+  top: 3px;
+  left: -100%;
+  transition: .2s;
+}
+.mi-logo::after {
+  content: '';
+  position: absolute;
+  width: 55px;
+  height: 55px;
+  background: url(http://s02.mifile.cn/assets/static/image/mi-logo.png) no-repeat;
+  top: 3px;
+  left: 3px;
+  transition: .2s;
+}
+.mi:hover .mi-logo::before {
+  left: 3px;
+}
+.mi:hover .mi-logo::after {
+  left: 60px;
+} 
+.subnav ul .search {
+  position: absolute;
+  right: 0;
+  width: 296px;
+  height: 50px;
+  top: 23px;
+}
+.subnav ul .search input {
+  padding-left: 10px;
+}
+.subnav ul .search .text,.submit{
+  position: absolute;
+  width: 245px;
+  height: 50px;
+  border: 1px solid #E0E0E0;
+}
+.subnav ul .search .text:hover {
+  border-color: #B0B0B0;
+}
+.subnav ul .search .text:hover ~ .submit {
+  border-color: #B0B0B0;
+}
+.subnav ul .search .text:focus {
+  border: 1px solid #FF6700;
+  outline: none;
+}
+.subnav ul .search .text:focus ~ .submit {
+  border: 1px solid #FF6700;
+  outline: none;
+}
+.submit {
+  position: absolute;
+  width: 52px;
+  height: 50px;
+  right: 0;
+  border: 1px solid #E0E0E0;
+  background-color: #fff;
+  cursor: pointer;
+}
+.search span::after {
+  content: '\e650';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  right: 14px;
+  top: 14px;
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.search .submit:hover {
+  background-color: #FF6700;
+}
+.search .submit:hover ~ span::after {
+  color: #fff;
+}
+/* .submit::after {
+  content: '\e650';
+  display: block;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  z-index: 99;
+  background-color: red;
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+} */
+
+/* banner轮播图 */
+
+.banner {
+  margin-top: 0px;
+  height: 460px;
+  position: relative;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+.left-banner {
+  position: absolute;
+  width: 235px;
+  height: 460px;
+  background-color:rgba(69,80,88, .5);
+  padding: 20px 0;
+  z-index:99;
+}
+.left-banner > ul.banner-wapper {
+  position: relative;
+  width: 100%;
+  height: 460px;
+
+}
+.left-banner > ul > li {
+  height: 42px;
+  line-height: 42px;
+  padding-left: 30px;
+  cursor: pointer;
+}
+.left-banner > ul > li:hover {
+  background-color: #FF6700;
+}
+.left-banner > ul > li::after {
+  content: '\e7f9';
+  font-family: "iconfont" !important;
+  font-size: 20px;
+  font-style: normal;
+  position: absolute;
+  right: 18px;
+  color: #BEBFC1;
+}
+.left-banner > ul > li > a{
+  color: #fff;
+}
+.left-banner > ul > li ul {
+  position: absolute;
+  left: 235px;
+  top: 0;
+  // width: 991px;
+  height: 460px;
+  background-color: #fff;
+  /* 图片显示隐藏 */
+  display: none;
+}
+.left-banner > ul > li:hover ul {
+  display: block;
+  z-index: 99;
+}
+.left-banner > ul > li .list {
+  display: inline-block;
+  position: absolute;
+  width: 265px;
+  height: 460px;
+  background-color: #fff;
+}
+.left-banner > ul > li  .list-2 {
+  left: 248px;
+}
+.left-banner > ul > li  .list-3 {
+  left: 496px;
+}
+.left-banner > ul > li  .list-4 {
+  left: 743px;
+}
+.left-banner > ul > li .list a {
+  display: block;
+}
+.left-banner > ul > li .list a .product-info:hover .product-title{
+  color: #ff6700;
+}
+.left-banner > ul > li .list a .product-info {
+  width: 265px;
+  height: 76px;
+  top: 0;
+  left: 0;
+  position: absolute;
+  padding: 23px 20px;
+}
+.left-banner > ul > li .list a .product-2 {
+  top:76px;
+}
+.left-banner > ul > li .list a .product-3 {
+  top:152px;
+}
+.left-banner > ul > li .list a .product-4 {
+  top:228px;
+}
+.left-banner > ul > li .list a .product-5 {
+  top:304px;
+}
+.left-banner > ul > li .list a .product-6 {
+  top:380px;
+}
+.left-banner > ul > li .list a .product-title {
+  height: 40px;
+  color: #000;
+  position: absolute;
+  left: 72px;
+}
+.left-banner > ul > li .list a .product-info div,span {
+  display: inline-block;
+}
+.left-banner > ul > li .list a .product-img {
+  width: 40px;
+  height: 40px;
+}
+.left-banner > ul > li .list a .img-1 {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/5ca871528d3420622f21f25be7aba58c.png?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+}
+.left-banner > ul > li .list a .img-2 {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/f5aad5f708998e76742d75d7c6b1394c.png?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+}
+.left-banner > ul > li .list a .img-3 {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/4a7a4f24061860901f724b6ba6d75fd9.png?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+}
+.left-banner > ul > li .list a .img-4 {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/cc563c76a7383d8030d1c23f31c60cb9.png?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+}
+.left-banner > ul > li .list a .img-5 {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/f382e29367ad5852fc1adfdae1332d5c.png?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+}
+.left-banner > ul > li .list a .img-6 {
+  background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/8ade0163e9fdbd92a4b7d7ee3aeab905.jpg?thumb=1&w=40&h=40) no-repeat;
+}
+.left-banner > ul > li .list-2 a .img-1 {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/0803dc7125ffa3447b04b1ae60f57a2b.jpg?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+}
+.left-banner > ul > li .list-2 a .img-2 {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/461bf013d08a7a91423cafcbc5ff9339.jpg?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+}
+.left-banner > ul > li .list-2 a .img-3 {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/92b463f8e502e5d26ac488a252a05b58.jpg?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+}
+.left-banner > ul > li .list-2 a .img-4 {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/7a98170e97ca5df8f5ad2470a8a2d01e.jpg?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+}
+.left-banner > ul > li .list-2 a .img-5 {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/b2b8b609aab05d9ad184bbe5c8e8be28.jpg?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+}
+.left-banner > ul > li .list-2 a .img-6 {
+  background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/84e19ece0125992449a6276e2ba333e9.png?thumb=1&w=40&h=40) no-repeat;
+}
+.left-banner > ul > li .list-3 a .img-1 {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/22419dee5ddfa9f4a91782231d07e189.png?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+}
+.left-banner > ul > li .list-3 a .img-2 {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/f774ef8332f2204a7c8fbf1b92f29e8a.png?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+}
+.left-banner > ul > li .list-3 a .img-3 {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/afa28e7477639537f556eb46e3ca5f43.jpeg?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+}
+.left-banner > ul > li .list-3 a .img-4 {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/cba27e53367b74271a38a4515a692816.png?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+}
+.left-banner > ul > li .list-3 a .img-5 {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/b4534b9fd22f478314f3cbbf286b7338.png?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+}
+.left-banner > ul > li .list-3 a .img-6 {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/4d8753c35974699754af66388fc03a16.jpg?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+}
+.left-banner > ul > li .list-4 a .img-1 {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/0cadc8b00dbe3b5615bd6ab657715baf.png?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+}
+.left-banner > ul > li .list-4 a .img-2 {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/1db88cd66ff1a6a3e75116988b7f3e12.jpg?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+}
+.left-banner > ul > li .list-4 a .img-3 {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/47057d897ee2c05c9215e059e1308dc6.png?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+}
+.left-banner > ul > li .list-4 a .img-4 {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/77bfd346ad97807237beca297cfe2fba.png?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+}
+.left-banner > ul > li .list-4 a .img-5 {
+  background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/85d746207b997873ddfcdca0da025f78.jpg?thumb=1&w=40&h=40) no-repeat;
+}
+.left-banner ul  li.banner-2 .list-1 a .img-1 {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/37576cef378ef2805c20b9ab2a9d6d3d.png?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+}
+.left-banner ul  li.banner-2 .list-1 a .img-2 {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/942d4f28d406f3946f0ce551c125c641.png?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+}
+.left-banner ul  li.banner-2 .list-1 a .img-3 {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/d8264eb9b900ead63eea69f6fc1e413a.png?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+}
+.left-banner ul  li.banner-2 .list-1 a .img-4 {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/d8264eb9b900ead63eea69f6fc1e413a.png?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+}
+.left-banner ul  li.banner-2 .list-1 a .img-5 {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/da1680fb62238cb5b01998d80fc34e25.png?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+}
+.left-banner ul  li.banner-2 .list-1 a .img-6 {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/070b329c18c1ab167df2a42564a67813.png?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+}
+.left-banner ul  li.banner-2 .list-2 a .img-1 {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/b8f12c8d20878e88b66047ef32566e48.png?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+}
+.left-banner ul  li.banner-2 .list-2 a .img-2 {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/d096389e19ba6b79b324b7d0acfab7ca.png?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+}
+.left-banner ul  li.banner-2 .list-2 a .img-3 {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/23316088a9182a08c624958319924d8d.png?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+}
+.left-banner ul  li.banner-2 .list-2 a .img-4 {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/319700f48d268f522664e1fc876b0044.png?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+}
+.left-banner ul  li.banner-2 .list-2 a .img-5 {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/d219d8b9c4a74eda4ae6c0222d194cd2.png?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+}
+.left-banner ul  li.banner-2 .list-2 a .img-6 {
+  background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/554a4f8ea0c2c3ed19d843bea7321203.jpg?thumb=1&w=40&h=40) no-repeat;
+}
+.left-banner ul  li.banner-2 .list-3 a .img-1 {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/7da49e7ada2229c963c9c7353a58d49b.png?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+}
+.left-banner ul  li.banner-2 .list-3 a .img-2 {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/da1680fb62238cb5b01998d80fc34e25.png?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+}
+.left-banner ul  li.banner-2 .list-3 a .img-3 {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/1df560d16cc983b0f34d24fc484bd697.png?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+}
+.left-banner ul  li.banner-2 .list-3 a .img-4 {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/070b329c18c1ab167df2a42564a67813.png?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+}
+.left-banner ul  li.banner-2 .list-3 a .img-5 {
+  background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/8aeae36f5d088f22c84b8953bd0d08b4.jpg?thumb=1&w=40&h=40) no-repeat;
+}
+.left-banner ul  li.banner-2 .list-3 a .img-6 {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/381acfeddeebcce4720ea7b8e481252f.png?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+}
+.left-banner ul  li.banner-2 .list-4 a .img-1 {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/9d649ec3d7d14da7090e396d56b7cc92.jpg?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+}
+.left-banner ul  li.banner-2 .list-4 a .img-2 {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/d707cdac2a19703b57e65212f32fd25b.png?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+}
+.left-banner ul  li.banner-2 .list-4 a .img-3 {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/6797917392e912577135d9eb8ad92f1f.png?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+}
+.left-banner ul  li.banner-2 .list-4 a .img-4 {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/8cb5791161d8b25897f60385f0ec7ab2.png?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+}
+.left-banner ul  li.banner-2 .list-4 a .img-5 {
+  background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/5732e8f317eb86bfcb174fbb49d00c4a.jpg?thumb=1&w=40&h=40) no-repeat;
+}
+.left-banner ul  li.banner-2 .list-4 a .img-6 {
+  background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/4fa264c15d3829e6de4283a552651e22.png?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+}
+.left-banner {
+  ul li.banner-3 {
+    .list-1 a {
+      .img-1 {
+        background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/694e4b422f319e2c8cdd8fb1760f911c.png?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+      }
+      .img-2 {
+        background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/ea840f3f79798c9a29d9921b9edf50ac.png?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+      }
+      .img-3 {
+        background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/dae66d0f978b04b539aef092aee50f2f.png?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+      }
+      .img-4 {
+        background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/e00ef74cd7162b290f0395c09d220719.png?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+      }
+      .img-5 {
+        background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/4f45cdc4f94f1f1651095dedb154c2e4.png?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+      }
+      .img-6 {
+        background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/aee86bcd8bf491eb78ae234d2e188a66.jpg?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+      }
+    }
+    .list-2 a {
+      .img-1 {
+        background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/1f95bb7c9206951e3d870cb5581b8329.png?thumb=1&w=40&h=40) no-repeat;
+      }
+      .img-2 {
+        background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/eaab0db21859e0e58cae1fb807907905.jpg?thumb=1&w=40&h=40) no-repeat;
+      }
+      .img-3 {
+        background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/a66c24ee8ae2efea3ae92ec455a27352.jpg?thumb=1&w=40&h=40) no-repeat;
+      }
+      .img-4 {
+        background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/b32e4db4b53b0c56c6040f094e96d945.png?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+      }
+      .img-5 {
+        background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/63c3bb39be1ade99a6ebe02e39c4288f.png?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+      }
+      .img-6 {
+        background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/4500e99fb7e7b8630d5d6741de3fb846.png?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+      }
+    }
+    .list-3 a {
+      .img-1 {
+        background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/0eb7e33b11443f6927e2035eca7c3d9e.png?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+      }
+      .img-2 {
+        background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/c61933e7ac89c61bc727c275391e82e0.png?thumb=1&w=40&h=40) no-repeat;
+      }
+      .img-3 {
+        background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/e18c5807226399f5b24b340241fe8cc1.png?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+      }
+    }
+  }
+  ul li.banner-4 {
+    .list-1 a {
+      .img-1 {
+        background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/abeb200aaaee68d4635c6235d3ffb3f3.jpg?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+      }
+      .img-2 {
+        background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/96de94415b860f3de95b2d6294f0d0fd.png?thumb=1&w=40&h=40) no-repeat;
+      }
+      .img-3 {
+        background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/630b9e523bb2e1387ce6c7be1edaca18.png?thumb=1&w=40&h=40) no-repeat;
+      }
+      .img-4 {
+        background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/18723c3561252ce76c9a1b1eebc4c01c.png?thumb=1&w=40&h=40) no-repeat;
+      }
+      .img-5 {
+        background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/d3bace6e62cecb7901e306b05502535f.jpg?thumb=1&w=40&h=40) no-repeat;
+      }
+      .img-6 {
+        background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/12f4b26ced3716d07bfcc6beba751188.jpg?thumb=1&w=40&h=40) no-repeat;
+      }
+    }
+    .list-2 a {
+      .img-1 {
+        background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/f7dcbb8c268574041ce0b4b98e591cf1.jpg?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+      }
+      .img-2 {
+        background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/f7f39b7ac49227fc59c3f2b2105d25d6.jpg?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+      }
+      .img-3 {
+        background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/603beb09930e32addd1b362bf43c7ac2.jpg?thumb=1&w=40&h=40) no-repeat;
+      }
+      .img-4 {
+        background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/26deda5474eb7eb7e5b34547c58b9893.jpg?thumb=1&w=40&h=40) no-repeat;
+      }
+      .img-5 {
+        background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/e997ed31cd5199ec0a24eeb48a37b1e7.jpg?thumb=1&w=40&h=40) no-repeat;
+      }
+      .img-6 {
+        background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/390e15818dd103b2f96f4ac742d47379.jpg?thumb=1&w=40&h=40) no-repeat;
+      }
+    }
+    .list-3 a {
+      .img-1 {
+        background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/d93e6a98403262a506c9e9b22293cdae.jpg?thumb=1&w=40&h=40) no-repeat;
+      }
+        .img-2 {
+        background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/39c8ccbebd08687bc6780373b7ef2a95.jpg?thumb=1&w=40&h=40) no-repeat;
+      }
+      .img-3 {
+        background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/9ffcebcacca008ed2d92a692f7312ef6.jpg?thumb=1&w=40&h=40) no-repeat;
+      }
+      .img-4 {
+        background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/3a3e4238b70ef8db89ae77f8a3762fc8.png?thumb=1&w=40&h=40) no-repeat;
+      }
+      .img-5 {
+        background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/c12fd1da9fed662842d6f5c57d7737c9.png?thumb=1&w=40&h=40) no-repeat;
+      }
+      .img-6 {
+        background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/c0a6b523433a492dbf32035b2983d98e.jpg?thumb=1&w=40&h=40) no-repeat;
+      }
+    }
+    .list-4 a {
+      .img-1 {
+        background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/d1c8cfb055709db380c6de981a4c894b.jpg?thumb=1&w=40&h=40) no-repeat;
+      }
+      .img-2 {
+        background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/1cc417a7cae8c4ff8b0041fa29003717.jpg?thumb=1&w=40&h=40) no-repeat;
+      }
+      .img-3 {
+        background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/6aa1871d84aaae98cd676f5e2cf5c2f2.jpg?thumb=1&w=40&h=40) no-repeat;
+      }
+      .img-4 {
+        background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/ba8d2a2d383f612575d323ce159bdce3.jpg?thumb=1&w=40&h=40) no-repeat;
+      }
+      .img-5 {
+        background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/0bf0ba35dc3ad57115c59f0ebde0fd1d.jpg?thumb=1&w=40&h=40) no-repeat;
+      }
+      .img-6 {
+        background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/b7de8a5bc64975df73f5fde5507fc8d1.jpg?thumb=1&w=40&h=40) no-repeat;
+      }
+    }
+  }
+  ul li.banner-5 {
+    .list-1 a {
+      .img-1 {
+        background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/8e8c85f251ed8b5cd54651c4be13bc68.png?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+      }
+      .img-2 {
+        background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/18f75b53afbe8ce2e858cb5622d60613.png?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+      }
+      .img-3 {
+        background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/3cc76c2ce836255c1b2e3e1cf477cfef.png?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+      }
+      .img-4 {
+        background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/4dd7eeff34b478acd2cf3eec99b78c96.png?thumb=1&w=40&h=40) no-repeat;
+      }
+      .img-5 {
+        background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/fece041c17bdebaab5f3a9313c7c0f8c.jpg?thumb=1&w=40&h=40) no-repeat;
+      }
+      .img-6 {
+        background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/50180b158690a40f9cbc684c7646d297.jpg?thumb=1&w=40&h=40) no-repeat;
+      }
+    }
+    .list-2 a {
+      .img-1 {
+        background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/749c779fd3789ba94033da8aaa547dcd.png?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+      }
+      .img-2 {
+        background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/4e9da27ebbeeb38078910c97173c4671.jpg?thumb=1&w=40&h=40) no-repeat;
+      }
+      .img-3 {
+        background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/787c807176455f9ae40146af11e98b1e.jpg?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+      }
+      .img-4 {
+        background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/8ac5b263aac2ffa1894fb7b215c3ce87.jpg?thumb=1&w=40&h=40) no-repeat;
+      }
+      .img-5 {
+        background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/971c8c01a246c7ac69a4c9be9e77e832.jpg?thumb=1&w=40&h=40) no-repeat;
+      }
+      .img-6 {
+        background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/e2748064a9ac9969e53851479d55f1a9.jpg?thumb=1&w=40&h=40) no-repeat;
+      }
+    }
+    .list-3 a {
+      .img-1 {
+        background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/efd04d4a90822e7e2f04a365083f2607.jpg?thumb=1&w=40&h=40) no-repeat;
+      }
+      .img-2 {
+        background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/8b398bad185dddb5397f2c0d9a3f6271.jpg?thumb=1&w=40&h=40) no-repeat;
+      }
+      .img-3 {
+        background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/f941386e72f745b02e8921b6c8055cd6.jpg?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+      }
+    }
+  }
+  ul li.banner-6 {
+    .list-1 a {
+      .img-1 {
+        background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/5ef6c2d63df78e140afab6ac3c088fac.jpg?thumb=1&w=40&h=40) no-repeat;
+      }
+      .img-2 {
+        background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/b1c8b0308b1591ab93b7fe0937a52427.png?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+      }
+      .img-3 {
+        background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/5a18e471294cf49b6937ae90fac6d583.png?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+      }
+      .img-4 {
+        background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/4670a965ac5f0dd32689e06c27cea78f.png?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+      }
+      .img-5 {
+        background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/aa7c5302bf6c8e040b084dee50fa699f.jpg?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+      }
+      .img-6 {
+        background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/21fedf7ba9019bce59cbc4856f907076.jpg?thumb=1&w=40&h=40) no-repeat;
+      }
+    }
+    .list-2 a {
+      .img-1 {
+        background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/067f4a6f0ffb264ed40734a97deae52d.jpg?thumb=1&w=40&h=40) no-repeat;
+      }
+      .img-2 {
+        background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/81d89cfdb72d0445ed4ef19942d9dedb.jpg?thumb=1&w=40&h=40) no-repeat;
+      }
+      .img-3 {
+        background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/4fb7885d49255b93f7245aa53501294c.jpg?thumb=1&w=40&h=40) no-repeat;
+      }
+      .img-4 {
+        background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/feaab5bd13257dbe8f30b80b6a4472be.jpg?thumb=1&w=40&h=40) no-repeat;
+      }
+      .img-5 {
+        background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/90b75c1046e486c19f14effd9b45f488.png?thumb=1&w=40&h=40) no-repeat;
+      }
+      .img-6 {
+        background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/51eacc66512a31713808a60b5695ae28.png?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+      }
+    }
+    .list-3 a {
+      .img-1 {
+        background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/3d5963e212402fa5ebd2e71dd10c426c.jpg?thumb=1&w=40&h=40) no-repeat;
+      }
+      .img-2 {
+        background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/7646993f6c382fb32ebd9bfda8ba6158.png?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+      }
+      .img-3 {
+        background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/7646993f6c382fb32ebd9bfda8ba6158.png?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+      }
+    }
+  }
+  ul li.banner-7 {
+    .list-1 a {
+      .img-1 {
+        background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/8c55361386a46857f962e5142baeefcf.png?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+      }
+      .img-2 {
+        background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/45dd7a2c4fc3d17d5d261ed3eed7cd15.jpg?thumb=1&w=40&h=40) no-repeat;
+      }
+      .img-3 {
+        background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/397d8119508e8e3c895fc30ece88e799.jpg?thumb=1&w=40&h=40) no-repeat;
+      }
+      .img-4 {
+        background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/864bcd18999a7b0fe22365f7ea7909e0.png?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+      }
+      .img-5 {
+        background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/10ec831749f1c657fc0a494feab15ed4.jpg?thumb=1&w=40&h=40) no-repeat;
+      }
+      .img-6 {
+        background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/2725e04c955dc060ac142fabbf809c1e.jpg?thumb=1&w=40&h=40) no-repeat;
+      }
+    }
+    .list-2 a {
+      .img-1 {
+        background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/5c6e60e48edf17219724faad95963b93.jpg?thumb=1&w=40&h=40) no-repeat;
+      }
+      .img-2 {
+        background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/e9e248c899fd895c9267f494ea1aaebf.jpg?thumb=1&w=40&h=40) no-repeat;
+      }
+      .img-3 {
+        background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/27074367aa02371a3c3c417c41195346.png?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+      }
+      .img-4 {
+        background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/6ce8ff4bc1e6ded2d40c53b2aa83b98c.jpg?thumb=1&w=40&h=40) no-repeat;
+      }
+      .img-5 {
+        background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/9c3ead590f49767a4f562b7285215f5e.jpg?thumb=1&w=40&h=40) no-repeat;
+      }
+      .img-6 {
+        background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/57d9989807dbc15c1a82bc49acc1f06f.jpg?thumb=1&w=40&h=40) no-repeat;
+      }
+    }
+  }
+  ul li.banner-8 {
+  .list-1 a {
+    .img-1 {
+      background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/da43c3dd6b171ee267f1fd1ec01b9208.jpg?thumb=1&w=40&h=40) no-repeat;
+    }
+    .img-2 {
+      background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/96b5d738ce5926e3a6969ad68fa1521d.jpg?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+    }
+    .img-3 {
+      background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/60d7bdf307ceaba08b3275246ad3ab53.jpg?thumb=1&w=40&h=40) no-repeat;
+    }
+    .img-4 {
+      background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/15447769c461fdc71e84a7badb83f09b.jpg?thumb=1&w=40&h=40) no-repeat;
+    }
+    .img-5 {
+      background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/bba7ce79f4d61939c69b7a26bf507bae.jpg?thumb=1&w=40&h=40) no-repeat;
+    }
+    .img-6 {
+      background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/459afd0eb2a3bc6313e7ac62bd3a52df.png?thumb=1&w=40&h=40) no-repeat;
+    }
+  }
+  .list-2 a {
+    .img-1 {
+      background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/fe6166ca2026008abb86bc67dfd8211d.jpg?thumb=1&w=40&h=40) no-repeat;
+    }
+    .img-2 {
+      background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/2cb10391d6527bf64126a63446a38e2e.jpg?thumb=1&w=40&h=40) no-repeat;
+    }
+    .img-3 {
+      background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/ab36232a1004421e1a5b3efd0b9226c0.jpg?thumb=1&w=40&h=40) no-repeat;
+    }
+    .img-4 {
+      background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/c9a5feb1f6c9b9aa0dc998c17e5eb3e9.jpg?thumb=1&w=40&h=40) no-repeat;
+    }
+    .img-5 {
+      background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/a0b3a592784632760a7ef25de50147a7.jpg?thumb=1&w=40&h=40) no-repeat;
+    }
+    .img-6 {
+      background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/9f6a34ed8071b821ee5aa8d32a7be95d.jpg?thumb=1&w=40&h=40) no-repeat;
+    }
+  }
+  .list-3 a {
+    .img-1 {
+      background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/12235daeb49fd45e709e68c7dacd3336.jpg?thumb=1&w=40&h=40) no-repeat;
+    }
+    .img-2 {
+      background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/d55c8943ceac7cd5ac7d8aa052f69b93.jpg?thumb=1&w=40&h=40) no-repeat;
+    }
+    .img-3 {
+      background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/17d625c8b5466b9527e9c06c71601939.jpg?thumb=1&w=40&h=40) no-repeat;
+    }
+    .img-4 {
+      background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/4bf92a8a492f692a81794f52fefd1a29.png?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+    }
+    .img-5 {
+      background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/fb1fee7e2f2963baae34d3611a2b7e9f.jpg?thumb=1&w=40&h=40) no-repeat;
+    }
+    .img-6 {
+      background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/ccdce424f41806f775693748058fa2ca.jpg?thumb=1&w=40&h=40) no-repeat;
+    }
+  }
+}
+  ul li.banner-9 {
+  .list-1 a {
+    .img-1 {
+      background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/3f682874f18012d3e46c097d48f054c3.png?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+    }
+    .img-2 {
+      background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/146ad5dbbe9721c031aa168d4bf580ec.png?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+    }
+    .img-3 {
+      background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/7628d4253b1c1fccb5606095d0c5bbe3.png?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+    }
+    .img-4 {
+      background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/360215a1e32317abb912d48c3e80dd20.png?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+    }
+    .img-5 {
+      background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/374ce749560e0e74a792b6222048a472.png?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+    }
+    .img-6 {
+      background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/3d5963e212402fa5ebd2e71dd10c426c.jpg?thumb=1&w=40&h=40) no-repeat;
+    }
+  }
+  .list-2 a {
+    .img-1 {
+      background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/abe665fafbef94eb3626ae8baf1de97e.jpg?thumb=1&w=40&h=40) no-repeat;
+    }
+    .img-2 {
+      background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/dacef871b6af373b0212e28b028890b8.png?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+    }
+    .img-3 {
+      background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/8b3d235f4a5a5bf5c9d8d066d2166e6c.jpg?thumb=1&w=40&h=40) no-repeat;
+    }
+    .img-4 {
+      background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/0329a34385235c41ec1807cf1cd86b75.png?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+    }
+    .img-5 {
+      background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/28a77451da1dbd0d3e42d529777997c3.jpg?thumb=1&w=40&h=40) no-repeat;
+    }
+    .img-6 {
+      background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/4885bda69e45b870a5bcf5bbaea1548b.jpg?thumb=1&w=40&h=40) no-repeat;
+    }
+  }
+  .list-3 a {
+    .img-1 {
+      background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/9e8b89fb3702dc7c41248898f2b86f6d.png?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+    }
+    .img-2 {
+      background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/db89d422ef877cf7290616fef515e413.jpg?thumb=1&w=40&h=40) no-repeat;
+    }
+    .img-3 {
+      background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/4df2fa022495e79f890a943a9d7e70a5.jpg?thumb=1&w=40&h=40) no-repeat;
+    }
+    .img-4 {
+      background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/a290d924c1bbd1e3ce64e96f497d4059.jpg?thumb=1&w=40&h=40) no-repeat;
+    }
+  }
+}
+  ul li.banner-10 {
+  .list-1 a {
+    .img-1 {
+      background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/9f26030d7d914b86daca51233a3ac5f9.jpg?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+    }
+    .img-2 {
+      background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/f628feba0f2f8253f9cc41f9984194a7.jpg?thumb=1&w=40&h=40) no-repeat;
+    }
+    .img-3 {
+      background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/2846c64ffd97969c639979da9bb97974.jpg?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+    }
+    .img-4 {
+      background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/6c5138635ef1396e35856ec942e3b6c0.jpg?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+    }
+    .img-5 {
+      background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/e899d08e36c306570d4fe3c75df90a42.jpg?thumb=1&w=40&h=40) no-repeat;
+    }
+    .img-6 {
+      background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/d521bd58668f66c50562b8fa8949f67c.jpg?thumb=1&w=40&h=40) no-repeat;
+    }
+  }
+  .list-2 a {
+    .img-1 {
+      background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/aba45662667dceaf4ba0e5b08f44d3a7.jpg?thumb=1&w=40&h=40) no-repeat;
+    }
+    .img-2 {
+      background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/744306b95df4d130bdfc346ff2b3c871.png?thumb=1&w=40&h=40) no-repeat;
+    }
+    .img-3 {
+      background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/8e9bc4f84825f80ce520eefa4f762939.jpg?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+    }
+    .img-4 {
+      background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/458169c8138413666feb860068ce1a56.jpg?thumb=1&w=40&h=40) no-repeat;
+    }
+    .img-5 {
+      background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/813d173eff50a83abb8abd5abde5f5a6.jpg?thumb=1&w=40&h=40) no-repeat;
+    }
+    .img-6 {
+      background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/59d3a701ac0bbb78f1b1d0ea7ebc7505.jpg?thumb=1&w=40&h=40) no-repeat;
+    }
+  }
+  .list-3 a {
+    .img-1 {
+      background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/21c3ec8638dd75f5c54f1a69864a1cc9.jpg?thumb=1&w=40&h=40) no-repeat;
+    }
+    .img-2 {
+      background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/9ac95ad25bb8f6391abcb937b03c1743.png?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+    }
+    .img-3 {
+      background: url(https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/c9279a17e9399958420af64e449e3214.jpg?thumb=1&w=40&h=40) no-repeat;
+    }
+  }
+}
+}
+
+/* 轮播图图片 */
+.rotation {
+  input {
+    display: none;
+  }
+  .rotation-img img {
+    height: 460px;
+    left:0;
+    position: absolute;
+    object-fit: contain;
+    z-index:-99;
+    display: none;
+    opacity: 0;
+    transition: 1s;
+  }
+  .rotation-button {
+    position: absolute;
+    right: 30px;
+    bottom: 20px;
+    width: 400px;
+    height: 21px;
+    text-align: right;
+    > label {
+      display:inline-block;
+      width: 10px;
+      height: 10px;
+      line-height:10px;
+      border-radius: 99px;
+      background: rgba(0,0,0,.4);
+      border: 2px solid #fff;
+      margin: 0 4px;
+      border-color: hsla(0,0%,100%,.3);
+      cursor: pointer;
+      border-color: none;
+    }
+    > label:hover {
+      background: hsla(0,0%,100%,.4);
+      border-color: rgba(0, 0, 0, .4)
+    }
+  }
+}
+.rotation {
+  input:checked {
+    ~ .rotation-img img {
+      opacity:.8;
+    }
+  }
+}
+.rotation {
+  input:nth-child(1):checked {
+    ~ .rotation-img img:nth-child(1) {
+      display:inline-block;
+    }
+    ~ .rotation-button > label:nth-child(1) {
+      background: hsla(0,0%,100%,.4);
+      border-color: rgba(0, 0, 0, .4)
+    }
+  }
+  input:nth-child(2):checked {
+    ~ .rotation-img > img:nth-child(2) {
+      display:inline-block;
+    }
+    ~ .rotation-button > label:nth-child(2) {
+      background: hsla(0,0%,100%,.4);
+      border-color: rgba(0, 0, 0, .4)
+    }
+  }
+  input:nth-child(3):checked {
+    ~ .rotation-img > img:nth-child(3) {
+      display:inline-block;
+    }
+    ~ .rotation-button > label:nth-child(3) {
+      background: hsla(0,0%,100%,.4);
+      border-color: rgba(0, 0, 0, .4)
+    }
+  }
+  input:nth-child(4):checked {
+    ~ .rotation-img > img:nth-child(4) {
+      display:inline-block;
+    }
+    ~ .rotation-button > label:nth-child(4) {
+      background: hsla(0,0%,100%,.4);
+      border-color: rgba(0, 0, 0, .4)
+    }
+  }
+  input:nth-child(5):checked {
+    ~ .rotation-img > img:nth-child(5) {
+      display:inline-block;
+    }
+    ~ .rotation-button > label:nth-child(5) {
+      background: hsla(0,0%,100%,.4);
+      border-color: rgba(0, 0, 0, .4)
+    }
+  }
+  input:nth-child(6):checked {
+    ~ .rotation-img > img:nth-child(6) {
+      display:inline-block;
+    }
+    ~ .rotation-button > label:nth-child(6) {
+      background: hsla(0,0%,100%,.4);
+      border-color: rgba(0, 0, 0, .4)
+    }
+  }
+}
+.rotation {
+  position: absolute;
+  width: 1226px;
+  height: 460px;
+  input:nth-child(1):checked {
+    ~ .rotation-button .left-button label:nth-child(6) {
+      display: inline-block;
+    }
+    ~ .rotation-button .right-button label:nth-child(2) {
+      display: inline-block;
+    }
+  }
+  input:nth-child(2):checked {
+    ~ .rotation-button .left-button label:nth-child(1) {
+      display: inline-block;
+    }
+    ~ .rotation-button .right-button label:nth-child(3) {
+      display: inline-block;
+    }
+  }
+  input:nth-child(3):checked {
+    ~ .rotation-button .left-button label:nth-child(2) {
+      display: inline-block;
+    }
+    ~ .rotation-button .right-button label:nth-child(4) {
+      display: inline-block;
+    }
+  }
+  input:nth-child(4):checked {
+    ~ .rotation-button .left-button label:nth-child(3) {
+      display: inline-block;
+    }
+    ~ .rotation-button .right-button label:nth-child(5) {
+      display: inline-block;
+    }
+  }
+  input:nth-child(5):checked {
+    ~ .rotation-button .left-button label:nth-child(4) {
+      display: inline-block;
+    }
+    ~ .rotation-button .right-button label:nth-child(6) {
+      display: inline-block;
+    }
+  }
+  input:nth-child(6):checked {
+    ~ .rotation-button .left-button label:nth-child(5) {
+      display: inline-block;
+    }
+    ~ .rotation-button .right-button label:nth-child(1) {
+      display: inline-block;
+    }
+  }
+  .left-button {
+    position: absolute;
+    width: 40px;
+    height: 70px;
+    left: -561px;
+    top:-222px;
+    background-color: transparent;
+    label {
+      display: none;
+      width: 40px;
+      height: 70px;
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index:9;
+      cursor: pointer;
+    }
+    &::after {
+      content:'\e7f9';
+      position: absolute;
+      color: #333;
+      left: 8px;
+      top: 18px;
+      font-family: "iconfont" !important;
+      font-size: 24px;
+      font-style: normal;
+      transform: rotate(180deg);
+    }
+    &:hover {
+      background-color: rgba(108,108,110);
+      &::after {
+        color: #fff;
+      }
+    }
+  }
+  .right-button {
+    position: absolute;
+    width: 40px;
+    height: 70px;
+    top:-222px;
+    right:-30px;
+    background-color: transparent;
+    label {
+      display: none;
+      width: 40px;
+      height: 70px;
+      position: absolute;
+      right: 0;
+      top: 0;
+      z-index:9;
+      cursor: pointer;
+    }
+    &::after {
+      content:'\e7f9';
+      position: absolute;
+      color: #333;
+      left: 8px;
+      top: 18px;
+      font-family: "iconfont" !important;
+      font-size: 24px;
+      font-style: normal;
+    }
+    &:hover {
+      background-color: rgba(108,108,110);
+      &::after {
+        color: #fff;
+      }
+    }
+  }
+}
+
+.home {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  .home-sub {
+    width: 235px;
+    height: 171px;
+    background-color: #5F5750;
+    ul {
+      li {
+        width: 78px;
+        height: 85px;
+        display: inline-block;
+        float: left;
+        a {
+          display: inline-block;
+          position: relative;
+          width: 78px;
+          height: 85px;
+          text-align: center;
+          padding-top: 22px;
+          opacity: .6 ;
+          transition: .2s;
+          .home-img img{
+            width: 24px;
+            height: 24px;
+          }
+          .home-title {
+            color: #fff;
+            text-align: center;
+            font-size: 12px;
+          }
+          &:hover {
+            opacity: .8;
+          }
+          &::before {
+            content: "";
+            position: absolute;
+            top: 6px;
+            left: 8px;
+            z-index:99;
+            width: 64px;
+            height: 1px;
+            background: #665e57;
+          }
+          &::after {
+            content: "";
+            position: absolute;
+            top: 12px;
+            left: 0px;
+            z-index:99;
+            width: 1px;
+            height: 70px;
+            background: #665e57;
+          }
+        }
+        
+      }
+    }
+  }
+  img {
+    width: 316px;
+    height: 171px;
+    cursor: pointer;
+    &:hover {
+      box-shadow: 0 18px 18px 5px #EAEAEA;
+    }
+  }
+}
+
+/* page-main*/
+.page-main {
+  width: 100%;
+  background-color: #F5F5F5;
+  height: 800px;
+  margin-top: 27px;
+  .flash-sale {
+    height: 402px;
+    .flash-header {
+      width: 100%;
+      height: 62px;
+      line-height: 62px;
+      position: relative;
+      .flash-title {
+        display: inline-block;
+        font-size: 22px;
+        color: #333;
+        font-weight: 200;
+      }
+      .flash-button {
+        display:inline-block;
+        position: absolute;
+        right: 0;
+        bottom: 11px;
+        width: 74px;
+        height: 24px;
+        box-sizing: border-box;
+        border: 1px solid #E0E0E0;
+        .left-button {
+          position: absolute;
+          width: 36px;
+          height: 24px;
+          border-right: 1px solid #E0E0E0;
+          &::after {
+            content: "\e7f9";
+            font-family: "iconfont" !important;
+            font-size: 16px;
+            font-style: normal;
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            top:27px;
+            left:10px;
+            transform: rotate(180deg);
+          }
+          &:hover::after {
+            color: #FF6E71;
+          }
+        }
+        .right-button {
+          position: absolute;
+          width: 36px;
+          height: 24px;
+          margin: 0;
+          right: 0;
+          &::after {
+            content: "\e7f9";
+            font-family: "iconfont" !important;
+            font-size: 16px;
+            font-style: normal;
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            top: -19px;
+            right:8px;
+          }
+          &:hover::after {
+            color: #FF6E71;
+          }
+        }
+      }
+    }
+    .flash-product {
+      width: 1226px;
+      height: 340px;
+      display: flex;
+      justify-content: space-between;
+      > div {
+        display: inline-block;
+        position: relative;
+        width: 235px;
+        height: 100%;
+        padding-top: 39px;
+        text-align: center;
+      }
+      .flash-time {
+        background-color: #F1EDED;
+        border-top: 1px solid #E53935;
+        .title {
+          display: inline-block;
+          font-size: 21px;
+          color: #ef3a3b;
+          padding-top: 15px;
+        }
+        .flash-img {
+          margin-top: 25px;
+        }
+        .remind {
+          margin-top: 24px;
+          color: rgba(0,0,0,.54);
+          font-size: 15px;
+        }
+        .countdown {
+          width: 100%;
+          height: 46px;
+          line-height: 46px;
+          margin: auto;
+          margin-top: 28px;
+          span {
+            width: 46px;
+            height: 47px;
+            background-color: #605751;
+            color: #F5FFFF;
+            font-size: 24px;
+          }
+          i {
+            display:inline-block;
+            font-size: 28px;
+            text-align: center;
+            color: #605751;
+            width: 15px;
+            height: 46px;
+          }
+        }
+      }
+      .flash-procuet-img {
+        width: 978px;
+        height: 340px;
+        display: flex;
+        justify-content: space-between;
+        padding:0;
+        div {
+          width: 234px;
+          height: 340px;
+          display: inline-block;
+          background-color: lime;
+        }
+      }
+    }
+  }
+}

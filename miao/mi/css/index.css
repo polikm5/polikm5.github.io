@@ -743,3 +743,12 @@
 .left-banner ul  li.banner-2 .list-4 a .img-6 {
   background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/4fa264c15d3829e6de4283a552651e22.png?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
 }
+.left-banner {
+  ul li banner-2 {
+    .list-4 a {
+      .img-1 {
+        background: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/694e4b422f319e2c8cdd8fb1760f911c.png?thumb=1&w=40&h=40&f=webp&q=90) no-repeat;
+      }
+    }
+  }
+}
