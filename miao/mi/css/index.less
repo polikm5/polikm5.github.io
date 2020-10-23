@@ -1512,6 +1512,7 @@
   background-color: #F5F5F5;
   height: 800px;
   margin-top: 27px;
+  overflow: hidden;
   .flash-sale {
     height: 402px;
     .flash-header {
@@ -1525,63 +1526,12 @@
         color: #333;
         font-weight: 200;
       }
-      .flash-button {
-        display:inline-block;
-        position: absolute;
-        right: 0;
-        bottom: 11px;
-        width: 74px;
-        height: 24px;
-        box-sizing: border-box;
-        border: 1px solid #E0E0E0;
-        .left-button {
-          position: absolute;
-          width: 36px;
-          height: 24px;
-          border-right: 1px solid #E0E0E0;
-          &::after {
-            content: "\e7f9";
-            font-family: "iconfont" !important;
-            font-size: 16px;
-            font-style: normal;
-            position: absolute;
-            width: 16px;
-            height: 16px;
-            top:27px;
-            left:10px;
-            transform: rotate(180deg);
-          }
-          &:hover::after {
-            color: #FF6E71;
-          }
-        }
-        .right-button {
-          position: absolute;
-          width: 36px;
-          height: 24px;
-          margin: 0;
-          right: 0;
-          &::after {
-            content: "\e7f9";
-            font-family: "iconfont" !important;
-            font-size: 16px;
-            font-style: normal;
-            position: absolute;
-            width: 16px;
-            height: 16px;
-            top: -19px;
-            right:8px;
-          }
-          &:hover::after {
-            color: #FF6E71;
-          }
-        }
-      }
     }
     .flash-product {
       width: 1226px;
       height: 340px;
       display: flex;
+      position: relative;
       justify-content: space-between;
       > div {
         display: inline-block;
@@ -1592,6 +1542,8 @@
         text-align: center;
       }
       .flash-time {
+        width: 234px;
+        position: absolute;
         background-color: #F1EDED;
         border-top: 1px solid #E53935;
         .title {
@@ -1637,26 +1589,217 @@
         display: flex;
         justify-content: space-between;
         padding:0;
+        margin-left: 12px;
+        position: absolute;
         .product-item {
           width: 234px;
           height: 340px;
           display: inline-block;
-          background-color: lime;
           text-align: center;
+          background-color: #FAFAFA;
           a {
             display:inline-block;
             .img {
               width: 160px;
               height: 160px;
-              margin: 0 auto;
+              margin: 40px auto 30px;
               img {
                 width: 160px;
                 height: 160px;
               }
             }
           }
+          .title {
+            color:#212121;
+            white-space: nowrap;
+          }
+          .desc {
+            font-size: 12px;
+            color: #b0b0b0;
+            margin-top:3px;
+          }
+          .price {
+            margin-top: 14px;
+            color: #ff6709;
+            span {
+              color: #b0b0b0;;
+              text-decoration: line-through;
+            }
+          }
         }
       }
+    }
+  }
+}
+// 控制按钮
+.page-main .wrapper .flash-sale {
+  .flash-product {
+    input:nth-child(1):checked ~ .overflowImg  .flash-list1{
+      right: 0px;
+    }
+    input:nth-child(1):checked ~ .overflowImg  .flash-list2 {
+      right:-1000px;
+    }
+    input:nth-child(2):checked ~ .overflowImg  .flash-list1{
+      left: -1000px;
+    }
+    input:nth-child(2):checked ~ .overflowImg  .flash-list2 {
+      left:0px;
+    }
+    input:nth-child(1):checked ~ .flash-button {
+      .right-button label:nth-child(2) {
+        display: inline-block;
+      }
+    }
+    input:nth-child(2):checked ~ .flash-button  {
+      .right-button label:nth-child(3) {
+        display: inline-block;
+      }
+      .left-button label:nth-child(1) {
+        display: inline-block;
+      }
+    }
+  }
+
+}
+.page-main .wrapper .flash-sale{
+  .flash-product {
+    input {
+      position: relative;
+      top:-20px;
+    }
+    .flash-product-img {
+      .product-item {
+        margin-left: 14px;
+        width: 234px;
+        z-index:1;
+      }
+      .product-item:nth-child(1) {
+        border-top: 1px solid red;
+        margin-left: 0;
+      }
+      .product-item:nth-child(2) {
+        border-top: 1px solid #00C0A5;
+      }
+      .product-item:nth-child(3) {
+        border-top: 1px solid #FFAC13;
+      }
+      .product-item:nth-child(4) {
+        border-top: 1px solid #83C44E;
+      }
+    }
+  }
+  .flash-list1 {
+    transition: 1s;
+    left: 0;
+    right: 0px;
+  }
+  .flash-list2 {
+    left: 1000px;
+    right:100px;
+    transition: 1s;
+  }
+  .flash-list3 {
+    transition: 1s;
+    left: 2000px;
+    right: 100px;
+  }
+  .flash-list4 {
+    left: 4000px;
+    right:100px;
+    transition: 1s;
+  }
+  .flash-list5 {
+    transition: 1s;
+    left: 5000px;
+    right: 100px;
+  }
+  .flash-list6 {
+    left: 6000px;
+    right:100px;
+    transition: 1s;
+  }
+}
+
+.overflowImg {
+  width: 978px;
+  height: 340px;
+  position: absolute;
+  overflow: hidden;
+  left:236px;
+}
+
+.page-main .wrapper .flash-sale .flash-button {
+  display:inline-block;
+  position: absolute;
+  right: 0;
+  top:-33px;
+  width: 74px;
+  height: 24px;
+  box-sizing: border-box;
+  border: 1px solid #E0E0E0;
+  padding:0;
+  .left-button {
+    position: absolute;
+    width: 36px;
+    height: 24px;
+    top:-1px;
+    border-right: 1px solid #E0E0E0;
+    label {
+      width: 16px;
+      height: 16px;
+      left:10px;
+      top: 4px;
+      position: absolute;
+      z-index:99;
+      display: none;
+      cursor:pointer;
+    }
+    &::after {
+      content: "\e7f9";
+      font-family: "iconfont" !important;
+      font-size: 16px;
+      font-style: normal;
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      left:10px;
+      top: 9px;
+      transform: rotate(180deg);
+    }
+    &:hover::after {
+      color: #FF6E71;
+    }
+  }
+  .right-button {
+    position: absolute;
+    width: 36px;
+    height: 24px;
+    margin: 0;
+    right: 0;
+    label {
+      width: 16px;
+      height: 16px;
+      right:8px;
+      top:4px;
+      position: absolute; 
+      z-index:99;
+      display: none;
+      cursor:pointer;
+    }
+    &::after {
+      content: "\e7f9";
+      font-family: "iconfont" !important;
+      font-size: 16px;
+      font-style: normal;
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      right:8px;
+      top:0px;
+    }
+    &:hover::after {
+      color: #FF6E71;
     }
   }
 }
