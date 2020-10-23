@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title> 
+  <link rel="stylesheet" href="./font-awesome.css">
+  <style>
+    body {
+      width: 100%;
+      margin: 0;
+      /* text-align: center; */
+    }
+    .test{
+      width: 300px;
+      margin: 0 auto;
+    }
+    .test i {
+      text-align: left;
+    }
+    .fa-lg {
+      font-size: 1.3em;
+    }
+    .fa-2x {
+      font-size: 1.7em;
+    }
+    .fa-3x {
+      font-size: 2.6em;
+    }
+    .fa-4x {
+      font-size: 3.4em;
+    }
+    .fa-5x {
+      font-size: 4.4em;
+    }
+    .fa.fa-fw {
+      width: 1.3em;
+      text-align: center;
+    }
+    .fa-home {
+      font-size: 28px;
+    }
+    .fa-ul {
+      list-style: none;
+      padding: 0;
+    }
+    .fa-li {
+      width: 30px;
+      height: 14px;
+    }
+    .fa-stack {
+      position: relative;
+      display: inline-block;
+      width: 2em;
+      height: 2em;
+      vertical-align: middle;
+      line-height: 2em;
+    }
+    .fa-stack-1x,.fa-stack-2x {
+      position: absolute;
+      width: 100%;
+    }
+    .fa-stack-1x {
+      /* z-index: 99; */
+     top:9px;
+     left: 5px;
+    }
+    .fa-stack-2x {
+      font-size: 1.8em;
+
+    }
+    .text-danger {
+      color: #A94442;
+    }
+    .fa-inverse {
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <div class="test">
+    <i class="fa fa-camera-retro"></i>fa-camera-retrobr <br>
+    <i class="fa fa-camera-retro fa-lg"></i> fa-lg <br>
+    <i class="fa fa-camera-retro fa-2x"></i> fa-2x <br>
+    <i class="fa fa-camera-retro fa-3x"></i> fa-3x <br>
+    <i class="fa fa-camera-retro fa-4x"></i> fa-4x <br>
+    <i class="fa fa-camera-retro fa-5x"></i> fa-5x <br>
+    <i class="fa fa-home fa-fw" ></i>&nbsp; 首页</a>
+    <ul class="fa-ul">
+      <li><i class="fa-li fa fa-check-square"></i>使用列表类图标</li>
+      <li><i class="fa-li fa fa-check-square"></i>轻松的替换</li>
+      <li><i class="fa-li fa fa-spinner fa-spin"></i>无序列表</li>
+      <li><i class="fa-li fa fa-square"></i>中的默认图标</li>
+    </ul>
+    <span class="fa-stack fa-lg">
+      <i class="fa fa-square-o fa-stack-2x"></i>
+      <i class="fa fa-twitter fa-stack-1x"></i>
+    </span>
+    fa-twitter on fa-square-o<br>
+    <span class="fa-stack fa-lg">
+      <i class="fa fa-circle fa-stack-2x"></i>
+      <i class="fa fa-flag fa-stack-1x fa-inverse"></i>
+    </span>
+    fa-flag on fa-circle<br>
+    <span class="fa-stack fa-lg">
+      <i class="fa fa-square fa-stack-2x"></i>
+      <i class="fa fa-terminal fa-stack-1x fa-inverse"></i>
+    </span>
+    fa-terminal on fa-square<br>
+    <span class="fa-stack fa-lg">
+      <i class="fa fa-camera fa-stack-1x"></i>
+      <i class="fa fa-ban fa-stack-2x text-danger"></i>
+    </span>
+    fa-ban on fa-camera
+  </div>
+</body>
+</html>

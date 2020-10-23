@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      margin: 0;
+    }
+    @font-face {
+      font-family: myIcon;
+      src: url(./fontawesome-webfont.woff2);
+    }
+    .stars {
+      width: 100%;
+      text-align: center;
+      direction: rtl;
+    }
+    div.star{
+      text-align: center;
+      display: inline-block;
+    }
+    .star {
+      font-family: myIcon;
+      font-weight: normal;
+      font-style: normal;
+      font-size: 48px;
+      display: inline-block;
+      cursor: pointer;
+      background-color: #fff;
+    }
+    .stars .star:hover::after {
+      content: "\f005";
+      color: #e3cf7a;
+    }
+    .stars .star:nth-child(1):hover ~ .star::after {
+      content: "\f005";
+      color: #e3cf7a;
+    }
+    .stars .star:nth-child(2):hover ~ .star::after {
+      content: "\f005";
+      color: #e3cf7a;
+    }
+    .stars .star:nth-child(3):hover ~ .star::after {
+      content: "\f005";
+      color: #e3cf7a;
+    }
+    .stars .star:nth-child(4):hover ~ .star::after {
+      content: "\f005";
+      color: #e3cf7a;
+    }
+    .star::after {
+      content: "\f006";
+    }
+  </style>
+</head>
+<body>
+  <div class="stars">
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+  </div>
+
+</body>
+</html>
