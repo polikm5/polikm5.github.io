@@ -6,6 +6,13 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "8288852",
+      "name": "箭头",
+      "font_class": "jiantou",
+      "unicode": "e84f",
+      "unicode_decimal": 59471
+    },
+    {
       "icon_id": "614834",
       "name": "24_话费",
       "font_class": "24huafei",
