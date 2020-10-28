@@ -1,0 +1,191 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.header-bar {
+  width: 720px;
+  height: 141px;
+  background-color: #F2F2F2;
+  position: fixed;
+  top:0;
+  z-index: 99;
+  .header-wrapper {
+    width: 720px;
+    height: 84px;
+    display: flex ;
+    align-items: center;
+    .header-left {
+      width:100px;
+      height:35.58px;
+      display: flex ;
+      align-items: center;
+      .header-logo {
+        width: 60px;
+        height: 35.58px;
+        margin: 0 20px;
+        text-align: center;
+        img {
+          width: 48px;
+          height: 31.58px;
+        }
+      }
+    }
+    .header-middle {
+      flex:1;
+      font-size: 30px;
+      .header-title {
+        display: flex;
+        width: 100%;
+        color: rgba(0,0,0,.3);
+        border: 1px solid  #e5e5e5;
+        background-color: #fff;
+        text-align: left;
+        align-items: center;
+        .icon-search {
+          display: block;
+          width: 60px;
+          height: 60px;
+          background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAQAAAD/5HvMAAAEx0lEQVQYGe3Bf0yUdRwH8I9GpBtZVpul0y1/ZD8sKzdXbupMh3Pq0jWtzbVs9YfL8scfLq02h1m52R3c832+z/d5HrjjAOH4KQhy4MQD4eS4gXiCePLjBIwU8VeCOAPy3dZf/mEpz56zW93rRRQVFRUVFfU/dGFM+UTHlOrXzq/yf9HwefeS0plpk4/F0b+je5x/UZXIPZV+URmRwMEhQfs940K+ry6hYTY9Wu0Tyze6yxVYwSGgQoUKFSpUCMiwwH6zPLVqZVcsPRrlSwvqVVghwMGhQYMOHTp0aNDAIcBhhQ53UcWLFH4127QrElQwqEi7keUu21W/vnl5+/y2dwKraj8p3pdZ7bzDIYNDQmqweQWFU/cTpU4GAQUMro6SbR2z6D4aFuRb0m4yqFCgDXq3U7hciynOSYQOBertgr2np9I/ODHPlSlDg4AN3m8oPKq+t0GHguSexg/ogepjPbvZkIACbci3lsx3Yr06rECGvSO4gB6SbxMb5pBhDwZeInN1vWJvY5DB+5uX0ShUfmeDAhtKCkOxZCZPogUCMo5vpFEJxRSkcKiQ0BBP5gnMSu+RIaGokEatc2ZqSEBCqasnhszi32SFgBYKLiQDqnfI0CAGz79B5uibkOOVIZCXTob0TrK3qeA4tpfM0TmPQYO427CBDHLrDAoO+H+LITM0r+VQkRy88DwZFFiXBAWOS73PkRl8WzgU5JVVjyeDQi+LPhmOW63zyAxH9yvgKE31jCGDKqZltTPYh+rXkBmKXAIyKpLIsJpn8hskpMDzJZmhKFuAoXIfGeaPO+i1IQXHtpIZPHsVyCgXZJhnUm6TBPtI3UdkBv9mDo5DOVUxZFDpjAO/yHDcCcSTGVreZxDI8F58kgxqelMe5LD3h+aQGbrnsBENYrDjbTKobnMSFLh8A7Fkhpa4Ao8MgcpdZEjTuAI3h4DnRzJLYEMiODKPX3qKDAjOF30a+N3gYjJLz+SMs0lQUL2ZDDiYqkDCQffFcWSeih8sYEht/HUqjVJgjehTIOH0CjJT99QDbRJsKCxtG0+j0PWqvUOGFYdzyGxnlyVf5ZCQ9xM9tJPP5jbaIMEZ7J5B5jv6FR/iUPsP778eRw+hc4ajhEGBs+NkPIXDmTFuRyI4FBSW9EyhB2h9N+O0AgEFR5MoXK49XilzMDBktBZ+Fnia/oZ/ev6elKscAioUOEPtCyl8POucfRwSZOTVunZWxg9MoHtcnuxek5mQE7JBhoAODQIStBttCyh8OubmHEke4LBAhXM4uykt35mWb8212bPSi7M6nX9wWCGQfL2M9U73JjBw2KBfbl1M4VPxmG9tdl76gA0WWCBBhQYNKiRY8TMYMnuzXdVL6S/H90hQwGHvObeEwiv4Vpn1UG1ea9ZV510dOhxIG8npOnykNKF5Lt2jZjeDCgXJl4PLKdx6xja+4Hm94D3Hh471rhXFi+qm0X3UfMsgwKDeOreUIoP3awYFEsTNs8soMnh3MnAw6FdallNkOLGLQUBBcl/LSooMtTtkqODQBlpWU2TwbZGhgEG5fWY1RQbfVhkcDKK/eTVFhtrtMjg49Butiygy+LfKEOAodlKkCHyq94vhUx9T5GiYXjn73FiKioqKior6z/oTCs8KMOW0P6QAAAAASUVORK5CYII) no-repeat;
+          background-size: 40px 40px;
+          background-position: 50%;
+        }
+      }
+    }
+    .header-right {
+      display: flex ;
+      align-items: center;
+      width: 100px;
+      height: 60px;
+      .header-item {
+        width: 60px;
+        height: 60px;
+        margin: 0 20px;
+        text-align: center;
+        .icon-user {
+          display: block;
+          width: 60px;
+          height: 60px;
+          background: url(https://m.mi.com/static/img/icon-user.23496a0116.png) no-repeat;
+          background-size: 40px 40px;
+          background-position: 50%;
+        }
+      }
+    }
+  }
+  .nav-wrapper {
+    width: 720px;
+    height: 57px;
+    font-size: 0;
+    .nav-item:last-child {
+      padding-right: 0;
+    }
+    .nav-item {
+      display: inline-block;
+      padding: 0 25px;
+      span {
+        display: inline-block;
+        color: rgb(116, 116, 116);
+        border-color: rgb(242, 242, 242);
+        line-height: 55px;
+        font-size: 26px;
+        border-bottom: 2px solid rgba(237,91,0,0);
+      }
+      .bt-color {
+        border-color: rgb(237, 91, 0);
+      }
+      .icon-arrow-down {
+        width: 40px;
+        height: 40px;
+        background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAMAAABiM0N1AAAABlBMVEX///+9vb18/6H5AAAAAXRSTlMAQObYZgAAAF9JREFUeNrtzCESwDAMxMD4/59umIBJJ6JalLo3OkmS5Ie55IbRyAmrUQtmlxisoeswtR3GurPn+4crcXYljq7EyZU4uBKfrsSHK/F0JR6mhCPYDmwHdKzVUaWTJElefOyLAQtGqMZ7AAAAAElFTkSuQmCC) no-repeat;
+        background-size: cover;
+        background-position: 50%;
+        vertical-align: middle;
+      }
+    }
+    .arrow-down {
+      line-height: 57px;
+      vertical-align: top;
+    }
+  }
+}
+.main {
+  width: 720px;
+  position: relative;
+  top: 141px;
+  overflow: hidden;
+  .banner-swiper {
+    width: 720px;
+    height: 360px;
+    position: relative;
+    img {
+      position: absolute;
+      display: block;
+      width: 100%;
+    }
+  }
+  .items-list {
+    width: 720px;
+    height: 302px;
+    display: flex;
+    flex-flow: row wrap;
+    .item-img {
+      display: inline-block;
+      width: 144px;
+      height: 152px;
+    }
+  }
+}
+  
+.footer-bar {
+  position: fixed;
+  bottom: 0;
+  z-index:999;
+  box-shadow: 0 3px 14px 2px rgba(0,0,0,.12);
+  background-color: #fff;
+  .fill-height {
+    width: 720px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    .footer-item {
+      flex:1 1 auto;
+      text-align: center;
+      .icon-home {
+        background: url(https://m.mi.com/static/img/icon-home.c1947eda40.png);
+      }
+      .icon-home-selected {
+        background: url(https://m.mi.com/static/img/icon-home-selected.598ca2c8f9.png);
+
+      }
+      .icon-selected {
+        color: #ff6700;
+      }
+      span {
+        display: block;
+        font-size: 22px;
+        color: #999;
+      }
+      .icon-category {
+        background: url(https://m.mi.com/static/img/icon-category.be93273636.png);
+      }
+      .icon-star {
+        background: url(https://m.mi.com/static/img/icon-star.d051789804.png);
+      }
+      .icon-shopcar {
+        background:url(https://m.mi.com/static/img/icon-cart.585c3aa4d3.png);
+      }
+      .icon-user {
+        background: url(https://m.mi.com/static/img/icon-user.23496a0116.png);
+      }
+      .bottom-icon {
+        display: block;
+        width: 40px;
+        height: 40px;
+        margin: 0 auto 10px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: 50%;
+      }
+    }
+  }
+}
