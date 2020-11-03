@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    html,body {
+      margin: 0;
+    }
+    body {
+      height: 100%;
+    }
+    div {
+      width: 100px;
+      height: 100px;
+      margin-left:200px;
+      margin-top: 200px;
+      transform-origin: 500px 250px 100px;
+      animation: rotating 8s linear;
+      transform-style: preserve-3d;
+      transform: perspective(500px);
+      animation-fill-mode: both;
+      animation-iteration-count: infinite;
+    }
+    div img {
+      width: 100px;
+      height: 100px;
+      animation: rotating-reverse 8s linear;
+      transform-style: preserve-3d;
+      transform: perspective(500px);
+      animation-fill-mode: both;
+      animation-iteration-count: infinite;
+    }
+    @keyframes rotating-reverse {
+      from {
+        transform: rotate3d(0,1,0,0deg)
+      }
+      25% {
+        transform: rotate3d(0,1,0,-90deg)
+      }
+      50% {
+        transform: rotate3d(0,1,0,-180deg)
+      }
+      75% {
+        transform: rotate3d(0,1,0 ,-270deg)
+      }
+      100% {
+        transform: rotate3d(0,1,0,-360deg)
+      }
+    }
+    @keyframes rotating {
+      from {
+        transform: rotate3d(0,1,0,0deg)
+      }
+      25% {
+        transform: rotate3d(0,1,0,90deg)
+      }
+      50% {
+        transform: rotate3d(0,1,0,180deg)
+      }
+      75% {
+        transform: rotate3d(0,1,0 ,270deg)
+      }
+      100% {
+        transform: rotate3d(0,1,0,360deg)
+      }
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <img src="https://travel.12306.cn/imgs/resources/uploadfiles/images/fcd7173f-7651-46e7-a126-bdc199e1f6f7_product_W572_H370.jpg" alt="">
+  </div>
+</body>
+</html>

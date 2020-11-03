@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      transform-style: preserve-3d;
+      transform: perspective(1800px);
+    }
+    section {
+      position: relative;
+      transform-style: preserve-3d;
+      transform: rotateX(148deg) rotateY(59deg) rotateZ(15deg);
+      transition: 50s;
+      width: 200px;
+      height: 200px;
+      transform-origin: 100px 100px 100px;
+      margin: 100px auto;
+    }
+    section:hover {
+      transform: rotateX(3333deg) rotateY(3333deg) rotateZ(3333deg);
+    }
+    section:hover div {
+      box-shadow: 0 0 1px 100px rgba(0, 0, 0, .3);
+    }
+    div {
+      width: 200px;
+      height: 200px;
+      position: absolute;
+      box-shadow: 0 0 1px 0 rgba(0, 0, 0, .3);
+      transition: 10s;
+    }
+    .bottom {
+      background-color: rgba(161, 144, 144,.3)
+    }
+    .top {
+      transform: translateZ(200px);
+      background-color: rgba(230, 19, 19,.3)
+    }
+    .left {
+      transform-origin: left;
+      transform: rotateY(-90deg);
+      background-color: rgba(9, 196, 9,.3);
+    }
+    .right {
+      transform-origin: right;
+      transform: rotateY(90deg);
+      background-color: rgba(39, 14, 14,.3);
+    }
+    .font {
+      transform-origin: bottom;
+      transform: rotateX(-90deg);
+      background-color: rgba(20, 20, 195,.3);
+    }
+    .back {
+      transform-origin: top;
+      transform: rotateX(90deg);
+      background-color: rgba(229, 233, 18,.3);
+    }
+  </style>
+</head>
+<body>
+  <section>
+    <div class="bottom"></div>
+    <div class="top"></div>
+    <div class="left"></div>
+    <div class="right"></div>
+    <div class="font"></div>
+    <div class="back"></div>
+  </section>
+</body>
+</html>
