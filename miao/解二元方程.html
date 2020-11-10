@@ -1,0 +1,30 @@
+<xscript>
+  var a = 1
+  var b = 3
+  var c = 99
+  var d = 12
+  var e = 8
+  var f = 0
+
+  var x = (c * e - b * f) / (a * e - b * d)
+  var y = (c * d - a * f) / (b * d - a * e)
+
+<x/script>
+
+<script>
+  var a = prompt("请输入a")
+  var b = prompt("请输入b")
+  var c = prompt("请输入c")
+
+  var delta = b * b - 4 * a * c
+  var x1 = (-b + Math.sqrt(delta)) / (2 * a)
+  var x2 = (-b - Math.sqrt(delta)) / (2 * a)
+  if(delta == 0) {
+    console.log("有一个解")
+  }else if(delta > 0) {
+    console.log("有两个解")
+    console.log()
+  }else {
+    console.log("无解")
+  }
+</script>

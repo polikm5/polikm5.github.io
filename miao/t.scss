@@ -1,0 +1,149 @@
+
+
+section {
+  width: 300px;
+  height: 300px;
+  background-color: #ECECEC;
+  border-radius: 9999px;
+  margin: 50px auto;
+  position: relative;
+}
+span {
+  display: inline-block;
+  width: 2px;
+  height: 15px;
+  left:50%;
+  position: absolute;
+  top:0;
+  transform-origin: 50% 150px;
+  background-color: #666;
+  margin-left: -1px;
+}
+
+@for $i from 0 through 360 {
+  @if $i % 6 == 0 {
+    .rotate-#{$i} {
+      transform: rotate($i+ deg);
+    }
+  }
+  @if $i % 5 == 0 {
+    @if $i % 6 == 0 {
+      .rotate-#{$i}{
+        width: 4px;
+        height: 25px;
+      }
+    }
+  }
+}
+
+
+.dot {
+  width: 14px;
+  height: 14px;
+  border-radius:50%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  z-index:5;
+  background-color: #CCCCCC;
+  box-shadow: 0 2px 4px -1px black;
+}
+@keyframes time-move {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg) ;
+  }
+}
+@keyframes shake {
+  from {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(1deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+.hour-hand {
+  width: 4px;
+  height: 65px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -64px;
+  bottom: 0;
+  margin: auto;
+  background-color: #333;
+  transform-origin: bottom;
+  transform: rotate(270deg);
+  border-top-left-radius: 35%;
+  border-top-right-radius: 35%;
+  animation: time-move 216000s linear;
+
+}
+.min-hand {
+  width: 4px;
+  height: 100px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -102px;
+  bottom: 0;
+  margin: auto;
+  background-color: #666;
+  transform-origin: bottom;
+  transform: rotate(180deg);
+  border-top-left-radius: 35%;
+  border-top-right-radius: 35%;
+  animation: time-move 3600s linear;
+}
+.second-shake {
+  width: 2px;
+  height: 120px;
+  position: absolute;
+  transform-origin: bottom;
+  background-color: gold;
+  animation: shake 1s steps(2);
+  animation-iteration-count: infinite;
+}
+.second-hand {
+  width: 2px;
+  height: 120px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -118px;
+  bottom: 0;
+  margin: auto;
+  animation: time-move 60s steps(60);
+  animation-iteration-count: infinite;
+  transform-origin: bottom;
+}
+.num {
+  display: inline-block;
+  position: absolute;
+  font-size: 22px;
+  font-weight: 700;
+}
+.num-3 {
+  top: 136px;
+  right: 30px;
+}
+.num-6 {
+  bottom: 30px;
+  left: 144px;
+}
+.num-9 {
+  left:30px;
+  top:136px;
+}
+.num-12 {
+  top:30px;
+  left:137px;
+}

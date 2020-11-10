@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>学会数理化，走遍天下都不怕 - 正方体棱长与平面α夹角相等</title>
+  <style>
+    * {
+      background-color: rgba(0,0,0,0.1);
+    }
+    body {
+      margin: 0;
+      overflow: scroll;
+    }
+    section {
+      display: flex;
+      min-height: 100vh;
+      position: relative;
+    }
+    footer {
+      width: 125px;
+      height: 50px;
+      line-height: 25px;
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      padding: 10px;
+    }
+    abbr {
+      background-color: transparent;
+      text-decoration: none;
+    }
+    /*-----------------------立方体---------------------------*/
+    .top {
+      transform:  translatez(0px) translatey(-100px) rotatex(90deg);
+    }
+    .bottom {
+      transform: translatez(0px) translatey(100px) rotatex(90deg);
+    }
+    .left {
+      transform: translatex(-100px) translatez(0px) rotatey(90deg);
+    }
+    .right {
+      transform: translatex(100px) translatez(0px) rotatey(90deg);
+    }
+    .behind {
+      transform: translatez(-100px);
+    }
+    .fount {
+      transform: translatez(100px);
+    }
+    div {
+      height: 200px;
+      width: 200px;
+      background-color: rgba(37,198,252,0.5);
+      position: absolute;
+      top: 0;
+      left: 0;
+      box-sizing: border-box;
+      border: 2px solid rgba(0,0,0,0.5);
+    }
+    /*------------------------按钮--------------------------*/
+    section > span {
+      display: block;
+      color: #111;
+      height: 50px;
+      width: 150px;
+      position: absolute;
+      text-align: center;
+      line-height: 50px;
+      outline: none;
+    }
+    section > span:active {
+      background-color: rgba(37,198,252,0.5);
+    }
+    section >span:nth-of-type(1) {
+      top: 10px;
+    }
+    section >span:nth-of-type(2) {
+      top: 70px;
+    }
+    section >span:nth-of-type(3) {
+      top: 130px;
+    }
+    section >span:nth-of-type(4) {
+      top: 190px;
+    }
+    section >span:nth-of-type(5) {
+      top: 250px;
+    }
+    section >span:nth-of-type(6) {
+      top: 310px;
+    }
+    section >span:nth-of-type(7) {
+      top: 370px;
+    }
+    section >span:nth-of-type(8) {
+      top: 430px;
+    }
+    
+    /*-------------------------立方体动画-------------------------*/
+    main,
+    main span {
+      height: 200px;
+      width: 200px;
+      animation-duration: 10s;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+      animation-play-state: paused;
+      background-color: transparent;
+      transform-style: preserve-3d;
+    }
+    main {
+      margin: auto;
+      position: relative;
+    }
+    main span {
+      position:absolute;
+      left: 0;
+      top: 0;
+    }
+    .alpha {
+      width: 200px;
+      height: 200px;
+      background-color: transparent;
+      border: none;
+      transform: rotateX(45deg) rotateY(35deg) ;
+      transform-style: preserve-3d;
+    }
+    .alpha div {
+      transform: translateZ(0);
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+      animation-play-state: paused;
+      animation-duration: 500s;
+      border: none;
+    }
+    .alpha > div {
+      width: 200px;
+      height: 200px;
+      background-color: transparent;
+      transform-style: preserve-3d;
+    }
+    .alpha > div > div {
+      width: 400px;
+      height: 400px;
+      left: -100px;
+      top: -100px;
+      background-color: rgba(127,24,116,0.5);
+    }
+
+    main {
+      animation-name: s-x;
+    }
+    main > span {
+      animation-name: n-x;
+    }
+    main >span>span {
+      animation-name: s-y;
+    }
+    main >span>span>span {
+      animation-name: n-y;
+    }
+    main >span>span>span>span {
+      animation-name: s-z;
+    }
+    main >span>span>span>span>span {
+      animation-name: n-z;
+      transform-style: preserve-3d;
+    }
+    main >span>span>span>span>span>.alpha>div {
+      animation-name: alpha-up;
+    }
+    main >span>span>span>span>span>.alpha>div>div {
+      animation-name: alpha-down;
+    }
+  
+    @keyframes s-x {
+      from {
+        transform: rotateX(0);
+      }
+      to {
+        transform: rotateX(360deg);
+      }
+    }
+    @keyframes n-x {
+      from {
+        transform: rotateX(0);
+      }
+      to {
+        transform: rotateX(-360deg);
+      }
+    }
+    @keyframes s-y {
+      from {
+        transform: rotateY(0);
+      }
+      to {
+        transform: rotateY(-360deg);
+      }
+    }
+    @keyframes n-y {
+      from {
+        transform: rotateY(0);
+      }
+      to {
+        transform: rotateY(360deg);
+      }
+    }
+    @keyframes s-z {
+      from {
+        transform: rotateZ(0);
+      }
+      to {
+        transform: rotateZ(360deg);
+      }
+    }
+    @keyframes n-z {
+      from {
+        transform: rotateZ(0);
+      }
+      to {
+        transform: rotateZ(-360deg);
+      }
+    }
+    @keyframes alpha-up {
+      from {
+        transform: translateZ(0);
+      }
+      to {
+        transform: translateZ(100000px);
+      }
+    }
+    @keyframes alpha-down {
+      from {
+        transform: translateZ(0);
+      }
+      to {
+        transform: translateZ(-100000px);
+      }
+    }
+
+
+    span:nth-of-type(1):active ~ main {
+      animation-play-state: running;
+    }
+    span:nth-of-type(2):active ~ main >span {
+      animation-play-state: running;
+    }
+    span:nth-of-type(3):active ~ main >span>span{
+      animation-play-state: running;
+    }
+    span:nth-of-type(4):active ~ main >span>span>span{
+      animation-play-state: running;
+    }
+    span:nth-of-type(5):active ~ main >span>span>span>span{
+      animation-play-state: running;
+    }
+    span:nth-of-type(6):active ~ main >span>span>span>span>span{
+      animation-play-state: running;
+    }
+    span:nth-of-type(7):active ~ main >span>span>span>span>span>.alpha>div{
+      animation-play-state: running;
+    }
+    span:nth-of-type(8):active ~ main >span>span>span>span>span>.alpha>div>div{
+      animation-play-state: running;
+    }
+
+  </style>
+</head>
+<body>
+  <section>
+    <span tabindex="1">X轴顺时针旋转</span>
+    <span tabindex="1">X轴逆时针旋转</span>
+    <span tabindex="1">Y轴顺时针旋转</span>
+    <span tabindex="1">Y轴逆时针旋转</span>
+    <span tabindex="1">Z轴顺时针旋转</span>
+    <span tabindex="1">Z轴逆时针旋转</span>
+    <span tabindex="1">正方向移动α平面</span>
+    <span tabindex="1">负方向移动α平面</span>
+    <main>
+      <span>
+        <span>
+          <span>
+            <span>
+              <span>
+                <div class="behind"></div>
+                <div class="fount"></div>
+                <div class="top"></div>
+                <div class="bottom"></div>
+                <div class="left"></div>
+                <div class="right"></div>
+                <div class="alpha">
+                  <div>
+                    <div></div>
+                  </div>
+                </div>
+              </span>
+            </span>
+          </span>
+        </span>
+      </span>
+    </main>
+  </section>
+  <footer>
+    by: 高勇强
+    <br>
+    版权声明: 
+    <abbr title="Do What The Fuck You Want To Public License">WTFPL</abbr>
+  </footer>
+</body>
+</html>
