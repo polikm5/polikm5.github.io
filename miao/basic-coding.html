@@ -10,7 +10,7 @@
   console.log((a + b) * c)
 </script>
 
-<script  id="ch0103/03" xtype="norun">
+<script  id="ch0103/03" type="norun">
   var a = Number(prompt())
   var b = Number(prompt())
   var c = Number(prompt())
@@ -395,5 +395,332 @@
   }else {
     console.log(n - Math.ceil(y / x));
   }
-
 </script>
+
+<script id="ch0105/01" type="norun">
+  var n = Number(prompt());
+  var total = 0;
+  for(var i = 0; i < n; i++) {
+    total += Number(prompt());
+  }
+  console.log(+(total / n).toFixed(2))
+</script>
+
+<script id="ch0105/02" type="norun">
+  var total = 0;
+  for(var i = 0; i < 12; i++) {
+    total += Number(prompt());
+  }
+  console.log("$" + (+(total / 12).toFixed(2)))
+</script>
+
+<script id="ch0105/03" type="norun">
+  var n = Number(prompt());
+  var total = 0;
+  for(var i = 0; i < n; i++) {
+    total += Number(prompt());
+  }
+  console.log(+(total / n).toFixed(4))
+</script>
+
+<script id="ch0105/04" type="norun">
+  var n = Number(prompt());
+  var total = 0;
+  for(var i = 0; i < n; i++) {
+    total += Number(prompt());
+  }
+  console.log(total, +(total / n).toFixed(5))
+</script>
+
+<script id="ch0105/05" type="norun">
+  var n = Number(prompt());
+  var max = 0;
+  for(var i = 0; i < n; i++) {
+    max = Math.max(Number(prompt()), max)
+  }
+  console.log(max)
+</script>
+
+<script id="ch0105/06" type="norun">
+  var n = Number(prompt());
+  var max = 0;
+  var min = Infinity;
+  for(var i = 0; i < n; i++) {
+    var num = Number(prompt())
+    max = Math.max(num, max)
+    min = Math.min(num, min)
+  }
+  console.log(max - min)
+</script>
+
+<script id="ch0105/07" type="norun">
+  var n = Number(prompt());
+  var gold = 0;
+  var silver = 0;
+  var copper = 0;
+  for(var i = 0; i < n; i++) {
+    gold += Number(prompt())
+    silver += Number(prompt())
+    copper += Number(prompt())
+  }
+  console.log(gold, silver, copper, gold + silver + copper)
+</script>
+
+<script id="ch0105/08" type="norun">
+  var n = Number(prompt());
+  var deg = 0;
+  for(var i = 0; i < n - 1; i++) {
+    deg += Number(prompt())
+  }
+  console.log((n - 2) * 180 - deg)
+</script>
+
+<script id="ch0105/09" type="norun">
+  var m = Number(prompt());   
+  var n = Number(prompt());
+  var total = 0;
+  for(;m <= n; ) {
+    if(m % 2 != 0) {
+      total += m;
+      m += 2;
+    }else {
+      m += 1;
+    }
+  }
+  console.log(total);
+</script>
+
+<script id="ch0105/10" type="norun">
+  var m = Number(prompt());   
+  var n = Number(prompt());
+  var total = 0;
+  for(;m <= n; ) {
+    if(m % 17 == 0) {
+      total += m;
+      m += 17;
+    }else {
+      m += 1;
+    }
+  }
+  console.log(total);
+</script>
+
+<script id="ch0105/11" type="norun">  
+  var n = Number(prompt());
+  var time1 = 0;
+  var time5 = 0;
+  var time10 = 0;
+  for(var i = 0; i < n; i++) {
+    var num = Number(prompt());
+    if(num == 1) {
+      time1++;
+    }else if(num == 5) {
+      time5++;
+    }else if(num == 10) {
+      time10++;
+    }
+  }
+  console.log(time1)
+  console.log(time5)
+  console.log(time10)
+</script>
+
+<script id="ch0105/12" type="norun">  
+  var n = Number(prompt());
+  var m = Number(prompt());
+  var count = 0;
+  for(var i = 0; i < n; i++) {
+    var num = Number(prompt())
+    if(num == m) {
+      count++;
+    }
+  }
+  console.log(count);
+</script>
+
+<script id="ch0105/13" type="norun">  
+  var a = Number(prompt());
+  var n = Number(prompt());
+  var total = 1;
+  for(var i = 0; i < n; i++) {
+    total *= a;
+  }
+  console.log(total);
+</script>
+
+<script id="ch0105/14" type="norun">  
+  var x = Number(prompt());
+  var n = Number(prompt());
+  for(var i = 0; i < n; i++) {
+    x *= 1.001
+  }
+  console.log(x.toFixed(4)); 
+</script>
+
+<script id="ch0105/15" type="norun">  
+  var r = Number(prompt());
+  var m = Number(prompt());
+  var y = Number(prompt());
+  for(var i = 0; i < y; i++) {
+    m *= 1 + (r / 100)
+  }
+  console.log(Math.floor(m)); 
+</script>
+
+<script id="ch0105/16" type="norun">  
+  var n = Number(prompt());
+  var k = Number(prompt());
+  var total = 200;
+  for(var i = 1; i <= 20; i++) {
+    total = total * (1 + k / 100)
+    console.log(total)
+    if(n * i >= total) {
+      console.log(i);
+    }
+  }
+</script>
+
+<script id="ch0105/17" type="norun">  
+  var k = Number(prompt());
+  var first = 1;
+  var second = 1;
+  for(var i = 2; i < k; i++) {
+    var temp = first + second;
+    first = second;
+    second = temp;
+  }
+  console.log(second)
+</script>
+
+<script id="ch0105/18" type="norun">  
+  var n = Number(prompt());
+  var first = 0;
+  for(var i = 0; i < n; i++) {
+    var sum = Number(prompt());
+    var effect = Number(prompt());
+    if(i == 0) {
+      first = effect / sum;
+      continue;
+    }else {
+      if((effect / sum) - first > 0.05) {
+        console.log("better")
+      }else if(first - (effect / sum) > 0.05) {
+        console.log("worse")
+      }else {
+        console.log("same")
+      }
+    }
+  }
+</script>
+
+<script id="ch0105/19" type="norun">  
+  var n = Number(prompt())
+  var time = 0;
+  for(var i = 0; i < n; i++) {
+    var x = Number(prompt())
+    var y = Number(prompt())
+    var person = Number(prompt())
+    time = 2 * (Math.sqrt((x * x + y * y)) / 50) + 1.5 * person
+  }
+  console.log(Math.ceil(time))
+</script>
+
+<script id="ch0105/20" type="norun">  
+  var h = Number(prompt())
+  var totalH = 0;
+  var bounceH = 0;
+  for(var i = 0; i < 10; i++) {
+    bounceH = h / 2
+    totalH += h + bounceH
+    h = h / 2
+  }
+  console.log(totalH - bounceH, bounceH)
+</script>
+
+<script id="ch0105/21" type="norun">  
+  var n= Number(prompt())
+  while(n !== 1) {
+    if(n % 2 != 0) {
+      console.log(n + "*" + 3 + "+" + 1 + "=" + (n * 3 + 1))
+      n = n * 3 + 1
+    }else {
+      console.log(n + "/" + 2 + "=" + (n / 2))
+      n = n / 2
+    }
+  }
+  console.log("End")
+</script>
+
+<script id="ch0105/22" type="norun">  
+  var total = 0;
+  var rest = 0;
+  for(var i = 0; i < 12; i++) {
+    rest = 300 - Number(prompt()) + rest;
+    if(rest < 0) {
+      console.log(-i - 1);
+      break;
+    }
+    while(rest >= 100) {
+      rest -= 100
+      total += 100
+    }
+  }
+  console.log(total * 1.2 + rest)
+</script>
+
+<script id="ch0105/23" type="norun">  
+  var total = Number(prompt())
+  var person = Number(prompt())
+  var rejectNum = 0;
+  for(var i = 0; i < person; i++) {
+    var needNum = Number(prompt())
+    if(total > needNum) {
+      total -= needNum
+    }else {
+      rejectNum++
+    }
+  }
+  console.log(rejectNum)
+</script>
+
+<script id="ch0105/24" type="norun">  
+  var times = Number(prompt())
+  var maxTimes = 0;
+  var count = 0;
+  for(var i = 0; i < times; i++) {
+    var shrink = Number(prompt())
+    var diastole = Number(prompt())
+    if(shrink <= 140 && shrink >= 90 && diastole >= 60 && diastole <= 90) {
+      count++;
+      maxTimes = maxTimes > count ? maxTimes : count
+    }else {
+      count = 0;
+    }
+  }
+  console.log(maxTimes)
+</script>
+
+<!-- <script id="ch0105/25" xtype="norun">  
+  var s1 = "",s2 = ""
+  for(var i = 7; i < 100; i++) {
+    var j = i;
+    var k = i;
+    while(j > 0) {
+      s1 += String((j % 7))
+      j = Math.floor(j / 7)
+    }
+    console.log(s1)
+    while(k > 0) {
+      s2 += String((k % 9))
+      k = Math.floor(k / 9)
+    }
+    var Hundred = Math.floor(s1 / 100)
+    var Tens = Math.floor((s1 % 100) / 10)
+    var digit = Math.floor((s1 % 100) % 10)
+    var newS1 = digit + Tens + Hundred
+    if(newS1 == s2) {
+      console.log(i, s1, s2)
+      break;
+    }
+  }
+</script> -->
