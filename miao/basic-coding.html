@@ -572,9 +572,16 @@
   var k = Number(prompt());
   var total = 200;
   for(var i = 1; i <= 20; i++) {
+    if(i == 1) {
+      total = 200
+      continue
+    }
     total = total * (1 + k / 100)
     if(n * i >= total) {
-      console.log(i);
+      console.log(i)
+      break
+    }else if(i == 20) {
+      console.log("impossible")
     }
   }
 </script>
@@ -633,7 +640,7 @@
     totalH += h + bounceH
     h = h / 2
   }
-  console.log(totalH - bounceH, bounceH)
+  console.log((totalH - bounceH).toFixed(4), bounceH.toFixed(7))
 </script>
 
 <script id="ch0105/21" type="norun">  
@@ -653,10 +660,12 @@
 <script id="ch0105/22" type="norun">  
   var total = 0;
   var rest = 0;
+  var flag = true;
   for(var i = 0; i < 12; i++) {
     rest = 300 - Number(prompt()) + rest;
     if(rest < 0) {
       console.log(-i - 1);
+      flag = false
       break;
     }
     while(rest >= 100) {
@@ -664,7 +673,10 @@
       total += 100
     }
   }
-  console.log(total * 1.2 + rest)
+  if(flag) {
+    console.log(total * 1.2 + rest)
+  }
+
 </script>
 
 <script id="ch0105/23" type="norun">  
@@ -715,7 +727,7 @@
     nineNum = Math.floor(nineNum / 9);
     var nineR3 = nineNum % 9;
     if(sevenR1 == nineR3 && sevenR2 == nineR2 && sevenR3 == nineR1) {
-      console.log(n, ""+sevenR3 + sevenR2 + sevenR1, ""+nineR3 + nineR2 + nineR1)
+      console.log(n, Number(""+sevenR3 + sevenR2 + sevenR1), Number(""+nineR3 + nineR2 + nineR1))
       break;
     }else {
       n++;
@@ -786,7 +798,7 @@
   if(negative) {
     console.log(-res)
   }else {
-    console.log(-res)
+    console.log(res)
   }
 
 </script>
@@ -868,9 +880,9 @@
 <script id="ch0105/35" type="norun">  
   var n = Number(prompt())
   var sum = 1
-  var i = 2
+  var i = 1
   while(i <= n) {
-    var j = i - 1
+    var j = i 
     var Factorial = 1
     while(j > 0) {
       Factorial *= j
@@ -1025,7 +1037,7 @@
   }
 </script>
 
-<script id="ch0105/44" xtype="norun">  
+<script id="ch0105/44" type="norun">  
   // var n = Number(prompt())
   // var count = 0
   // var i = 2
@@ -1047,7 +1059,7 @@
   // } 
 </script>
 
-<script id="ch0105/45" xtype="norun">  
+<script id="ch0105/45" type="norun">  
   var d = Number(prompt())
   
 </script>
