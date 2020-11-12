@@ -944,7 +944,21 @@
 </script>
 
 <script id="ch0105/38" type="norun">  
-  
+  var n = Number(prompt())
+  var str = ""
+  var j = n
+  for(var i = 0; i <= n; i++) {
+    var temp = Number(prompt())
+    if(temp == 0 && j == n ) {
+      str += j * temp + " "
+      break
+    }
+    if(j > 0) {
+      str += j * temp + " "
+    }
+    j--
+  }
+  console.log(str)
 </script>
 
 <script id="ch0105/39" type="norun">  

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>画图</title>
+  <style>
+    canvas {
+      border: 2px solid #f0f;
+      display: block;
+      margin: auto;
+    }
+  </style>
+</head>
+<body>
+  <canvas width="400" height="300"></canvas>
+</body>
+<script>
+  var canvas = document.querySelector('canvas')
+  canvas.style.imageRendering = 'pixelated'
+  var ctx = canvas.getContext('2d')
+
+  function dot(x, y, color = 'black') {
+    x = x | 0
+    y = y | 0
+    ctx.fillStyle = color
+    ctx.fillRect(x, y, 1, 1)
+  }
+
+  function line(x1, y1, x2, y2) {
+    ctx.strokeStyle = 'black'
+    ctx.moveTo(x1, y1)
+    ctx.lineTo(x2, y2)
+    ctx.stroke()
+  }
+  /**
+   * YOUR TASK
+画图的题：
+画一条实线
+画一条一个实点一个空点的虚线
+画一条两个实点两个空点的虚线
+画一条三个实点两个空点的虚线
+画一条45度的斜线
+画一条30度的斜线（选做）
+在四个角画分别画一条45度的斜线以让画面看起来像一个相框
+画一条跨越画布左上角和右下角的对角线
+画一个空心矩形
+画一个实心矩形k
+画一个rgb色彩空间的某一面
+画一个空心的圆
+画一个实心的圆
+画一个大小合适的sin(x)的图像
+   */
+</script>
+<script>
+  // YOUR CODE GOES BELOW
+
+// 实线
+// for(var i = 100; i < 400; i++) {
+//   dot(i, 200, "lime")
+// }
+
+// 虚线
+// for(var i = 0; i < 400; i++) {
+//   for(var j = 0; j < 1; j++) {
+//     if(i % 5 != 0) {
+//       dot(i,j, "lime")
+//     }
+//   }
+
+// 实心矩形
+// for(var i = 50; i < 100; i++) {
+//   for(var j = 50; j < 100; j++) {
+//       dot(i,j, "lime")
+//   }
+// }
+
+// 空心矩形
+// for(var i = 50; i <= 100; i++) {
+//   for(var j = 50; j <= 100; j++) {
+//       if(i == 50 || i == 100) {
+//         dot(i, j, "red")
+//       }else if(j == 50 || j == 100){
+//         dot(i, j, "red")
+//       }
+//   }
+// }
+// 四十五度斜线
+// line(0,300,300,0)
+
+// 三十度斜线
+// line(0,300,100*Math.sqrt(3),0)
+
+// 对角线画45度斜线
+// line(0, 30, 30, 0)
+// line(370, 0, 400, 30)
+// line(370, 300, 400, 270)
+// line(0, 270, 30, 300)
+
+// 对角线
+// line(0, 0, 400, 300)
+
+
+// rgb色彩空间的某一面
+// let b = 255
+// let r = 0
+// for(let i = 0; i < 256; i++) {
+//   let g = 0
+//   for(let j = 0; j < 256; j++) {
+//     dot(i,j,`rgb(${r},${g},${b})`)
+//     g++
+//   }
+//   r++
+// }
+
+// 空心圆
+// for(var i = 0; i < 400; i++) {
+//   var y = Math.sqrt(1000 - (i - 100) * (i - 100)) + 100
+//   var y2 = -Math.sqrt(1000 - (i - 100) * (i - 100)) + 100
+//   dot(i,y,"lime")
+//   dot(i,y2,"lime")
+//   dot(y,i,"lime")
+//   dot(y2,i,"lime")
+// }
+
+
+// 实心的圆
+// for(var j = 0; j < 400; j++) {
+//   var fullY = Math.sqrt(1000 - (j - 150) * (j - 150)) + 150
+//   var fullY2 = -Math.sqrt(1000 - (j - 150) * (j - 150)) + 150
+//   dot(j,fullY,"lime")
+//   line(150, 150, j, fullY)
+//   dot(j,fullY2,"lime")
+//   line(150, 150, j, fullY2)
+//   dot(fullY,j,"lime")
+//   line(150, 150, fullY, j)
+//   dot(fullY2,j,"lime")
+//   line(150, 150, fullY2, j)
+// }
+</script>
+</html>
