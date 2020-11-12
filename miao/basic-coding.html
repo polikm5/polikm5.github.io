@@ -821,14 +821,29 @@
   }
 </script>
 
-<!-- <script id="ch0105/31" xtype="norun">  
+<script id="ch0105/31" xtype="norun">  
   var n = Number(prompt())
   var m = Number(prompt())
-  var i = 1
+  var i = 2
+  var j = 2
+  var str = ""
   while(i <= n) {
-
+    var temp = j
+    var count = 0
+    while(temp < i) {
+      if(i % temp == 0) {
+        count++
+      }
+      temp++
+    }
+    if(count % 2 == 1) {
+      str = str + "," + i
+    }
+    count = 0
+    i++
   }
-</script> -->
+  console.log("1" + str)
+</script>
 
 <script id="ch0105/32" type="norun">  
   var n = Number(prompt())
@@ -928,9 +943,9 @@
   console.log(n)
 </script>
 
-<!-- <script id="ch0105/38" xtype="norun">  
+<script id="ch0105/38" type="norun">  
   
-</script> -->
+</script>
 
 <script id="ch0105/39" type="norun">  
   var n = Number(prompt())
@@ -1038,28 +1053,43 @@
 </script>
 
 <script id="ch0105/44" type="norun">  
-  // var n = Number(prompt())
-  // var count = 0
-  // var i = 2
-  // while(i < 100) {
-  //   var j = 0
-  //   var flag = true
-  //   while(j < i){
-  //     if(i % j == 0) {
-  //       flag = false
-  //     }
-  //     j++
-  //   }
-  //   if(flag) count++
-  //   if(count == n) {
-  //     console.log(i)
-  //     break
-  //   }
-  //   i++
-  // } 
+  var n = Number(prompt())
+  var count = 0
+  var i = 2
+  while(i < 100) {
+    var j = 2
+    var flag = true
+    while(j < i){
+      if(i % j == 0) {
+        flag = false
+      }
+      j++
+    }
+    if(flag) count++
+    if(count == n) {
+      console.log(i)
+      break
+    }
+    i++
+  } 
 </script>
 
 <script id="ch0105/45" type="norun">  
   var d = Number(prompt())
-  
+  var dayGold = 1
+  var sum = 0
+  var i = 1
+  var j = dayGold
+  while(i <= d) {
+    if(j > 0) {
+      sum += dayGold
+      j--
+    }
+    if(j == 0) {
+      dayGold++
+      j = dayGold
+    }
+    i++
+  }
+  console.log(sum)
 </script>
