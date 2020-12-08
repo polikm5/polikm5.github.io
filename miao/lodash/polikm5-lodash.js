@@ -257,19 +257,16 @@ var polikm5 = function() {
 
   function indexOf(arr,val,fromIndex = 0) {
     let result = -1
-    if(fromIndex >= 0) {
-      for(let i = fromIndex; i < arr.length; i++) {
-        if(arr[i] === val) {
-          result = i
-          break
-        }
+    if(fromIndex < 0) {
+      fromIndex = fromIndex % (arr.length - 1)
+      if(fromIndex !== 0) {
+        fromIndex += arr.length
       }
-    }else {
-      for(let i = (arr.length + fromIndex); i >= 0; i--) {
-        if(arr[i] === val) {
-          result = i
-          break
-        }
+    }
+    for(let i = fromIndex; i < arr.length; i++) {
+      if(arr[i] === val) {
+        result = i
+        break
       }
     }
     return result
@@ -307,6 +304,80 @@ var polikm5 = function() {
     }
     return result
   }
+
+  function reverse(arr) {
+    let i = 0
+    let j = arr.length - 1
+    while(i < j) {
+      let temp = arr[i]
+      arr[i] = arr[j]
+      arr[j] = temp
+      i++
+      j--
+    }
+    return arr
+  }
+
+  function sortedIndex(arr,val) {
+    if(val >= arr[arr.length - 1]) return arr.length
+    if(val <= arr[0]) return 0
+    for(let i = 0; i < arr.length - 1; i++) {
+      if((val >= arr[i] && val <= arr[i + 1])) {
+        return i + 1
+      }
+    }
+  }
+
+  function every(arr,f) {
+    for(let i = 0; i <arr.length; i++) {
+      if(f(arr[i]) == false) {
+        return false
+      }
+    }
+    return true
+  }
+
+  function filter(arr,preciate) {
+    let type = Object.prototype.toString.call(preciate)
+    for(let i = 0; i < arr.length; i++) {
+      if(type == "[object Function]") {
+        if(preciate(arr[i])) {
+          return [arr[i]]
+        }
+      }
+      if(type == "[object Object]") {
+        let objA = arr[i]
+        let propA = Object.getOwnPropertyNames(objA)
+        let propB = Object.getOwnPropertyNames(preciate)
+        console.log(propA,propB)
+        for(let j = 0; j < propB.length; j++) {
+          let propName = propB[j]
+          if(objA[propName] != preciate[propName]){
+            break
+          }
+          if(j == propB.length - 1) {
+            return [arr[i]]
+          }
+        }
+      }
+      if(type == "[object Array]") {
+        let item = arr[i]
+        if(item[preciate[0]] == preciate[1]) {
+          return [arr[i]]
+        }
+      }
+      if(type == "[object String]") {
+        let item = arr[i]
+        if(item[preciate] == true) {
+          return [arr[i]]
+        }
+      }
+    }
+  }
+
+  function find(arr, preciate, fromIndex = 0) {
+
+  }
   return {
     chunk,
     compact,
@@ -328,6 +399,11 @@ var polikm5 = function() {
     initial,
     join,
     last,
-    lastIndexOf
+    lastIndexOf,
+    reverse,
+    sortedIndex,
+    every,
+    filter,
+    find
   }
 }()
