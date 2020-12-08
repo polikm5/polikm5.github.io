@@ -115,6 +115,134 @@ var polikm5 = function() {
     }
     return arr
   }
+  
+  function findIndex(arr,preciate,fromIndex = 0) {
+    let type = Object.prototype.toString.call(preciate)
+    for(let i = fromIndex; i < arr.length; i++) {
+      if(type == "[object Function]") {
+        if(preciate(arr[i])) {
+          return i
+        }
+      }
+      if(type == "[object Object]") {
+        let objA = arr[i]
+        let propA = Object.getOwnPropertyNames(objA)
+        let propB = Object.getOwnPropertyNames(preciate)
+        for(let i = 0; i < propA.length; i++) {
+          let propName = propA[i]
+          if(objA[propName] != preciate[propName]){
+            break
+          }
+          if(i == propA.length - 1) {
+            return i
+          }
+        }
+      }
+      if(type == "[object Array]") {
+        let item = arr[i]
+        if(item[preciate[0]] == preciate[1]) {
+          return i
+        }
+      }
+      if(type == "[object String]") {
+        let item = arr[i]
+        if(item[preciate] == true) {
+          return i
+        }
+      }
+    }
+  }
+
+  function findLastIndex(arr,preciate,fromIndex = arr.length - 1) {
+    let type = Object.prototype.toString.call(preciate)
+    for(let i = fromIndex; i >= 0; i--) {
+      if(type == "[object Function]") {
+        if(preciate(arr[i])) {
+          return i
+        }
+      }
+      if(type == "[object Object]") {
+        let objA = arr[i]
+        let propA = Object.getOwnPropertyNames(objA)
+        let propB = Object.getOwnPropertyNames(preciate)
+        for(let i = 0; i < propA.length; i++) {
+          let propName = propA[i]
+          if(objA[propName] != preciate[propName]){
+            break
+          }
+          if(i == propA.length - 1) {
+            return i
+          }
+        }
+      }
+      if(type == "[object Array]") {
+        let item = arr[i]
+        if(item[preciate[0]] == preciate[1]) {
+          return i
+        }
+      }
+      if(type == "[object String]") {
+        let item = arr[i]
+        if(item[preciate] == true) {
+          return i
+        }
+      }
+    }
+  }
+
+  function flatten(arr) {
+    let res = []
+    for(let i = 0; i < arr.length; i++) {
+      if(Array.isArray(arr[i])) {
+        res.push(...arr[i])
+      }else {
+        res.push(arr[i])
+      }
+    }
+    return res
+  }
+
+  function flattenDeep(arr) {
+    let res = []
+    function deep(arr) {
+      if(typeof arr != "object") {
+        res.push(arr)
+        return
+      }
+      for(let i = 0; i < arr.length; i++) {
+        if(Array.isArray(arr[i])) {
+          deep(arr[i])
+        }else {
+          res.push(arr[i])
+        }
+      }
+      return res
+    }
+    deep(arr)
+    return res
+  }
+
+  function flattenDepth(arr,depth = 1) {
+    let res = []
+    function deep(arr,depth) {
+      if(depth == -1 || typeof arr != "object" ) {
+        res.push(arr)
+        return
+      }
+      for(let i = 0; i < arr.length; i++) {
+        if(Array.isArray(arr[i])) {
+          deep(arr[i], depth - 1)
+        }else {
+          res.push(arr[i])
+        }
+      }
+      return res
+    }
+    deep(arr,depth)
+    return res
+  }
+
+
   return {
     chunk,
     compact,
@@ -124,6 +252,11 @@ var polikm5 = function() {
     differenceWith,
     drop,
     dropRight,
-
+    fill,
+    findIndex,
+    findLastIndex,
+    flatten,
+    flattenDeep,
+    flattenDepth
   }
 }()
