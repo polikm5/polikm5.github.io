@@ -405,7 +405,7 @@ var polikm5 = function() {
     for(let i = 0; i < arr.length; i++) {
       if(type == "[object Function]") {
         if(preciate(arr[i])) {
-          return [arr[i]]
+          return [...arr[i]]
         }
       }
       if(type == "[object Object]") {
@@ -418,20 +418,20 @@ var polikm5 = function() {
             break
           }
           if(j == propB.length - 1) {
-            return [arr[i]]
+            return [...arr[i]]
           }
         }
       }
       if(type == "[object Array]") {
         let item = arr[i]
         if(item[preciate[0]] == preciate[1]) {
-          return [arr[i]]
+          return [...arr[i]]
         }
       }
       if(type == "[object String]") {
         let item = arr[i]
         if(item[preciate] == true) {
-          return [arr[i]]
+          return [...arr[i]]
         }
       }
     }
@@ -525,6 +525,7 @@ var polikm5 = function() {
     for(let i = 0; i < arr.length; i++) {
       res += arr[i]
     }
+    return res
   }
 
   function sumBy(arr,iteratee) {
