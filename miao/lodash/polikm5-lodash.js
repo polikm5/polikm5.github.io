@@ -36,14 +36,18 @@ var polikm5 = function() {
     return res
   }
 
-  function difference(arr,values) {
+  function difference(arr,...values) {
     let res = []
+    let val = []
+    for(let i = 0; i < values.length; i++) {
+      val.push(...values[i])
+    }
     for(let i = 0; i < arr.length; i++) {
-      for(let j = 0; j < values.length; j++) {
-        if(arr[i] == values[j]) {
+      for(let j = 0; j < val.length; j++) {
+        if(arr[i] == val[j]) {
           break
         }
-        if(j == values.length - 1){
+        if(j == val.length - 1){
           res.push(arr[i])
         }
       }
@@ -65,6 +69,7 @@ var polikm5 = function() {
     }
     return res
   }
+
   function differenceWith(arr,values,comparator) {
     let result = []
     for(let i = 0; i < arr.length; i++) {
@@ -79,6 +84,7 @@ var polikm5 = function() {
     }
     return result
   }
+
   function drop(arr,n = 1) {
     let res = [...arr]
     if(res.length < n) {
@@ -86,10 +92,29 @@ var polikm5 = function() {
     }
     while(n > 0) {
         res.shift()
+        n--
     }
     return res
   }
 
+  function dropRight(arr, n = 1) {
+    let res = [...arr]
+    if(res.length < n) {
+      return []
+    }
+    while(n > 0) {
+      res.pop()
+      n--
+    }
+    return res
+  }
+
+  function fill(arr, value, start = 0, end = arr.length) {
+    for(let i = start; i < end; i++) {
+      arr[i] = value
+    }
+    return arr
+  }
   return {
     chunk,
     compact,
@@ -97,6 +122,8 @@ var polikm5 = function() {
     difference,
     differenceBy,
     differenceWith,
-    drop
+    drop,
+    dropRight,
+
   }
 }()
