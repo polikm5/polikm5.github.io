@@ -55,16 +55,51 @@ var polikm5 = function() {
     return res
   }
 
-  function differenceBy(arr,values,iterat) {
+  function differenceBy(arr,values,preciate) {
     let res = []
+    let type = Object.prototype.toString.call(preciate)
     for(let i = 0; i < arr.length; i++) {
       for(let j = 0; j < values.length; j++) {
-        if(iterat(arr[i]) == iterat(values[j])) {
-          break
+        if(type == "[object Function]") {
+          if(preciate(arr[i]) !== preciate(values[j])) {
+            if(j == values.length - 1) {
+              res.push(arr[i])
+            }
+          }else {
+            break
+          }
         }
-        if(j == values.length - 1) {
-          res.push(arr[i])
-        } 
+        if(type == "[object Object]") {
+          let objA = arr[i]
+          let propA = Object.getOwnPropertyNames(objA)
+          let propB = Object.getOwnPropertyNames(preciate)
+          for(let j = 0; j < propB.length; j++) {
+            let propName = propB[j]
+            if(objA[propName] != preciate[propName]){
+              break
+            }
+            if(j == propB.length - 1) {
+              return [arr[i]]
+            }
+          }
+        }
+        if(type == "[object Array]") {
+          let item = arr[i]
+          if(item[preciate[0]] == preciate[1]) {
+            return [arr[i]]
+          }
+        }
+        if(type == "[object String]") {
+          let item = arr[i]
+          let valueItem = values[j]
+          if(item[preciate] !== valueItem[preciate]) {
+            if(j == values.length - 1) {
+              res.push(arr[i])
+            }
+          }else {
+            break
+          }
+        }
       }
     }
     return res
