@@ -328,10 +328,36 @@ var polikm5 = function() {
     }
   }
 
-  function every(arr,f) {
-    for(let i = 0; i <arr.length; i++) {
-      if(f(arr[i]) == false) {
-        return false
+  function every(arr,predicate) {
+    let type = Object.prototype.toString.call(predicate)
+    for(let i = 0; i < arr.length; i++) {
+      if(type == "[object Function]") {
+        if(predicate(arr[i]) == false) {
+          return false
+        }
+      }
+      if(type == "[object Object]") {
+        let objA = arr[i]
+        let propA = Object.getOwnPropertyNames(objA)
+        let propB = Object.getOwnPropertyNames(predicate)
+        for(let j = 0; j < propB.length; j++) {
+          let propName = propB[j]
+          if(objA[propName] != predicate[propName]){
+            return false
+          }
+        }
+      }
+      if(type == "[object Array]") {
+        let item = arr[i]
+        if(item[predicate[0]] !== predicate[1]) {
+          return false
+        }
+      }
+      if(type == "[object String]") {
+        let item = arr[i]
+        if(item[predicate] != true) {
+          return false
+        }
       }
     }
     return true
@@ -517,7 +543,7 @@ var polikm5 = function() {
     }
     return res
   }
-  
+
   return {
     chunk,
     compact,
