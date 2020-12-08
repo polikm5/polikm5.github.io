@@ -349,7 +349,6 @@ var polikm5 = function() {
         let objA = arr[i]
         let propA = Object.getOwnPropertyNames(objA)
         let propB = Object.getOwnPropertyNames(preciate)
-        console.log(propA,propB)
         for(let j = 0; j < propB.length; j++) {
           let propName = propB[j]
           if(objA[propName] != preciate[propName]){
@@ -376,8 +375,149 @@ var polikm5 = function() {
   }
 
   function find(arr, preciate, fromIndex = 0) {
-
+    let type = Object.prototype.toString.call(preciate)
+    for(let i = 0; i < arr.length; i++) {
+      if(type == "[object Function]") {
+        if(preciate(arr[i])) {
+          return [arr[i]]
+        }
+      }
+      if(type == "[object Object]") {
+        let objA = arr[i]
+        let propA = Object.getOwnPropertyNames(objA)
+        let propB = Object.getOwnPropertyNames(preciate)
+        for(let j = 0; j < propB.length; j++) {
+          let propName = propB[j]
+          if(objA[propName] != preciate[propName]){
+            break
+          }
+          if(j == propB.length - 1) {
+            return [arr[i]]
+          }
+        }
+      }
+      if(type == "[object Array]") {
+        let item = arr[i]
+        if(item[preciate[0]] == preciate[1]) {
+          return [arr[i]]
+        }
+      }
+      if(type == "[object String]") {
+        let item = arr[i]
+        if(item[preciate] == true) {
+          return [arr[i]]
+        }
+      }
+    }
   }
+
+  function toArray(value) {
+    let val = typeof value
+    let res = []
+    if(val == "object") {
+      for(let key in value) {
+        res.push(value[key])
+      }
+    }else if(val == "string") {
+      res.push(...value.split(""))
+    }
+    return res
+  }
+
+  function max(arr) {
+    if(arr.length == 0) {
+      return undefined
+    }
+    let res = arr[0]
+    for(let i = 1; i < arr.length; i++) {
+      res = res > arr[i] ? res : arr[i]
+    }
+    return res
+  }
+
+  function maxBy(arr,iteratee) {
+    let val = typeof iteratee
+    let max = -Infinity
+    let res
+    for(let i = 0; i < arr.length; i++) {
+      if(val == "function") {
+        let number = iteratee(arr[i])
+        if(number > max) {
+          max = number
+          res = arr[i]
+        }
+      }
+      if(val == "string") {
+        let item = arr[i]
+        let number = item[iteratee]
+        if(number > max) {
+          max = number
+          res = arr[i]
+        }
+      }
+    }
+    return res
+  }
+
+  function min(arr) {
+    if(arr.length == 0) {
+      return undefined
+    }
+    let res = arr[0]
+    for(let i = 1; i < arr.length; i++) {
+      res = res > arr[i] ? arr[i] : res
+    }
+    return res
+  }
+
+  function minBy(arr,iteratee) {
+    let val = typeof iteratee
+    let min = Infinity
+    let res
+    for(let i = 0; i < arr.length; i++) {
+      if(val == "function") {
+        let number = iteratee(arr[i])
+        if(number < min) {
+          min = number
+          res = arr[i]
+        }
+      }
+      if(val == "string") {
+        let item = arr[i]
+        let number = item[iteratee]
+        if(number < min) {
+          min = number
+          res = arr[i]
+        }
+      }
+    }
+    return res
+  }
+
+  function sum(arr) {
+    let res = 0
+    for(let i = 0; i < arr.length; i++) {
+      res += arr[i]
+    }
+  }
+
+  function sumBy(arr,iteratee) {
+    let val = typeof iteratee
+    let res = 0
+    for(let i = 0; i < arr.length; i++) {
+      if(val == "function") {
+        let number = iteratee(arr[i])
+        res += number
+      }
+      if(val == "string") {
+        let item = arr[i]
+        let number = item[iteratee]
+        res += number
+      }
+    }
+    return res
+  }
+  
   return {
     chunk,
     compact,
@@ -404,6 +544,13 @@ var polikm5 = function() {
     sortedIndex,
     every,
     filter,
-    find
+    find,
+    toArray,
+    max,
+    maxBy,
+    min,
+    minBy,
+    sum,
+    sumBy
   }
 }()
