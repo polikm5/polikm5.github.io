@@ -1161,17 +1161,33 @@
 <script>
   // 求一个正数的平方根
   var sqrt = function (n) {
-    return Math.sqrt(n)
+    let left = 0
+    let right = n
+    while (right - left > 0.000001) {
+      let mid = (left + right) / 2
+      if (mid * mid == n) {
+        return mid
+      } else if (mid * mid > n) {
+        right = mid
+      } else if (mid * mid < n) {
+        left = mid
+      }
+    }
+    return (left + right) / 2
   }
   // 判断一个数是否为水仙花数
   var narcissistic = function (n) {
-    if (n < 100 || n > 999) {
-      return false
-    }
+    var width = 0
+    var m = n
+    do {
+      var digit = m % 10
+      m = Math.floor(m / 10)
+      width++
+    } while (m > 0)
     var num = n
     var result = 0
     while (num > 0) {
-      result += (num % 10) ** 3
+      result += (num % 10) ** width
       num = Math.floor(num / 10)
     }
     if (result == n) {
@@ -1183,11 +1199,18 @@
 
   // 输出10000以内的所有水仙花数
   var narcissistics = function () {
-    for (var i = 100; i <= 10000; i++) {
+    for (var i = 0; i <= 10000; i++) {
+      var width = 0
+      var m = i
+      do {
+        var digit = m % 10
+        m = Math.floor(m / 10)
+        width++
+      } while (m > 0)
       var num = i
       var result = 0
       while (num > 0) {
-        result += (num % 10) ** 3
+        result += (num % 10) ** width
         num = Math.floor(num / 10)
       }
       if (result == i) {
@@ -1211,82 +1234,94 @@
   var weekday = function (year, month) {
     var preIsLeap = false
     var firstMonth
+    // 寻找闰年的第一个月是星期几
     function findFirstMonth(year) {
-        var add = 5
-        var first
-        for (var i = 0; i < 7; i++) {
-          var num = year % 7
-          if (num == i) {
-            first = (add + num) % 7
-          }
-          add = (add + 2) % 7
+      var add = 5
+      var first
+      for (var i = 0; i < 7; i++) {
+        var num = year % 7
+        if (num == i) {
+          first = (add + num) % 7
         }
+        add = (add + 2) % 7
+      }
       return first
     }
+    // 判断是否为闰年
     function isLeap(year) {
       if ((year % 4 == 0 && year % 100 != 0) || (year % 100 == 0 && year % 400 == 0)) {
         return true
-      }else {
+      } else {
         return false
       }
     }
-      if(isLeap(year)) {
+    // 以闰年作对比，寻找其他年份的一月份是星期几
+    if (isLeap(year)) {
       firstMonth = findFirstMonth(year)
-    }else {
-      for(var j = 1; j <= 3; j++) {
-        if(isLeap(year + j)) {
+      // 判断类似1900、1800年的特殊情况 需要加到上一个闰年
+    } else if((year+7) % 100 == 0 || (year + 6) % 100 == 0 || (year + 5) % 100 == 0 ||
+    (year + 4) % 100 == 0 || (year + 3) % 100 == 0 || (year + 2) % 100 == 0 || (year + 1) % 100 == 0 || (year + 0) % 100 == 0) {
+      for(let j = 1; j <= 7;j++) {
+        if (isLeap(year + j)) {
+        firstMonth = ((findFirstMonth(year + j) - j) + 7) % 7
+        }
+      }
+    } else {
+      for (var j = 1; j <= 3; j++) {
+        if (isLeap(year + j)) {
           firstMonth = ((findFirstMonth(year + j) - j) + 7) % 7
           break
         }
       }
     }
+    // 由该年的一月份是星期几来寻找其他月份是星期几
     var result = firstMonth
-    for(var k = 1; k < month; k++) {
-      if(k < 8) {
-        if(k % 2 == 1) {
+    for (var k = 1; k < month; k++) {
+      if (k < 8) {
+        if (k % 2 == 1) {
           result = (result + 3) % 7
-        }else if(k == 2 && isLeap(year)){
+        } else if (k == 2 && isLeap(year)) {
           result = (result + 1) % 7
-        }else if(k == 2 && !isLeap(year)){
+        } else if (k == 2 && !isLeap(year)) {
           continue
         } else {
           result = (result + 2) % 7
         }
-      }else {
-        if(k % 2 == 1) {
+      } else {
+        if (k % 2 == 1) {
           result = (result + 2) % 7
-        }else {
+        } else {
           result = (result + 3) % 7
         }
       }
     }
-    switch(result) {
-      case 0:{
-        return year + "年"+ month + "月 的第一天是星期天"
+    switch (result) {
+      case 0: {
+        return year + "年" + month + "月 的第一天是星期天"
         break
       }
-      case 1:{
-        return year + "年"+ month + "月 的第一天是星期一"
+      case 1: {
+        return year + "年" + month + "月 的第一天是星期一"
         break
       }
-      case 2:{
-        return year + "年"+ month + "月 的第一天是星期二"
+      case 2: {
+        return year + "年" + month + "月 的第一天是星期二"
         break
       }
-      case 3:{
-        return year + "年"+ month + "月 的第一天是星期三"
+      case 3: {
+        return year + "年" + month + "月 的第一天是星期三"
         break
       }
-      case 4:{
-        return year + "年"+ month + "月 的第一天是星期四"
+      case 4: {
+        return year + "年" + month + "月 的第一天是星期四"
         break
       }
-      case 5:{
-        return year + "年"+ month + "月 的第一天是星期五"
+      case 5: {
+        return year + "年" + month + "月 的第一天是星期五"
         break
       }
-      case 6:{
-        return year + "年"+ month + "月 的第一天是星期六"
+      case 6: {
+        return year + "年" + month + "月 的第一天是星期六"
         break
       }
     }
@@ -1296,9 +1331,18 @@
   var completeNumber = function (n) {
     var res = 1
     if (n == 1) return false
-    for (var i = 2; i < n; i++) {
+    for (var i = 2; i * i <= n; i++) {
       if (n % i == 0) {
-        res += i
+        // 从一个因子 找对应的另一个因子
+        // 将循环减少到 i <= Math.sqrt(n) => i * i <= n
+        var j = n / i
+        // 相同因子 需要当做 一个因子
+        if (i === j) {
+          res += i
+        } else {
+          res += i + j
+        }
+        if (res > n) return false
       }
     }
     if (n == res) {
@@ -1366,47 +1410,110 @@
   }
 
   // itob: 不使用隐式类型转换将一个数字转换为字符串
+  function n2c(n) {
+    if (n == 0) {
+      return "0"
+    }
+    if (n == 1) {
+      return "1"
+    }
+    if (n == 2) {
+      return "2"
+    }
+    if (n == 3) {
+      return "3"
+    }
+    if (n == 4) {
+      return "4"
+    }
+    if (n == 5) {
+      return "5"
+    }
+    if (n == 6) {
+      return "6"
+    }
+    if (n == 7) {
+      return "7"
+    }
+    if (n == 8) {
+      return "8"
+    }
+    if (n == 9) {
+      return "9"
+    }
+  }
   var itob = function (n) {
     var str = ""
-    var res = ""
     while (n > 0) {
-      str += n % 10
+      str = n2c(n % 10) + str
       n = Math.floor(n / 10)
     }
-    while (str > 0) {
-      res += str % 10
-      str = Math.floor(str / 10)
-    }
-    return res
+    return str
   }
 
   // lcf: 写函数求出两个数的最大公约数
   var lcf = function (n, m) {
-    var i = 0
-    if (n > m) {
-      i = m
-    } else {
-      i = n
-    }
-    for (; i > 1; i--) {
-      if (n % i == 0 && m % i == 0) {
-        return i
+    let maxNum = n > m ? n : m
+    let minNum = n > m ? m : n
+    while (maxNum !== minNum) {
+      if (maxNum > minNum) {
+        maxNum -= minNum
+      } else {
+        let temp = maxNum
+        maxNum = minNum
+        minNum = temp
       }
     }
+    return maxNum
   }
 
   // lcm: 写函数求出两个数的最小公倍数
+  // 两个数的乘积等于lcf*lcm
   var lcm = function (n, m) {
-    var i = 0
-    if (n > m) {
-      i = n
-    } else {
-      i = m
-    }
-    for (; i <= n * m; i++) {
-      if (i % n == 0 && i % m == 0) {
-        return i
-      }
-    }
+    //   var i = 0
+    //   if (n > m) {
+    //     i = n
+    //   } else {
+    //     i = m
+    //   }
+    //   for (; i <= n * m; i++) {
+    //     if (i % n == 0 && i % m == 0) {
+    //       return i
+    //     }
+    //   }
+    // }
+    return m * n / lcf(n, m)
+
+
+
+
+
+// 小作业：
+// 计算
+// -28 ^ 137   -147
+// ~97   -98
+// 146 >> 3  18
+// -105 >>> 2   5
+
+function sum(n) {
+  if(n == 1) {
+    return 1
+  }else {
+    return n + sum(n - 1)
   }
+}
+
+
+function pow(x,n) {
+  if(n == 0) {
+    return 1
+  }
+  if(n % 2 == 0) {
+    let t = pow(x, n >> 1)
+    return t * t
+  }else if(n % 2 == 1) {
+    let t = pow(x, n >> 1)
+    return t * t * x
+  }
+}
 </script>

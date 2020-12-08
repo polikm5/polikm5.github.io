@@ -11,12 +11,14 @@
       margin: auto;
     }
   </style>
+  <script src="./lena.js"></script>
 </head>
 
 <body>
   <canvas width="400" height="300"></canvas>
 </body>
-<script>
+
+<script type="text/javascript">
   var canvas = document.querySelector('canvas')
   canvas.style.imageRendering = 'pixelated'
   var ctx = canvas.getContext('2d')
@@ -34,6 +36,17 @@
     ctx.lineTo(x2, y2)
     ctx.stroke()
   }
+  console.log("rgba" + "(" + lena[0][0][0]+ "," + lena[0][0][1] + "," + lena[0][0][2] + ")")
+  console.log(1)
+    for(let i = 0; i < lena.length; i++) {
+      for(let j = 0; j < lena[0].length; j++) {
+        dot(i,j,"rgba" + "(" + lena[i][j][0]+ "," + lena[i][j][1] + "," + lena[i][j][2] + ")")
+      }
+    }
+</script>
+
+
+<!-- <script>
   /**
    * YOUR TASK
 画图的题：
@@ -52,10 +65,7 @@
 画一个实心的圆
 画一个大小合适的sin(x)的图像
    */
-</script>
-<script>
   // YOUR CODE GOES BELOW
-
   // 实线
   // for(var i = 100; i < 400; i++) {
   //   dot(i, 200, "lime")
@@ -131,28 +141,28 @@
   //   let y =20* Math.sin(i/20) + 150
   //   dot(i, y, "black")
   // }
-  let res = ""
-  for (let i = 0; i < 8; i++) {
-    for (let j = 0; j < 8; j++) {
-      if (i % 2 == 0) {
-        if (j % 2 == 0) {
-          res += "#"
-        } else {
-          res += " "
-        }
-        if(j == 7) res += "\n"
-      }else {
-        if (j % 2 == 0) {
-          res += " "
-        } else {
-          res += "#"
-        }
-        if(j == 7) res += "\n"
-      }
+  // let res = ""
+  // for (let i = 0; i < 8; i++) {
+  //   for (let j = 0; j < 8; j++) {
+  //     if (i % 2 == 0) {
+  //       if (j % 2 == 0) {
+  //         res += "#"
+  //       } else {
+  //         res += " "
+  //       }
+  //       if(j == 7) res += "\n"
+  //     }else {
+  //       if (j % 2 == 0) {
+  //         res += " "
+  //       } else {
+  //         res += "#"
+  //       }
+  //       if(j == 7) res += "\n"
+  //     }
 
-    }
-  }
-  console.log(res)
-</script>
+  //   }
+  // }
+  // console.log(res)
+</script> -->
 
 </html>
