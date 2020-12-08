@@ -1,4 +1,4 @@
-var lodash = function() {
+var polikm5 = function() {
   function chunk(arr,size) {
     let temp = []
     let res = []
@@ -15,7 +15,18 @@ var lodash = function() {
     return res
   }
 
+  function compact(arr) {
+    let res = []
+    for(let i = 0; i < arr.length; i++) {
+      if(arr[i]) {
+        res.push(arr[i])
+      }
+    }
+    return res
+  }
+
   return {
-    chunk
+    chunk,
+    compact
   }
 }()
