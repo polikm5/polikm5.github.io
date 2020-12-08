@@ -25,8 +25,40 @@ var polikm5 = function() {
     return res
   }
 
+  function concat(arr,values) {
+    let res = [...arr]
+    let len = arguments.length
+    if(len == 1) {
+      return res
+    }
+    for(let i = 1; i < arguments.length; i++) {
+      if(Array.isArray(arguments[i])) {
+        res.push(...arguments[i])
+      }else {
+        res.push(arguments[i])
+      }
+    }
+    return res
+  }
+
+  function difference(arr,values) {
+    let res = []
+    for(let i = 0; i < arr.length; i++) {
+      for(let j = 0; j < values.length; j++) {
+        if(arr[i] == values[j]) {
+          break
+        }
+        if(j == values.length - 1){
+          res.push(arr[i])
+        }
+      }
+    }
+    return res
+  }
   return {
     chunk,
-    compact
+    compact,
+    concat,
+    difference
   }
 }()
