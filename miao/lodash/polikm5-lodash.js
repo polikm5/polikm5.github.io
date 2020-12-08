@@ -77,7 +77,7 @@ var polikm5 = function() {
         if(comparator(arr[i],values[j])) {
           break
         }
-        if(j == values.length) {
+        if(j == values.length - 1) {
           result.push(arr[i])
         }
       }
@@ -165,12 +165,12 @@ var polikm5 = function() {
         let objA = arr[i]
         let propA = Object.getOwnPropertyNames(objA)
         let propB = Object.getOwnPropertyNames(preciate)
-        for(let i = 0; i < propA.length; i++) {
-          let propName = propA[i]
+        for(let j = 0; j < propA.length; j++) {
+          let propName = propA[j]
           if(objA[propName] != preciate[propName]){
             break
           }
-          if(i == propA.length - 1) {
+          if(j == propA.length - 1) {
             return i
           }
         }
@@ -242,7 +242,71 @@ var polikm5 = function() {
     return res
   }
 
+  function fromPairs(pairs) {
+    let res = {}
+    for(let i = 0; i < pairs.length; i++) {
+      let val = pairs[i]
+      res[val[0]] = val[1]
+    }
+    return res
+  }
 
+  function head(arr) {
+    return arr[0]
+  }
+
+  function indexOf(arr,val,fromIndex = 0) {
+    let result = -1
+    if(fromIndex >= 0) {
+      for(let i = fromIndex; i < arr.length; i++) {
+        if(arr[i] === val) {
+          result = i
+          break
+        }
+      }
+    }else {
+      for(let i = (arr.length + fromIndex); i >= 0; i--) {
+        if(arr[i] === val) {
+          result = i
+          break
+        }
+      }
+    }
+    return result
+  }
+
+  function initial(arr) {
+    return arr.slice(0,arr.length - 1)
+  }
+
+  function join(arr,separator = ",") {
+    let str = ""
+    for(let i = 0; i < arr.length; i++) {
+      str += arr[i]
+      if(i !== arr.length - 1) {
+        str +=  separator
+      }
+    }
+    return str
+  }
+
+  function last(arr) {
+    if(arr.length == 0){
+      return []
+    }
+    return arr[arr.length - 1]
+  }
+
+  function lastIndexOf(arr,val, fromIndex = arr.length - 1) {
+    let result = -1
+    for(let i = fromIndex; i >= 0; i--) {
+      if(arr[i] === val) {
+        result = i
+        break
+      }
+    }
+    return result
+  }
   return {
     chunk,
     compact,
@@ -257,6 +321,13 @@ var polikm5 = function() {
     findLastIndex,
     flatten,
     flattenDeep,
-    flattenDepth
+    flattenDepth,
+    fromPairs,
+    head,
+    indexOf,
+    initial,
+    join,
+    last,
+    lastIndexOf
   }
 }()
