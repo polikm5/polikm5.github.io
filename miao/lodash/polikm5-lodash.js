@@ -749,14 +749,38 @@ var polikm5 = function() {
   }
 
   function nth(arr,n) {
-    if(n < 0 && n > arr.length) {
-      n = n % arr.length + arr.length
-    }else if(n < 0) {
+    if(n < 0) {
       n = n + arr.length
     }
     return arr[n]
   }
 
+  function remove(arr,predicate) {
+    let res = []
+    for(let i = 0; i < arr.length; i++) {
+      if(predicate(arr[i])) {
+        res.push(arr[i])
+        arr.splice(i,1)
+        i--
+      }
+    }
+    return res
+  }
+
+  function pull(arr,...values) {
+    remove(arr,(item) => values.includes(item))
+    return arr
+  }
+
+  function pullAll(arr,values) {
+    remove(arr, item => values.includes(item))
+    return arr
+  }
+
+  function pullAllBy(arr,values,iteratee) {
+    let type = checkType(iteratee)
+    
+  }
   return {
     chunk,
     compact,
@@ -798,6 +822,9 @@ var polikm5 = function() {
     intersectionBy,
     intersectionWith,
     isEqual,
-    nth
+    nth,
+    remove,
+    pull,
+    pullAll
   }
 }()
