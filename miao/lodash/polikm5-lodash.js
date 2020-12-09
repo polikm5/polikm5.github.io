@@ -710,9 +710,53 @@ var polikm5 = function() {
     return res
   }
   
-  function intersectionWith(arrs,comparator) {
-
+  function intersectionWith(arr,arrs,comparator) {
+    let res = []
+    for(let i = 0; i < arr.length; i++) {
+      let itemA = arr[i]
+      for(let j = 0; j < arrs.length; j++) {
+        let itemB = arrs[j]
+        if(comparator(itemA,itemB) && !res.includes(itemA)) {
+          res.push(itemA)
+        }
+      }
+    }
+    return res
   }
+
+  function isEqual(x,y) {
+    // 判断string,number,boolean
+    if(x === y) {
+      return true
+    }
+    // 判断NaN
+    if(x !== x && y !== y) {
+      return true
+    }
+    if(x === null || y === null || typeof x !== 'object' || typeof y !== 'object') {
+      return false
+    }
+    // 只枚举自身属性
+    if(Object.keys(x).length !== Object.keys(y).length) {
+      return false
+    }
+    for(let key in x) {
+      if(!(key in y) || !isEqual(x[key],y[key])) {
+        return false
+      }
+    }
+    return true
+  }
+
+  function nth(arr,n) {
+    if(n < 0 && n > arr.length) {
+      n = n % arr.length + arr.length
+    }else if(n < 0) {
+      n = n + arr.length
+    }
+    return arr[n]
+  }
+
   return {
     chunk,
     compact,
@@ -752,6 +796,8 @@ var polikm5 = function() {
     dropWhile,
     intersection,
     intersectionBy,
-    intersectionWith
+    intersectionWith,
+    isEqual,
+    nth
   }
 }()
