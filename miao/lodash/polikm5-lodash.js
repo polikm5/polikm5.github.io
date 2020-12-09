@@ -779,7 +779,31 @@ var polikm5 = function() {
 
   function pullAllBy(arr,values,iteratee) {
     let type = checkType(iteratee)
-    
+    for(let i = 0; i < arr.length; i++) {
+      for(let j = 0; j < values.length; j++) {
+        let itemA = arr[i]
+        let itemB = values[j]
+        if(itemA[iteratee] && itemB[iteratee] && itemA[iteratee] === itemB[iteratee]) {
+          arr.splice(i,1)
+          i--
+        }
+      }
+    }
+    return arr
+  }
+
+  function pullAllWith(arr,values,compactor) {
+    for(let i = 0; i < arr.length; i++) {
+      for(let j = 0; j < values.length; j++) {
+        let itemA = arr[i]
+        let itemB = values[j]
+        if(compactor(itemA,itemB)) {
+          arr.splice(i,1)
+          i--
+        }
+      }
+    }
+    return arr
   }
   return {
     chunk,
@@ -825,6 +849,8 @@ var polikm5 = function() {
     nth,
     remove,
     pull,
-    pullAll
+    pullAll,
+    pullAllBy,
+    pullAllWith
   }
 }()
