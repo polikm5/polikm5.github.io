@@ -55,12 +55,20 @@ var polikm5 = function() {
     return res
   }
 
-  function differenceBy(arr,values,preciate) {
+  function differenceBy(arr,values,preciate = null) {
     let res = []
     let type = Object.prototype.toString.call(preciate)
+    if(type == "[object Array]") {
+      console.log(arguments)
+      let temp = [].slice.call(arguments)
+      temp.shift()
+      values = flattenDeep(temp)
+      preciate = null
+      console.log(values)
+    }
     for(let i = 0; i < arr.length; i++) {
       for(let j = 0; j < values.length; j++) {
-        if(type == "[object Function]") {
+        if(preciate != null && type == "[object Function]") {
           if(preciate(arr[i]) !== preciate(values[j])) {
             if(j == values.length - 1) {
               res.push(arr[i])
@@ -69,30 +77,19 @@ var polikm5 = function() {
             break
           }
         }
-        if(type == "[object Object]") {
-          let objA = arr[i]
-          let propA = Object.getOwnPropertyNames(objA)
-          let propB = Object.getOwnPropertyNames(preciate)
-          for(let j = 0; j < propB.length; j++) {
-            let propName = propB[j]
-            if(objA[propName] != preciate[propName]){
-              break
-            }
-            if(j == propB.length - 1) {
-              return [arr[i]]
-            }
-          }
-        }
-        if(type == "[object Array]") {
-          let item = arr[i]
-          if(item[preciate[0]] == preciate[1]) {
-            return [arr[i]]
-          }
-        }
-        if(type == "[object String]") {
+        if(preciate != null && type == "[object String]") {
           let item = arr[i]
           let valueItem = values[j]
           if(item[preciate] !== valueItem[preciate]) {
+            if(j == values.length - 1) {
+              res.push(arr[i])
+            }
+          }else {
+            break
+          }
+        }
+        if(preciate == null) {
+          if(arr[i] !== values[j]) {
             if(j == values.length - 1) {
               res.push(arr[i])
             }
@@ -440,7 +437,7 @@ var polikm5 = function() {
     for(let i = 0; i < arr.length; i++) {
       if(type == "[object Function]") {
         if(preciate(arr[i])) {
-          return [...arr[i]]
+          return arr[i]
         }
       }
       if(type == "[object Object]") {
@@ -453,20 +450,20 @@ var polikm5 = function() {
             break
           }
           if(j == propB.length - 1) {
-            return [...arr[i]]
+            return arr[i]
           }
         }
       }
       if(type == "[object Array]") {
         let item = arr[i]
         if(item[preciate[0]] == preciate[1]) {
-          return [...arr[i]]
+          return arr[i]
         }
       }
       if(type == "[object String]") {
         let item = arr[i]
         if(item[preciate] == true) {
-          return [...arr[i]]
+          return arr[i]
         }
       }
     }
