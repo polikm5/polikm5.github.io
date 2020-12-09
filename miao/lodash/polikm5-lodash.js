@@ -618,6 +618,63 @@ var polikm5 = function() {
     }
     return res
   }
+
+  function dropWhile(arr,predicate) {
+    let type = checkType(predicate)
+    let res = []
+    for(let i = 0; i < arr.length; i++) {
+      let item = arr[i]
+      if(type == "[object Function]") {
+        if(predicate(arr[i]) == false) {
+          res.push(arr[i])
+        }
+      }
+      if(type == "[object Object]") {
+        let propA = Object.getOwnPropertyNames(item)
+        let propB = Object.getOwnPropertyNames(predicate)
+        for(let j = 0; j < propB.length; j++) {
+          let propName = propB[j]
+          if(item[propName] !== predicate[propName]) {
+            res.push(item)
+          }
+            break
+        }
+      }
+      if(type == "[object Array]") {
+        if(item[predicate[0]] !== predicate[1]){
+          res.push(arr[i])
+        }
+      }
+      if(type == "[object String]") {
+        let propA = Object.getOwnPropertyNames(item)
+        for(let i = 0; i < propA.length; i++){
+          if(propA[i] !== predicate) {
+            res.push(item)
+          }
+          break
+        }
+      }
+    }
+    return res
+  }
+
+  function intersection(...arrs) {
+    let res = []
+    let firstArr = arrs[0]
+    for(let i = 0; i < firstArr.length; i++) {
+      for(let j = 1; j < arrs.length; j++) {
+        if(!arrs[j].includes(firstArr[i])) {
+          break
+        }
+        if(j == arrs.length - 1) {
+          res.push(firstArr[i])
+        }
+      }
+    }
+    return res
+    
+  }
+  
   return {
     chunk,
     compact,
@@ -653,6 +710,8 @@ var polikm5 = function() {
     sum,
     sumBy,
     checkType,
-    dropRightWhile
+    dropRightWhile,
+    dropWhile,
+    intersection
   }
 }()
