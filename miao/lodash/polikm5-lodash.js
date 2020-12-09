@@ -577,6 +577,47 @@ var polikm5 = function() {
     return res
   }
 
+
+  function checkType(val) {
+    return Object.prototype.toString.call(val)
+  }
+
+  function dropRightWhile(arr,predicate) {
+    let type = checkType(predicate)
+    let res = []
+    for(let i = 0; i < arr.length; i++) {
+      if(type == "[object Function]") {
+        if(predicate(arr[i]) == false) {
+          res.push(arr[i])
+        }
+      }
+      if(type == "[object Object]") {
+        let item = arr[i]
+        let propA = Object.getOwnPropertyNames(item)
+        let propB = Object.getOwnPropertyNames(predicate)
+        for(let j = 0; j < propB.length; j++) {
+          let propName = propB[j]
+          if(item[propName] !== predicate[propName]) {
+            res.push(item)
+          }
+            break
+        }
+      }
+      if(type == "[object Array]") {
+        let item = arr[i]
+        if(item[predicate[0]] !== predicate[1]){
+          res.push(arr[i])
+        }
+      }
+      if(type == "[object String]") {
+        let item = arr[i]
+        if(predicate in item) {
+          res.push(arr[i])
+        }
+      }
+    }
+    return res
+  }
   return {
     chunk,
     compact,
@@ -610,6 +651,8 @@ var polikm5 = function() {
     min,
     minBy,
     sum,
-    sumBy
+    sumBy,
+    checkType,
+    dropRightWhile
   }
 }()
