@@ -809,6 +809,10 @@ var polikm5 = function() {
   function union(...arrs) {
     return [...new Set(flattenDeep([...arrs]))]
   }
+
+  function unionBy(arrs,iteratee) {
+    
+  }
   return {
     chunk,
     compact,
@@ -856,6 +860,7 @@ var polikm5 = function() {
     pullAll,
     pullAllBy,
     pullAllWith,
-    union
+    union,
+    unionBy
   }
 }()
