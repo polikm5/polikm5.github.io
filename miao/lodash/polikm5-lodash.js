@@ -674,7 +674,45 @@ var polikm5 = function() {
     return res
     
   }
+
+  function intersectionBy(arr,...iteratee) {
+    let res = []
+    let firstArr = arr
+    let otherArr
+    let predicate
+    for(let i = 0; i < iteratee.length; i++) {
+      if(Array.isArray(iteratee[i])) {
+        otherArr = iteratee[i]
+      }else {
+        predicate = iteratee[i]
+      }
+    }
+    let type = checkType(predicate)
+    for(let i = 0; i < firstArr.length; i++) {
+      for(let j = 0; j < otherArr.length; j++) {   
+        if(type == "[object Function]") {
+          if(predicate(firstArr[i]) === predicate(otherArr[j])) {
+            res.push(firstArr[i])
+          }
+        }
+        if(type == "[object String]") {
+          let item = arr[i]
+          let itemB = otherArr[j]
+          let propA = item[predicate]
+          let propB = itemB[predicate]
+          if(propA === propB) {
+            res.push(item)
+            break
+          }
+        }
+      }
+    }
+    return res
+  }
   
+  function intersectionWith(arrs,comparator) {
+
+  }
   return {
     chunk,
     compact,
@@ -712,6 +750,8 @@ var polikm5 = function() {
     checkType,
     dropRightWhile,
     dropWhile,
-    intersection
+    intersection,
+    intersectionBy,
+    intersectionWith
   }
 }()
