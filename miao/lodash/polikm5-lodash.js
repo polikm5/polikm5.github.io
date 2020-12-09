@@ -810,8 +810,62 @@ var polikm5 = function() {
     return [...new Set(flattenDeep([...arrs]))]
   }
 
-  function unionBy(arrs,iteratee) {
-    
+  function unionBy(arrs,...iteratee) {
+    let arr = iteratee[0]
+    iteratee = iteratee[1]
+    let type = checkType(iteratee)
+    let res = [...arrs]
+    for(let i = 0; i < arr.length; i++) {
+      for(let j = 0; j < res.length; j++) {
+        if(type == "[object Function]") {
+          if(iteratee(arr[i]) == iteratee(res[j])) {
+            break
+          }
+          if(j == res.length - 1) {
+            res.push(arr[i])
+          }
+        }
+        if(type == "[object String]") {
+          let itemRes = res[j]
+          let itemArr = arr[i]
+          if(itemRes[iteratee] === itemArr[iteratee]) {
+            break
+          }
+          if(j == res.length - 1) {
+            res.push(arr[i])
+          }
+        }
+      }
+    }
+    return res
+  }
+
+  function uniq(arr) {
+    return [...new Set(arr)]
+  }
+
+  function uniqBy(arr,iteratee) {
+    let type = checkType(iteratee)
+    let res = [arr[0]]
+    let rest = arr.slice(1)
+    return unionBy(res,rest,iteratee)
+  }
+  
+  function zip(...arrs) {
+    let res = []
+    for(let j = 0; j < arrs[0].length; j++) {
+      let temp = []
+      for(let i = 0; i < arrs.length; i++) {
+        temp.push(arrs[i][j])
+      }
+      res.push(temp)
+    }
+    return res
+  }
+
+  function unzip(arr) {
+    return zip(...arr)
+
   }
   return {
     chunk,
@@ -861,6 +915,10 @@ var polikm5 = function() {
     pullAllBy,
     pullAllWith,
     union,
-    unionBy
+    unionBy,
+    uniq,
+    uniqBy,
+    zip,
+    unzip,
   }
 }()
