@@ -953,8 +953,41 @@ var polikm5 = function() {
     }
     return res
   }
-  
-  return {
+
+  function groupBy(collection,iteratee) {
+    let type = checkType(iteratee)
+    let res = {}
+    let afterItem
+    for(let item of collection) {
+      if(type == "[object Function]") {
+        afterItem = iteratee(item)
+      }
+      if(type == "[object String]") {
+        afterItem = item[iteratee]
+      }
+      let val = res[afterItem]
+      val == undefined ? res[afterItem] = [item] : res[afterItem].push(item)
+    }
+    return res
+  }
+
+  function keyBy(collection, iteratee) {
+    let type = checkType(iteratee)
+    let res = {}
+    let afterItem
+    for(let item of collection) {
+      if(type == "[object Function]") {
+        afterItem = iteratee(item)
+      }
+      if(type == "[object String]"){
+        afterItem = item[iteratee]
+      }
+      res[afterItem] = item
+    }
+    return res
+  }
+
+  return { 
     chunk,
     compact,
     concat,
@@ -1014,5 +1047,7 @@ var polikm5 = function() {
     flatMapDeep,
     flatMapDepth,
     forEach,
+    groupBy,
+    keyBy,
   }
 }()
