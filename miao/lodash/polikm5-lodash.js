@@ -626,8 +626,10 @@ var polikm5 = function() {
       let item = arr[i]
       if(type == "[object Function]") {
         if(predicate(arr[i]) == false) {
-          res.push(arr[i])
+          res.push(arr.slice(i))
+          break
         }
+        continue
       }
       if(type == "[object Object]") {
         let propA = Object.getOwnPropertyNames(item)
@@ -783,7 +785,7 @@ var polikm5 = function() {
       for(let j = 0; j < values.length; j++) {
         let itemA = arr[i]
         let itemB = values[j]
-        if(itemA[iteratee] && itemB[iteratee] && itemA[iteratee] === itemB[iteratee]) {
+        if(itemA && itemB &&itemA[iteratee] && itemB[iteratee] && itemA[iteratee] === itemB[iteratee]) {
           arr.splice(i,1)
           i--
         }
