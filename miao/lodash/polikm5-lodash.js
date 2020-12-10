@@ -626,7 +626,7 @@ var polikm5 = function() {
       let item = arr[i]
       if(type == "[object Function]") {
         if(predicate(arr[i]) == false) {
-          res.push(arr.slice(i))
+          res.push(...arr.slice(i))
           break
         }
         continue
@@ -867,8 +867,93 @@ var polikm5 = function() {
 
   function unzip(arr) {
     return zip(...arr)
-
   }
+
+  function without(arr,...values) {
+    let res = []
+    for(let i = 0; i < arr.length; i++) {
+      if(!values.includes(arr[i])) {
+        res.push(arr[i])
+      }
+    }
+    return res
+  }
+
+  function xor(...arrs) {
+    let arr = flattenDeep(arrs)
+    let res = []
+    let map = new Map()
+    for(let i = 0; i < arr.length; i++) {
+      let val = map.get(arr[i])
+      map.set(arr[i],val == undefined ? 0 : 1)
+    }
+    for(let i = 0; i < arr.length; i++) {
+      let val = map.get(arr[i])
+      if(val == 0) {
+        res.push(arr[i])
+      }
+    }
+    return res
+  }
+
+  function countBy(collection, iteratee) {
+    let type = checkType(iteratee)
+    let res = {}
+    for(let item of collection) {
+      if(type == "[object Function]") {
+        let afterItem = iteratee(item)
+        let val = res[afterItem]
+        res[afterItem] = val == undefined ? 1 : val + 1
+      }
+      if(type == "[object String]") {
+        let afterItem = item[iteratee]
+        let val = res[afterItem]
+        res[afterItem] = val == undefined ? 1 : val + 1
+      }
+    }
+    return res
+  }
+
+  function flatMap(collection, iteratee) {
+    let res = []
+    for(let item of collection) {
+      res.push(iteratee(item))
+    }
+    return flattenDeep(res)
+  }
+
+  function flatMapDeep(collection, iteratee) {
+    let res = []
+    for(let item of collection) {
+      res.push(iteratee(item))
+    }
+    return flattenDeep(res)
+  }
+
+  function flatMapDepth(collection,iteratee, depth = 1) {
+    let res = []
+    for(let item of collection) {
+      res.push(iteratee(item))
+    }
+    return flattenDepth(res,depth)
+  }
+
+  function forEach(collection, iteratee) {
+    let type = checkType(collection)
+    let res = type == "[object Array]" ? [] : {}
+    for(let item in collection) {
+      if(type == "[object Array]") {
+        iteratee(collection[item],item,collection)
+        res.push(collection[item])
+      }
+      if(type == "[object Object]") {
+        iteratee(collection[item],item,collection)
+        res[item] = collection[item]
+      }
+    }
+    return res
+  }
+  
   return {
     chunk,
     compact,
@@ -922,5 +1007,12 @@ var polikm5 = function() {
     uniqBy,
     zip,
     unzip,
+    without,
+    xor,
+    countBy,
+    flatMap,
+    flatMapDeep,
+    flatMapDepth,
+    forEach,
   }
 }()
