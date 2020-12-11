@@ -1,4 +1,32 @@
 var polikm5 = function() {
+
+  // 处理传进来的iteratee
+  // qhmnb
+  function handleIteratee(iteratee) {
+    let type = checkType(iteratee)
+    if(type == "[object Function]") {
+      return iteratee
+    }
+    if(type == "[object String]") {
+      let splited = iteratee.split(".")
+      if(splited.length == 1) {
+        return val => val[iteratee]
+        }
+      return val => splited.reduce((ret, cur) => ret[cur],val)
+    }
+    if(type == "[object Array]") {
+      // 返回相等
+      return val => val[iteratee[0]] === iteratee[1]
+    }
+    if(type == "[object Object]") {
+      let f = matches.bind(null,iteratee)()
+      return val => f(val)
+    }
+    if(type == "[object RegExp]") {
+      return val => iteratee.test(val)
+    }
+  }
+
   function chunk(arr,size) {
     let temp = []
     let res = []
@@ -987,6 +1015,74 @@ var polikm5 = function() {
     return res
   }
 
+
+  /**
+   * @descripttion: 创建一个数组，值是iteratee(迭代函数)遍历集合中的每一个元素返回的结果。
+   * @name: 
+   * @param {*} collection
+   * @param {*} iteratee
+   * @return {new Array}
+   */
+  function map(collection, iteratee) {
+    let res = []
+    let collectionType = checkType(collection)
+      iteratee = handleIteratee(iteratee)
+    if(collectionType == "[object Array]") {
+      for(let item of collection) {
+        res.push(iteratee(item))
+      }
+    }
+    if(collectionType == "[object Object]") {
+      for(let item in collection) {
+        res.push(iteratee(collection[item]))
+      }
+    }
+    return res
+  }
+
+
+  /**
+   * @descripttion: 将数组分成两组，第一组是由断言函数返回为真值的元素，第二组返回为false的元素
+   * @name: 
+   * @param {(Array|Object)} collection
+   * @param {Function} predicate
+   * @return {new Array}
+   */
+  function partition(collection,predicate) {
+    let res = []
+    let tempT = []
+    let tempF = []
+    let iteratee = handleIteratee(predicate)
+    console.log(iteratee)
+    for(let item of collection) {
+      if(iteratee(item) == true) {
+        tempT.push(item)
+      }else if(iteratee(item) == false){
+        tempF.push(item)
+      }
+    }
+    res.push(tempT)
+    res.push(tempF)
+    return res
+  }
+
+  /**
+   * @descripttion: 创建一个深比较的方法来比较对象和source对象，如果给定的对象拥有相同的属性则返回true否则为false
+   * @name: 
+   * @param {obj} source
+   * @return {boolean}
+   */
+  function matches(source) {
+    return function(obj) {
+      for(let key in source) {
+        if(!obj[key] || !isEqual(source[key],obj[key])) {
+          return false
+        }else {
+          return true
+        }
+      }
+    }
+  }
   return { 
     chunk,
     compact,
@@ -1049,5 +1145,8 @@ var polikm5 = function() {
     forEach,
     groupBy,
     keyBy,
+    map,
+    partition,
+    matches,
   }
 }()
