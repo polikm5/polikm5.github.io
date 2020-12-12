@@ -1077,10 +1077,9 @@ var polikm5 = function() {
       for(let key in source) {
         if(!obj[key] || !isEqual(source[key],obj[key])) {
           return false
-        }else {
-          return true
         }
       }
+      return true
     }
   }
 
@@ -1226,6 +1225,164 @@ var polikm5 = function() {
       return res
     }
   }
+
+  /**
+   * @descripttion: Returns true if any element passes the predicate check, else false.
+   * @param {Array|Object} collection
+   * @param {Function} predicate
+   * @return {boolean}  Returns true if any element passes the predicate check, else false.
+   */
+  function some(collection,predicate) {
+    let iteratee = handleIteratee(predicate)
+    for(let item of collection) {
+      if(iteratee(item)) {
+        return true
+      }
+    }
+    return false
+  }
+
+
+  /**
+   * @descripttion: 创建一个新数组，每个collection中的元素通过迭代函数升序排序
+   * @param {Array|Object} collection
+   * @param {...(Function|Function[])} iteratee
+   * @return {Array}Returns the new sorted array. 
+   */
+  function sortBy(collection,iteratee) {
+    
+  }
+
+  /**
+   * @descripttion: 推迟调用func，直到当前堆栈清理完毕。调用时，任何附加的参数会传给func
+   * @param {Function} func
+   * @param {...*} args
+   * @return {number}  Returns the timer id.
+   */
+  function defer(func,...args) {
+    var id = setTimeout(func,1,...args)
+    return id
+  }
+
+  /**
+   * @descripttion: 推迟调用func，直到当前堆栈清理完毕。调用时，任何附加的参数会传给func
+   * @param {Function} func
+   * @param {number} wait
+   * @param {...*} args
+   * @return {number} Returns the timer id.
+   */
+  function delay(func,wait,...args) {
+    var id = setTimeout(func,wait,...args)
+    return id
+  }
+
+  /**
+   * @descripttion: 判断是否是arguments对象
+   * @param {*} value
+   * @return {boolean} Returns true if value is an arguments object, else false.
+   */
+  function isArguments(value) {
+    return checkType(value) === "[object Arguments]"
+  }
+
+  /**
+   * @descripttion: 判断是否是数组
+   * @param {*} value
+   * @return {boolean} Returns true if value is an array, else false.
+   */
+  function isArray(value) {
+    return checkType(value) === "[object Array]"
+  }
+
+  /**
+   * @descripttion: 判断是否是ArrayBuffer对象
+   * @param {*} value
+   * @return {boolean}Returns true if value is an array buffer, else false.
+   */
+  function isArrayBuffer(value) {
+    return checkType(value) === "[object ArrayBuffer]"
+  }
+
+  /**
+   * @descripttion: 判断是否是isArrayLike对象
+   * @param {*} value
+   * @return {boolean}Returns true if value is array-like, else false.
+   */
+  function isArrayLike(value) {
+    let type = checkType(value) 
+    if(type == "[object Number]" || type == "[object Function]") {
+      return false
+    }
+    if(value.length >= 0 && value.length <= Number.MAX_SAFE_INTEGER) {
+      return true
+    }
+  }
+
+
+  /**
+   * @descripttion: 方法与isArrayLike一样 除了还要判断值是否是对象以外
+   * @param {*} value
+   * @return {boolean}Returns true if value is an array-like object, else false.
+   */
+  function isArrayLikeObject(value) {
+    let type = typeof value
+    if(type == "object" && value.length >= 0 && value.length <= Number.MAX_SAFE_INTEGER) {
+      return true
+    }else {
+      return false
+    }
+  }
+
+  /**
+   * @descripttion: 判断是否是boolean对象
+   * @param {*} value
+   * @return {boolean}Returns true if value is a boolean, else false.
+   */
+  function isBoolean(value) {
+    return checkType(value) === "[object Boolean]"
+  }
+
+  /**
+   * @descripttion: 判断是否是日期对象
+   * @param {*} value
+   * @return {boolean}  Returns true if value is a date object, else false.
+   */
+  function isDate(value) {
+    return checkType(value) === "[object Date]"
+  }
+
+  /**
+   * @descripttion: 判断是否是HTML对象
+   * @param {*} value
+   * @return {boolean}Returns true if value is a DOM element, else false.
+   */
+  function isElement(value) {
+    return checkType(value) === "[object HTMLBodyElement]"
+  }
+
+  /**
+   * @descripttion: 
+   * @param {*} value
+   * @return {boolean} Returns true if value is empty, else false.
+   */
+  function isEmpty(value) {
+    let type = checkType(value)
+    let temp = []
+    if(type === "[object Array]") {
+      if(value.length > 0 ) {
+        return false
+      }
+    }
+    if(type === "[object Object]") {
+      for(let item in value) {
+        temp.push(item)
+      }
+      if(temp.length > 0) {
+        return false
+      }
+    }
+    return true
+  }
   return { 
     chunk,
     compact,
@@ -1297,5 +1454,18 @@ var polikm5 = function() {
     sample,
     shuffle,
     size,
+    some,
+    sortBy,
+    defer,
+    delay,
+    isArguments,
+    isArray,
+    isArrayBuffer,
+    isArrayLike,
+    isArrayLikeObject,
+    isBoolean,
+    isDate,
+    isElement,
+    isEmpty,
   }
 }()
