@@ -27,6 +27,39 @@ var polikm5 = function() {
     }
   }
 
+  /**
+   * @descripttion: 创建一个深比较的方法来比较对象和source对象，如果给定的对象拥有相同的属性则返回true否则为false
+   * @name: 
+   * @param {obj} source
+   * @return {boolean}
+   */
+  function matches(source) {
+    return function(obj) {
+      for(let key in source) {
+        if(!obj[key] || !isEqual(source[key],obj[key])) {
+          return false
+        }
+      }
+      return true
+    }
+  }
+
+    /**
+   * @descripttion: 创建一个深比较的方法来比较对象和source对象，如果给定的对象拥有相同的属性则返回true否则为false
+   * @name: 
+   * @param {obj} source
+   * @return {boolean}
+   */
+  function matchesOnce(source) {
+    return function(obj) {
+      for(let key in source) {
+        if(!obj[key] || !isEqual(source[key],obj[key])) {
+          return false
+        }
+        return true
+      }
+    }
+  }
   function chunk(arr,size) {
     let temp = []
     let res = []
@@ -1066,22 +1099,7 @@ var polikm5 = function() {
     return res
   }
 
-  /**
-   * @descripttion: 创建一个深比较的方法来比较对象和source对象，如果给定的对象拥有相同的属性则返回true否则为false
-   * @name: 
-   * @param {obj} source
-   * @return {boolean}
-   */
-  function matches(source) {
-    return function(obj) {
-      for(let key in source) {
-        if(!obj[key] || !isEqual(source[key],obj[key])) {
-          return false
-        }
-      }
-      return true
-    }
-  }
+
 
   /**
    * @descripttion: 压缩 collection（集合）为一个值，通过 iteratee（迭代函数）遍历 collection（集合）中的每个元素，每次返回的值会作为下一次迭代使用(注：作为iteratee（迭代函数）的第一个参数使用)。 如果没有提供 accumulator，则 collection（集合）中的第一个元素作为初始值
@@ -1435,7 +1453,7 @@ var polikm5 = function() {
    * @param {*} value
    * @return {boolean}Returns true if value is a function, else false.
    */
-  function isFunction(value = function(){}) {
+  function isFunction(value) {
     return checkType(value) === "[object Function]"
   }
 
@@ -1475,6 +1493,132 @@ var polikm5 = function() {
   function isMatch(object,source) {
     let compare = matches(source)
     return compare(object)
+  }
+
+  /**
+   * @descripttion: 和match方法一样，除了object和source的每个参数都要通过迭代函数判断
+   * @param {Object} object
+   * @param {Object} source
+   * @param {Function} customizer
+   * @return {boolean}Returns true if object is a match, else false.
+   */
+  function isMatchWith(object,source,customizer) {
+    if(customizer !== undefined) {
+      for(let item in object) {
+        if(customizer(object[item],source[item]) === false) {
+          return false
+        }
+      }
+      return true
+    }else {
+      return isMathc(object,source)
+    }
+  }
+
+  /**
+   * @descripttion: 判断该值是否为NaN
+   * @param {*} value
+   * @return {boolean} Returns true if value is NaN, else false.
+   */
+  function isNaN(value) {
+    return value !== value
+  }
+
+  /**
+   * @descripttion: 判断该值是否为null或undefined
+   * @param {*} value
+   * @return {boolean}Returns true if value is nullish, else false.
+   */
+  function isNil(value) {
+    return value === null || value === undefined
+  }
+
+  /**
+   * @descripttion: 判断该值是否为null
+   * @param {*} value
+   * @return {boolean} Returns true if value is null, else false.
+   */
+  function isNull(value) {
+    return value === null
+  }
+
+  /**
+   * @descripttion: 判断是否为原始数字类型
+   * @param {*} value
+   * @return {boolean}Returns true if value is a number, else false.
+   */
+  function isNumber(value) {
+    return checkType(value) === "[object Number]"
+  }
+
+  /**
+   * @descripttion: 判断是否为对象类型包含 函数、数组、对象、正则、new出来的基本类型 不包括null
+   * @param {*} value
+   * @return {boolean}Returns true if value is an object, else false.
+   */
+  function isObject(value) {
+    let type = checkType(value)
+    if(value === null) {
+      return false
+    }
+    if(typeof value === "object") {
+      return true
+    }
+    if(type === "[object Function]") {
+      return true
+    }
+    return false
+  }
+
+  /**
+   * @descripttion: 判断value是否为object-like，即不为null并且typeof的值为'object'
+   * @param {*} value
+   * @return {*}
+   */
+  function isObjectLike(value) {
+    if(value === null) {
+      return false
+    }
+    if(typeof value === 'object') {
+      return true
+    }
+    return false
+  }
+
+  /**
+   * @descripttion: 判断value是否为plain 对象，plain对象仅为Object构造器构造或者prototype为null
+   * @param {*} value
+   * @return {boolean}Returns true if value is a plain object, else false.
+   */
+  function isPlainObject(value) {
+    if(value === null || value === undefined) return false
+    let proto = Object.getPrototypeOf(value)
+    return proto === Object.prototype || proto === null
+  }
+
+  /**
+   * @descripttion: 判断value是否为正则对象
+   * @param {*} value
+   * @return {boolean} Returns true if value is a regexp, else false.
+   */
+  function isRegExp(value) {
+    return checkType(value) === "[object RegExp]"
+  }
+
+  /**
+   * @descripttion: 判断value是否为安全的整型
+   * @param {*} value
+   * @return {boolean}Returns true if value is a safe integer, else false.
+   */
+  function isSafeInteger(value) {
+    let type = checkType(value)
+    if(value === Infinity || value === -Infinity) {
+      return false
+    }
+    if(type === "[object Number]" && Math.floor(value) === value) {
+      return true
+    }
+    return false
   }
   return { 
     chunk,
@@ -1568,5 +1712,16 @@ var polikm5 = function() {
     isLength,
     isMap,
     isMatch,
+    matchesOnce,
+    isMatchWith,
+    isNaN,
+    isNil,
+    isNull,
+    isNumber,
+    isObject,
+    isObjectLike,
+    isPlainObject,
+    isRegExp,
+    isSafeInteger,
   }
 }()
