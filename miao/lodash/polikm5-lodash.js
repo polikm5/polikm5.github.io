@@ -1028,8 +1028,8 @@ var polikm5 = function() {
     let collectionType = checkType(collection)
       iteratee = handleIteratee(iteratee)
     if(collectionType == "[object Array]") {
-      for(let item of collection) {
-        res.push(iteratee(item))
+      for(let i = 0; i < collection.length; i++) {
+        res.push(iteratee(collection[i],i,collection))
       }
     }
     if(collectionType == "[object Object]") {
@@ -1082,6 +1082,45 @@ var polikm5 = function() {
         }
       }
     }
+  }
+
+  /**
+   * @descripttion: 压缩 collection（集合）为一个值，通过 iteratee（迭代函数）遍历 collection（集合）中的每个元素，每次返回的值会作为下一次迭代使用(注：作为iteratee（迭代函数）的第一个参数使用)。 如果没有提供 accumulator，则 collection（集合）中的第一个元素作为初始值
+   * @name: 
+   * @param {Array|Object} collection
+   * @param {Function} iteratee
+   * @param {*} accmulator:The initial value.
+   * @return {the accumulated value.}
+   */  
+  function reduce(collection,iteratee,accmulator) {
+    let collectionType = checkType(collection)
+    iteratee = handleIteratee(iteratee)
+    let res
+    if(collectionType == "[object Array]") {
+      res = 0
+      // 说明初始值为undefined
+      if(accmulator != undefined) {
+        res = iteratee(res,accmulator)
+      }
+      for(let i = 0; i < collection.length; i++) {
+        res = iteratee(res,collection[i],i)
+      }
+    }
+    if(collectionType == "[object Object]") {
+      let temp = []
+      for(let key in collection) {
+        temp.push(key)
+      }
+      console.log(temp)
+      if(accmulator != undefined) {
+        for(let i = 0; i < temp.length; i++) {
+          res = iteratee(accmulator,collection[temp[i]],temp[i])
+        }
+      }else {
+        res = collection[temp[0]]
+      }
+    }
+    return res
   }
   return { 
     chunk,
@@ -1148,5 +1187,6 @@ var polikm5 = function() {
     map,
     partition,
     matches,
+    reduce,
   }
 }()
