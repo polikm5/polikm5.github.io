@@ -1521,6 +1521,9 @@ var polikm5 = function() {
    * @return {boolean} Returns true if value is NaN, else false.
    */
   function isNaN(value) {
+    if(typeof value === "object") {
+      return value.valueOf() !== value.valueOf()
+    }
     return value !== value
   }
 
@@ -1619,6 +1622,119 @@ var polikm5 = function() {
       return true
     }
     return false
+  }
+
+
+  /**
+   * @descripttion: 判断value是否为Set对象
+   * @param {*} value
+   * @return {boolean} Returns true if value is a set, else false.
+   */
+  function isSet(value) {
+    return checkType(value) === "[object Set]"
+  }
+
+  /**
+   * @descripttion: 判断value是否为原始string类型
+   * @param {*} value
+   * @return {boolean}Returns true if value is a string, else false.
+   */
+  function isString(value) {
+    return checkType(value) === "[object String]"
+  }
+
+  /**
+   * @descripttion: 判断value是否为symbol类型
+   * @param {*} value
+   * @return {boolean}Returns true if value is a symbol, else false.
+   */
+  function isSymbol(value) {
+    return checkType(value) === "[object Symbol]"
+  }
+
+  /**
+   * @descripttion: 判断value是否为typed array
+   * @param {*} value
+   * @return {boolean}  Returns true if value is a typed array, else false.
+   */
+  function isTypedArray(value) {
+    return checkType(value) === "[object Uint8Array]"
+  }
+
+
+  /**
+   * @descripttion: 判断value是否为undefined
+   * @param {*} value
+   * @return {boolean}  Returns true if value is undefined, else false.
+   */
+  function isUndefined(value) {
+    return checkType(value) === "[object Undefined]"
+  }
+
+  /**
+   * @descripttion: 判断value是否为weakMap类型
+   * @param {*} value
+   * @return {boolean}Returns true if value is a weak map, else false.
+   */
+  function isWeakMap(value) {
+    return checkType(value) === "[object WeakMap]"
+  }
+
+    /**
+   * @descripttion: 判断value是否为weakSet类型
+   * @param {*} value
+   * @return {boolean}Returns true if value is a weak set, else false.
+   */
+  function isWeakSet(value) {
+    return checkType(value) === "[object WeakSet]"
+  }
+
+  /**
+   * @descripttion: 向上取整数字，precision表示取整的小数位
+   * @param {number} number
+   * @param {number} precision
+   * @return {number} Returns the rounded up number.
+   */
+  function ceil(number,precision = 0) {
+    let collection = number.toString().split(".")
+    let digits = collection[1]
+    let num = collection[0]
+    if(precision == 0) {
+      if(Math.floor(number) !== number) {
+        return Math.floor(number) + 1
+      }else {
+        return number
+      }
+    }else if(precision > 0){
+      for(let i = precision; i < digits.length; i++) {
+        if(digits[i] > 0) {
+          digits = "0".repeat(precision - 1) +(digits[precision - 1] == "0" ? "1" : (Number(digits[precision - 1]) + 1).toString())
+          collection[1] = digits
+          break
+        }
+      }
+      return Number(collection.join("."))
+    }else{
+      precision = num.length + precision
+      let res = ""
+      for(let i = 0; i < num.length; i++) {
+        if(i < precision - 1) {
+          res += num[i]
+        }else {
+          if(digits !== undefined) {
+            for(let i = 0; i <digits.legth;i++) {
+              
+            }
+          }
+          if(num[i] > 0) {
+            res += (num[precision - 1] == "0" ? "1" : (Number(num[precision - 1]) + 1).toString())+"0".repeat(num.length - precision) 
+            break
+          }
+        }
+      }
+      collection[0] = res
+      return Number(collection.join("."))
+    }
   }
   return { 
     chunk,
@@ -1723,5 +1839,13 @@ var polikm5 = function() {
     isPlainObject,
     isRegExp,
     isSafeInteger,
+    isSet,
+    isString,
+    isSymbol,
+    isTypedArray,
+    isUndefined,
+    isWeakMap,
+    isWeakSet,
+    ceil,
   }
 }()
