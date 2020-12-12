@@ -1261,7 +1261,7 @@ var polikm5 = function() {
    */
   function defer(func,...args) {
     var id = setTimeout(func,1,...args)
-    return id
+    return id - 1
   }
 
   /**
@@ -1273,7 +1273,7 @@ var polikm5 = function() {
    */
   function delay(func,wait,...args) {
     var id = setTimeout(func,wait,...args)
-    return id
+    return id - 1
   }
 
   /**
@@ -1383,6 +1383,99 @@ var polikm5 = function() {
     }
     return true
   }
+
+  /**
+   * @descripttion: 与isEqual一样除了要用customizer对比每一个值以外
+   * @param {*} value
+   * @param {*} other
+   * @param {Function} customizer
+   * @return {boolean} Returns true if the values are equivalent, else false.
+   */
+  function isEqualWith(value,other,customizer) {
+    if(customizer !== undefined) {
+      for(let i = 0; i < value.length; i++) {
+        if(customizer(value[i],other[i]) === false) {
+          return false
+        }
+      }
+      return true
+    }else {
+      return isEqual(value,other)
+    }
+  }
+
+
+  /**
+   * @descripttion: 判断是否是错误类型的对象
+   * @param {*} value
+   * @return {boolean}  Returns true if value is an error object, else false.
+   */
+  function isError(value) {
+    return checkType(value) === "[object Error]"
+  }
+
+  /**
+   * @descripttion: 判断是否是有限的原始数字
+   * @param {*} value
+   * @return {boolean} Returns true if value is a finite number, else false.
+   */
+  function isFinite(value) {
+    let type = checkType(value)
+    if(type === "[object Number]") {
+      if(value === Infinity || value === -Infinity) {
+        return false
+      }
+      return true
+    }
+    return false
+  }
+
+  /**
+   * @descripttion: 是否是函数
+   * @param {*} value
+   * @return {boolean}Returns true if value is a function, else false.
+   */
+  function isFunction(value = function(){}) {
+    return checkType(value) === "[object Function]"
+  }
+
+  /**
+   * @descripttion: 判断是否是整型
+   * @param {*} value
+   * @return {*}
+   */ 
+  function isInteger(value) {
+    return Math.floor(value) === value && isFinite(value)
+  }
+
+  /**
+   * @descripttion: 判断值是否可以作为类数组的长度
+   * @param {*} value
+   * @return {boolean} Returns true if value is a valid length, else false.
+   */
+  function isLength(value) {
+    return isInteger(value)
+  }
+
+  /**
+   * @descripttion: 判断是否是map对象
+   * @param {*} value
+   * @return {boolean}Returns true if value is a map, else false.
+   */
+  function isMap(value) {
+    return checkType(value) === "[object Map]"
+  }
+
+  /**
+   * @descripttion: 深对比object和source 判断obj中是否包含相等的属性和值
+   * @param {Object} object
+   * @param {Object} source
+   * @return {boolean} Returns true if object is a match, else false
+   */
+  function isMatch(object,source) {
+    let compare = matches(source)
+    return compare(object)
+  }
   return { 
     chunk,
     compact,
@@ -1467,5 +1560,13 @@ var polikm5 = function() {
     isDate,
     isElement,
     isEmpty,
+    isEqualWith,
+    isError,
+    isFinite,
+    isFunction,
+    isInteger,
+    isLength,
+    isMap,
+    isMatch,
   }
 }()
