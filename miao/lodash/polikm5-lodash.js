@@ -1111,7 +1111,6 @@ var polikm5 = function() {
       for(let key in collection) {
         temp.push(key)
       }
-      console.log(temp)
       if(accmulator != undefined) {
         for(let i = 0; i < temp.length; i++) {
           res = iteratee(accmulator,collection[temp[i]],temp[i])
@@ -1121,6 +1120,111 @@ var polikm5 = function() {
       }
     }
     return res
+  }
+
+  /**
+   * @descripttion: 和reduce方法一样除了它的通过迭代函数遍历collection的顺序是从右往前
+   * @param {Array|Object} collection
+   * @param {Function} iteratee
+   * @param {*} accmulator:The initial value.
+   * @return {the accumulated value.}
+   */
+  function reduceRight(collection,iteratee,accmulator) {
+    let collectionType = checkType(collection)
+    iteratee = handleIteratee(iteratee)
+    let accmulatorType = checkType(accmulator)
+    let res
+    if(collectionType == "[object Array]") {
+      res = 0
+      // 说明初始值为undefined
+      if(accmulator != undefined) {
+        if(accmulatorType == "[object Array]") {
+          res = []
+          res = iteratee(res,accmulator)
+        }
+      }
+      for(let i = collection.length - 1; i >= 0; i--) {
+        res = iteratee(res,collection[i],i)
+      }
+    }
+    if(collectionType == "[object Object]") {
+      let temp = []
+      for(let key in collection) {
+        temp.push(key)
+      }
+      if(accmulator != undefined) {
+        for(let i = temp.length - 1; i >= 0; i--) {
+          res = iteratee(accmulator,collection[temp[i]],temp[i])
+        }
+      }else {
+        res = collection[temp[temp.lenth - 1]]
+      }
+    }
+    return res
+  }
+
+  /**
+   * @descripttion: 返回集合元素中断言匹配为假的值
+   * @param {Array|Object} collection
+   * @param {Function} predicate
+   * @return {Array} Returns the new filtered array.
+   */
+  function reject(collection,predicate) {
+    let iteratee = handleIteratee(predicate)
+    let res =[]
+    for(let item of collection) {
+      if(iteratee(item) == false) {
+        res.push(item)
+      }
+    }
+    return res
+  }
+
+  /**
+   * @descripttion: 从collection集合中随机返回一个元素
+   * @param {Array|Object} collection
+   * @return {*}Returns the random element.
+   */
+  function sample(collection) {
+    return collection[Math.floor(Math.random() * collection.length)]
+  }
+
+  /**
+   * @descripttion: 创建一个随机打乱后的数组
+   * @param {Array|Object} collection
+   * @return {Array} Returns the new shuffled array.
+   */
+  function shuffle(collection) {
+    let res = []
+    let i = 0
+    while(i < collection.length) {
+      let random = Math.floor(Math.random() * collection.length)
+      if(res[random] == undefined) {
+        res[random] = collection[i]
+        i++
+      }
+    }
+    return res
+  }
+
+  /**
+   * @descripttion: 获取集合中的长度，包含类数组，可枚举对象
+   * @param {Array|Object|string} collection
+   * @return {number}Returns the collection size.
+   */
+  function size(collection) {
+    let res = 0
+    let collectionType = checkType(collection)
+    if(collectionType == "[object Array]" || collectionType == "[object String]") {
+      res = collection.length
+      return res
+    }
+    if(collectionType == "[object Object]") {
+      for(let key in collection) {
+        res++
+      }
+      return res
+    }
   }
   return { 
     chunk,
@@ -1188,5 +1292,10 @@ var polikm5 = function() {
     partition,
     matches,
     reduce,
+    reduceRight,
+    reject,
+    sample,
+    shuffle,
+    size,
   }
 }()
