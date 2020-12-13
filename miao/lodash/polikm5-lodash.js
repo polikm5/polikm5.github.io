@@ -1736,6 +1736,48 @@ var polikm5 = function() {
       return Number(collection.join("."))
     }
   }
+
+  /**
+   * @descripttion: 分配source对象的可枚举属性到目标对象上。应用规则是从左到右，下一个属性会覆盖上一个对象的属性
+   * @param {Object} object
+   * @param {...Object} sources
+   * @return {*}Returns object.
+   */
+  function assignIn(object,...sources) {
+    for(let item of sources) {
+      let val = item
+      // 以数组的形式返回属性名
+      let props = Object.getOwnPropertyNames(val)
+      for(let prop of props) {
+        object[prop] = val[prop]
+      }
+      // 以对象的形式返回Prototype上面的属性 最后一个属性为constructor
+      let prototypeProps = Object.getPrototypeOf(val)
+      for(let i in prototypeProps) {
+        object[i] = prototypeProps[i]
+      }
+    }
+    return object
+  }
+
+  /**
+   * @descripttion: 分配source对象的可枚举对象到目标对象所有为undefined的属性上，一旦设置了相同属性的值，后序的将被忽略掉
+   * @param {Object} object
+   * @param {...Object} sources
+   * @return {Object}Returns object.
+   */
+  function defaults(object,...sources) {
+    // 此时sources是数组 所以用for...of遍历sources
+    for(let obj of sources) {
+      // 返回的是对象 所以使用for...in
+      for(let item in obj) {
+        if(object[item] == undefined) {
+          object[item] = obj[item]
+        }
+      }
+    }
+    return object
+  }
   return { 
     chunk,
     compact,
@@ -1847,5 +1889,7 @@ var polikm5 = function() {
     isWeakMap,
     isWeakSet,
     ceil,
+    assignIn,
+    defaults,
   }
 }()
