@@ -1810,7 +1810,7 @@ var polikm5 = function() {
     for(let i = 0; i < props.length; i++) {
       iteratee(object[props[i]],props[i],object)
     }
-    
+    return object
   }
 
   /**
@@ -1829,6 +1829,7 @@ var polikm5 = function() {
     for(let i = props.length - 1; i >= 0 ; i--) {
       iteratee(object[props[i]],props[i],object)
     }
+    return object
   }
 
     /**
@@ -1843,6 +1844,7 @@ var polikm5 = function() {
     for(let prop of props) {
       iteratee(object[prop],prop,object)
     }
+    return object
   }
 
       /**
@@ -1858,6 +1860,236 @@ var polikm5 = function() {
       let prop = props[i]
       iteratee(object[prop],prop,object)
     }
+    return object
+  }
+
+  /**
+   * @descripttion: 从object中枚举属性并将函数属性名字存储到一个数组中
+   * @param {Object} object
+   * @return {Array} Returns the function names.
+   */
+  function functions(object) {
+    return  Object.getOwnPropertyNames(object)
+  }
+
+  /**
+   * @descripttion: 和functions一样 除了还需要遍历到prototype继承的方法以外
+   * @param {Object} object
+   * @return {Array}Returns the function names.
+   */
+  function functionsIn(object) {
+    let arr = []
+    let propOwn = Object.getOwnPropertyNames(object)
+    let propInherit = Object.getOwnPropertyNames(Object.getPrototypeOf(object))
+    return propOwn.concat(propInherit.slice(1))
+  }
+
+  /**
+   * @descripttion: 获取object路径下的值，如果值  为undefined，那么用defaultValue来替换返回值
+   * @param {*} object
+   * @param {Array|string} path
+   * @param {*} defaultValue ：he value returned for undefined resolved values.
+   * @return {*}Returns the resolved value.
+   */
+  function get(object,path,defaultValue) {
+    let obj = object
+    for(let i = 0; i < path.length;i++) {
+      if(path[i] !== "[" && path[i] !== "]" && path[i] !== ".") {
+        let item = obj[path[i]]
+        if(item !== undefined) {
+          obj = item
+        }else {
+          return defaultValue
+        }
+      }
+    }
+    return obj
+  }
+
+  /**
+   * @descripttion: 检测路径是对象的直接属性，不包含继承的属性
+   * @param {Object} object
+   * @param {Array|string} path
+   * @return {boolean}  Returns true if path exists, else false.
+   */
+  function has(object,path) {
+    let obj = object
+    for(let i = 0; i < path.length; i++) {
+      if(path[i] !== "[" && path[i] !== "]" && path[i] !== ".") {
+        if(obj.hasOwnProperty(path[i])){
+          let item = obj[path[i]]
+          if(item === undefined && !(path[i] in obj)) {
+            return false
+          }
+          if(typeof item == "object"){
+            obj = item
+          }
+        }else {
+          return false
+        }
+      }
+    }
+    return true
+  }
+
+  /**
+   * @descripttion: 检测路径是对象的直接属性和包含继承的属性
+   * @param {Object} object
+   * @param {Array|string} path
+   * @return {boolean}  Returns true if path exists, else false.
+   */
+  function hasIn(object,path) {
+    let obj = object
+    for(let i = 0; i < path.length; i++) {
+      if(path[i] !== "[" && path[i] !== "]" && path[i] !== ".") {
+        let item = obj[path[i]]
+        if(item === undefined && !(path[i] in obj)) {
+          return false
+        }
+        if(typeof item == "object"){
+          obj = item
+        }
+      }
+    }
+    return true
+  }
+
+  /**
+   * @descripttion: 创建一个由object的键值对倒转的对象，如果有重复的值，后面的值会覆盖前面的值
+   * @param {*} object
+   * @return {Object}  Returns the new inverted object.
+   */
+  function invert(object) {
+    let obj = {}
+    for(let item in object) {
+      obj[object[item]] = item
+    }
+    return obj
+  }
+
+  /**
+   * @descripttion: 和invert函数一样除了倒转的值需要以数组存储，并且有相同的key时放进同一个数组中。倒转后的key值需要传进迭代函数得到返回的值
+   * @param {Object} object
+   * @param {Function} iteratee
+   * @return {Object}Returns the new inverted object.
+   */
+  function invertBy(object,iteratee) {
+    let obj = {}
+    for(let item in object) {
+      let val = object[item]
+      obj[val] == undefined ? obj[val] = [item] : obj[val].push(item)
+    }
+    if(iteratee === undefined) {
+      return obj
+    }
+    let iterObj = {}
+    for(let item in obj) {
+      let val = obj[item]
+      item = iteratee(item)
+      iterObj[item] = val
+    }
+    return iterObj 
+  }
+
+  /**
+   * @descripttion: 调用object下的path的方法
+   * @param {Object} object
+   * @param {Array|string} path
+   * @param {...*} args
+   * @return {*}Returns the result of the invoked method.
+   */
+  function invoke(object,path,...args) {
+    let obj = object 
+    let pos = path.lastIndexOf(".")
+    let method = path.slice(pos + 1)
+    path = path.slice(0,pos)
+    for(let i = 0; i < path.length; i++) {
+      if(path[i] !== "[" && path[i] !== "]" && path[i] !== ".") {
+        if(obj.hasOwnProperty(path[i])){
+          let item = obj[path[i]]
+          if(typeof item == "object"){
+            obj = item
+          }
+        }
+      }
+    }
+    return obj[method](...args)
+  }
+
+  /**
+   * @descripttion: 创建一个数组，数组内容为对象自身可枚举的属性名
+   * @param {Object} object
+   * @return {Array} Returns the array of property names.
+   */
+  function keys(object) {
+    let res = []
+    let type = checkType(object)
+    if(type === "[object Object]") {
+      for(let item in object) {
+        if(object.hasOwnProperty(item)) {
+          res.push(item)
+        }
+      }
+    }else if(object["length"] !== undefined) {
+      for(let i = 0; i < object.length; i++) {
+        res.push(i.toString())
+      }
+    }
+    return res
+  }
+
+    /**
+   * @descripttion: 创建一个数组，数组内容为对象自身可枚举的属性名和继承的属性
+   * @param {Object} object
+   * @return {Array} Returns the array of property names.
+   */
+  function keysIn(object) {
+    let res = []
+    let type = checkType(object)
+    if(type === "[object Object]") {
+      for(let item in object) {
+        res.push(item)
+      }
+    }else if(object["length"] !== undefined) {
+      for(let i = 0; i < object.length; i++) {
+        res.push(i.toString())
+      }
+    }
+    return res
+  }
+
+  /**
+   * @descripttion: 创建一个与object相同值的对象，key值通过迭代函数迭代object自身的可枚举属性
+   * @param {Object} object
+   * @param {Function} iteratee
+   * @return {Object}  Returns the new mapped object.
+   */
+  function mapKeys(object,iteratee) {
+    let obj = {}
+    iteratee = handleIteratee(iteratee)
+    for(let item in object) {
+      let val = object[item]
+      let newKey = iteratee(val,item,object)
+      obj[newKey] = val
+    }
+    return obj
+  }
+
+    /**
+   * @descripttion: 创建一个与object相同key的对象，val值通过迭代函数迭代object自身的可枚举属性
+   * @param {Object} object
+   * @param {Function} iteratee
+   * @return {Object}  Returns the new mapped object.
+   */
+  function mapValues(object,iteratee) {
+    let obj = {}
+    iteratee = handleIteratee(iteratee)
+    for(let item in object) {
+      let val = object[item]
+      let newVal = iteratee(val)
+      obj[item] = newVal
+    }
+    return obj
   }
   return { 
     chunk,
@@ -1977,5 +2209,17 @@ var polikm5 = function() {
     forInRight,
     forOwn,
     forOwnRight,
+    functions,
+    functionsIn,
+    get,
+    has,
+    hasIn,
+    invert,
+    invertBy,
+    invoke,
+    keys,
+    keysIn,
+    mapKeys,
+    mapValues,
   }
 }()
