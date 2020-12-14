@@ -2091,6 +2091,81 @@ var polikm5 = function() {
     }
     return obj
   }
+
+  /**
+   * @descripttion: 递归合并sources来源对象自身和继承的可枚举属性到object目标对象
+   * @param {Object} object
+   * @param {...Object} sources
+   * @return {Object} Returns object.
+   */
+  function merge(object,sources) {
+    let objProp = Object.getOwnPropertyNames(object)
+    let sourceProp = Object.getOwnPropertyNames(object)
+    if(objProp[0] == sourceProp[0]) {
+      let source = sources[sourceProp[0]]
+      let obj = object[objProp[0]]
+      for(let i = 0; i < source.length; i++) {
+        let keys = Object.getOwnPropertyNames(source[i])
+        for(let j = 0; j < keys.length; j++) {
+          obj[i][keys[j]] = source[i][keys[j]]
+        }
+      }
+      return object
+    }else {
+      object[sourceProp[0]] = sources[sourceProp[0]]
+      return object
+    }
+  }
+
+  /**
+   * @descripttion: 这个对象由忽略属性之外的object自身和继承的可枚举属性组成
+   * @param {*} object
+   * @param {array} paths
+   * @return {*}
+   */
+  function omit(object, ...paths) {
+    paths = flattenDepth(paths,1)
+    for(let deleteKey of paths) {
+      console.log(deleteKey)
+      if(deleteKey in object) {
+        delete object[deleteKey]
+      }
+    }
+    return object
+  }
+
+  /**
+   * @descripttion: 这个方法创建一个对象，这个对象忽略predicate判断不是真值的属性，右object自身和继承的可枚举属性组成
+   * @param {Object} object
+   * @param {Function} predicate
+   * @return {Object} return new Object
+   */
+  function omitBy(object,predicate) {
+    let iteratee = handleIteratee(predicate) 
+    for(let item in object) {
+      if(iteratee(object[item],item) == true) {
+        delete object[item]
+      }
+    }
+    return object
+  }
+
+  /**
+   * @descripttion: 创建一个从object中选中属性的对象
+   * @param {Object} object
+   * @param {*} props
+   * @return {*} return new object
+   */
+  function pick(object,...props) {
+    let obj = {}
+    props = flattenDepth(props,1)
+    for(let item of props) {
+      if(item in object) {
+        obj[item] = object[item]
+      }
+    }
+    return obj
+  }
   return { 
     chunk,
     compact,
@@ -2221,5 +2296,9 @@ var polikm5 = function() {
     keysIn,
     mapKeys,
     mapValues,
+    merge,
+    omit,
+    omitBy,
+    pick,
   }
 }()
