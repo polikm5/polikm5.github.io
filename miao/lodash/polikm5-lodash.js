@@ -1778,6 +1778,87 @@ var polikm5 = function() {
     }
     return object
   }
+
+  /**
+   * @descripttion: 和find函数一样，除了断言函数匹配到第一个为true时直接返回
+   * @param {*} object
+   * @param {Function} predicate
+   * @return {*}Returns the key of the matched element, else undefined.
+   */
+  function findKey(object,predicate) {
+    let iteratee = handleIteratee(predicate)
+    for(let obj in object) {
+      if(iteratee(object[obj]) == true) {
+        return obj
+      }
+    }
+  }
+
+  /**
+   * @descripttion: 迭代对象中的每个拥有的和继承的可枚举的属性名
+   * @param {Object} object
+   * @param {Function} iteratee
+   * @return {Object}Returns object.
+   */
+  function forIn(object,iteratee) {
+    iteratee = handleIteratee(iteratee)
+    // 自身属性
+    let propOwn = Object.getOwnPropertyNames(object)
+    // prototype的属性
+    let propInherit = Object.getOwnPropertyNames(Object.getPrototypeOf(object))
+    let props = propOwn.concat(propInherit.slice(1))
+    for(let i = 0; i < props.length; i++) {
+      iteratee(object[props[i]],props[i],object)
+    }
+    
+  }
+
+  /**
+   * @descripttion: 和forIn函数一样 除了迭代顺序是从右往左以外
+   * @param {Object} object
+   * @param {Function} iteratee
+   * @return {Object}Returns object.
+   */
+  function forInRight(object,iteratee) {
+    iteratee = handleIteratee(iteratee)
+    // 自身属性
+    let propOwn = Object.getOwnPropertyNames(object)
+    // prototype的属性
+    let propInherit = Object.getOwnPropertyNames(Object.getPrototypeOf(object))
+    let props = propOwn.concat(propInherit.slice(1))
+    for(let i = props.length - 1; i >= 0 ; i--) {
+      iteratee(object[props[i]],props[i],object)
+    }
+  }
+
+    /**
+   * @descripttion: 只迭代自身的属性，不包含prototype继承的属性
+   * @param {Object} object
+   * @param {Function} iteratee
+   * @return {Object}Returns object.
+   */
+  function forOwn(object,iteratee) {
+    iteratee = handleIteratee(iteratee)
+    let props = Object.getOwnPropertyNames(object)
+    for(let prop of props) {
+      iteratee(object[prop],prop,object)
+    }
+  }
+
+      /**
+   * @descripttion: 跟forOwn函数一样，除了迭代顺序是从右往走以外
+   * @param {Object} object
+   * @param {Function} iteratee
+   * @return {Object}Returns object.
+   */
+  function forOwnRight(object,iteratee) {
+    iteratee = handleIteratee(iteratee)
+    let props = Object.getOwnPropertyNames(object)
+    for(let i = props.length - 1;i >= 0; i--) {
+      let prop = props[i]
+      iteratee(object[prop],prop,object)
+    }
+  }
   return { 
     chunk,
     compact,
@@ -1891,5 +1972,10 @@ var polikm5 = function() {
     ceil,
     assignIn,
     defaults,
+    findKey,
+    forIn,
+    forInRight,
+    forOwn,
+    forOwnRight,
   }
 }()
