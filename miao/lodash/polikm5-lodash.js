@@ -2429,6 +2429,101 @@ var polikm5 = function() {
     }
     return str
   }
+
+  /**
+   * @descripttion: 创建一个包含从 start 到 end，但不包含 end 本身范围数字的数组。 
+   *              如果 start 是负数，而 end 或 step 没有指定，那么 step 从 -1 为开始。
+   *               如果 end 没有指定，start 设置为 0。 如果 end 小于 start ，会创建一个空数组，除非指定了 step。
+   * @param {*} start
+   * @param {*} end
+   * @param {*} step
+   * @return {*}
+   */
+  function range(start=0, end,step=1) {
+    let res = []
+    if(end == undefined && start > 0) {
+      end = start 
+      start = 0
+    }
+    if(end == undefined && start < 0) {
+      end = start
+      start = 0
+      if(step > 0){
+        step = -step
+      }
+    }
+    if(end < 0) {
+      for(let i = start; i > end; i += step) {
+        res.push(i)
+      }
+      return res
+    }
+    if(step == 0) {
+      let j = end - start 
+      while(j > 0) {
+        res.push(start)
+        j--
+      }
+      return res
+    }
+    for(let i = start; i < end; i += step) {
+      res.push(i)
+    }
+    return res
+  }
+
+  function times(n, iteratee) {
+    iteratee = handleIteratee(iteratee)
+    let res = []
+    let i = 0
+    while(i < n) {
+      res.push(iteratee(i))
+      i++
+    }
+    return res
+  } 
+  var idCounter = 0
+  function uniqueId(prefix='') {
+    var id = ++idCounter
+    return (prefix == null ? "" : prefix) + id
+  }
+
+  /**
+   * @descripttion: 方法类似clone函数，除了它会递归拷贝value
+   * @param {*} value
+   * @return {*}
+   */
+  function cloneDeep(value) {
+    return _cloneDeep(value)
+
+    function _cloneDeep(obj) {
+      if(obj == null) {
+        return null
+      }
+      if(typeof obj === "object") {
+        let newObj = Array.isArray(obj) ? [] : {}
+        let keys = Object.keys(obj)
+        keys.forEach((key) => {
+          newObj[key] = _cloneDeep(obj[key])
+        })
+        return newObj
+      }else{
+        return obj
+      }
+    }
+    // else {
+    //   return value
+    // }
+  }
+
+  /**
+   * @descripttion: 返回首个提供的参数
+   * @param {*} value
+   * @return {*}
+   */
+  function identity(...value) {
+    return value[0]
+  }
   return { 
     chunk,
     compact,
@@ -2575,5 +2670,10 @@ var polikm5 = function() {
     padStart,
     repeat,
     unescape,
+    range,
+    times,
+    uniqueId,
+    cloneDeep,
+    identity,
   }
 }()
