@@ -2482,7 +2482,7 @@ var polikm5 = function() {
     }
     return res
   } 
-  var idCounter = 0
+  var idCounter = 2
   function uniqueId(prefix='') {
     var id = ++idCounter
     return (prefix == null ? "" : prefix) + id
@@ -2499,6 +2499,9 @@ var polikm5 = function() {
     function _cloneDeep(obj) {
       if(obj == null) {
         return null
+      }
+      if(checkType(obj) === "[object RegExp]") {
+        return obj
       }
       if(typeof obj === "object") {
         let newObj = Array.isArray(obj) ? [] : {}
