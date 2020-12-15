@@ -2178,6 +2178,40 @@ var polikm5 = function() {
     }
     return obj
   }
+
+
+  /**
+   * @descripttion: 创建一个对象，这个对象由object中经过predicate断言函数判断为真值的属性组成
+   * @param {*} object
+   * @param {*} predicate
+   * @return {*}
+   */
+  function pickBy(object,predicate) {
+    let obj = {}
+    let iteratee = handleIteratee(predicate)
+    for(let item in object) {
+      if(iteratee(object[item],item)) {
+        obj[item] = object[item]
+      }
+    }
+    return obj
+  }
+
+  /**
+   * @descripttion: 和get函数一样 除了如果解析到的值是函数，那么就绑定this到当前的函数并返回执行后的结果
+   * @param {*} object
+   * @param {*} path
+   * @param {*} defaultValue
+   * @return {*} Returns the resolved value.
+   */
+  function result(object,path,defaultValue) {
+    let res = get(object,path,defaultValue)
+    let type = checkType(res)
+    if(type === "[object Function]") {
+      return res.bind(null)()
+    }
+    return res
+  }
   return { 
     chunk,
     compact,
@@ -2312,5 +2346,7 @@ var polikm5 = function() {
     omit,
     omitBy,
     pick,
+    pickBy,
+    result,
   }
 }()
