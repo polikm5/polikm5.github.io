@@ -2212,6 +2212,223 @@ var polikm5 = function() {
     }
     return res
   }
+
+  /**
+   * @descripttion: 设置object的路径的属性值。如果一部分的路径不存在 则创建它
+   * @param {Object} object
+   * @param {Array|string} path
+   * @param {*} value
+   * @return {*}Returns object.
+   */
+  function set(object,path,value) {
+    let obj = object
+    let pos = path.lastIndexOf(".")
+    let method
+    let flag = true
+    if(pos !== -1) {
+      method = path.slice(pos + 1)
+      path = path.slice(0,pos)
+    }
+    if(flag) {
+      for(let i = 0; i < path.length;i++) {
+        if(path[i] !== "[" && path[i] !== "]" && path[i] !== ".") {
+          let item = obj[path[i]]
+          if(item !== undefined) {
+            obj = item
+          }else {
+            flag = false
+            break
+          }
+        }
+      }
+    }else {
+    }
+
+  }
+
+  /**
+   * @descripttion: 创建一个object对象自身可枚举属性的键值对数组
+   * @param {*} object
+   * @return {*}
+   */
+  function toPairs(object) {
+    let res = []
+    for(let item in object) {
+      if(object.hasOwnProperty(item)) {
+        res.push([item,object[item]])
+      }
+    }
+    return res
+  }
+
+    /**
+   * @descripttion: 创建一个object对象自身和继承可枚举属性的键值对数组
+   * @param {*} object
+   * @return {*}
+   */
+  function toPairsIn(object) {
+    let res = []
+    for(let item in object) {
+      res.push([item,object[item]])
+    }
+    return res
+  }
+
+  /**
+   * @descripttion: 创建object中自身可枚举的属性的属性值
+   * @param {*} object
+   * @return {*}
+   */
+  function values(object) {
+    let type = checkType(object)
+    let res = []
+    if(type === "[object Object]") {
+      for(let item in object) {
+        if(object.hasOwnProperty(item)) {
+          res.push(object[item])
+        }
+      }
+    }else {
+      return object.split("")
+    }
+    return res
+  }
+
+  /**
+   * @descripttion: 转义string中的 "&", "<", ">", '"', "'", 和 "`" 字符为HTML实体字符。
+   * @param {*} string
+   * @return {string}返回转义后的字符串。
+   */
+  function escape(string) {
+    let str = ""
+    for(let i = 0; i < string.length; i++) {
+      if(string[i] == "&") {
+        str += "&amp;"
+      }else if(string[i] == "<") {
+        str += "&lt;"
+      }else if(string[i] == ">") {
+        str += "&gt;"
+      }else if(string[i] == "'") {
+        str += "&#39;"
+      }else if(string[i] == '"') {
+        str += "&quot;"
+      }else if(string[i] == "`") {
+        str += "&#96;"
+      }else {
+        str += string[i]
+      }
+    }
+    return str
+  }
+
+  /**
+   * @descripttion: 如果string字符串长度小于length则从左侧和右侧填充字符，如果没法平均分配，则阶段超出的长度
+   * @param {*} string
+   * @param {*} length
+   * @param {*} chars
+   * @return {*}
+   */
+  function pad(string="",length = 0, chars=" ") {
+    let str = ""
+    let restLen = length - string.length
+    if(restLen == 0) return string
+    let leftLen = Math.floor(restLen / 2)
+    let rightLen = restLen - leftLen
+    let leftTimes = Math.ceil((chars.length / leftLen) + 1)
+    let rightTimes = Math.ceil((chars.length / rightLen) + 1)
+    let rightStr = chars.repeat(rightTimes)
+    if(rightStr.length > rightLen) {
+      rightStr = rightStr.slice(0,rightLen)
+    } 
+    str += chars.repeat(leftTimes)
+    if(str.length > leftLen) {
+      str = str.slice(0,leftLen)
+    }
+    str = str + string +  rightStr
+    return str
+  }
+
+  /**
+   * @descripttion: 如果string字符串长度小于length 则在右侧填充字符。如果超出length长度则截断超出的部分
+   * @param {*} string
+   * @param {*} length
+   * @param {*} chars
+   * @return {*}
+   */
+  function padEnd(string="",length = 0, chars=" ") {
+    let str = ""
+    let restLen = length - string.length
+    if(restLen == 0) return string
+    let rightTimes = Math.ceil((restLen / chars.length) + 1)
+    str = string + chars.repeat(rightTimes)
+    if(str.length > string.length) {
+      str = str.slice(0,length)
+    }
+    return str
+  }
+
+/**
+  * @descripttion: 如果string字符串长度小于length 则在左侧填充字符。如果超出length长度则截断超出的部分
+  * @param {*} string
+  * @param {*} length
+  * @param {*} chars
+  * @return {*}
+  */
+  function padStart(string="",length = 0, chars=" ") {
+    let str = ""
+    let restLen = length - string.length
+    if(restLen == 0) return string
+    let leftTimes = Math.ceil((restLen / chars.length) + 1)
+    str = chars.repeat(leftTimes)
+    if(str.length > restLen) {
+      str = str.slice(0,restLen)
+    }
+    str += string
+    return str
+  }
+
+
+  /**
+   * @descripttion: 重复n次字符串
+   * @param {*} string
+   * @param {*} n
+   * @return {*}
+   */
+  function repeat(string="",n = 1) {
+    let str = ""
+    for(let i = 0; i < n; i++) {
+      str += string
+    }
+    return str
+  }
+
+  /**
+   * @descripttion: 换string字符串中的 HTML 实体 &amp;, &lt;, &gt;, &quot;, &#39;, 和 &#96; 为对应的字符。
+   * @param {*} string
+   * @return {*}
+   */
+  function unescape(string="") {
+    let str = string
+    if(string.indexOf("&amp;")) {
+      str = str.replace("&amp;","&")
+    }
+    if(string.indexOf("&lt;")) {
+      str = str.replace("&lt;","<")
+    }
+    if(string.indexOf("&gt;")) {
+      str = str.replace("&gt;",">")
+    }
+    if(string.indexOf("&#39;")) {
+      str = str.replace("&#39;","'")
+    }
+    if(string.indexOf("&quot;")) {
+      str = str.replace("&quot;",'"')
+    }
+    if(string.indexOf("&#96;")) {
+      str = str.replace("&#96;","`")
+    }
+    return str
+  }
   return { 
     chunk,
     compact,
@@ -2348,5 +2565,15 @@ var polikm5 = function() {
     pick,
     pickBy,
     result,
+    set,
+    toPairs,
+    toPairsIn,
+    values,
+    escape,
+    pad,
+    padEnd,
+    padStart,
+    repeat,
+    unescape,
   }
 }()
