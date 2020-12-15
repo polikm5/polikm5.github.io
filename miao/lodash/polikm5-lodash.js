@@ -1893,6 +1893,12 @@ var polikm5 = function() {
    */
   function get(object,path,defaultValue) {
     let obj = object
+    let pos = path.lastIndexOf(".")
+    let method
+    if(pos !== -1) {
+      method = path.slice(pos + 1)
+      path = path.slice(0,pos)
+    }
     for(let i = 0; i < path.length;i++) {
       if(path[i] !== "[" && path[i] !== "]" && path[i] !== ".") {
         let item = obj[path[i]]
@@ -1903,7 +1909,13 @@ var polikm5 = function() {
         }
       }
     }
-    return obj
+    if(pos !== -1 && obj[method] !== undefined ) {
+      return obj[method]
+    }else if(pos == -1){
+      return obj
+    }else {
+      return defaultValue
+    }
   }
 
   /**
