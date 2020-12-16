@@ -2334,8 +2334,8 @@ var polikm5 = function() {
     if(restLen == 0) return string
     let leftLen = Math.floor(restLen / 2)
     let rightLen = restLen - leftLen
-    let leftTimes = Math.ceil((chars.length / leftLen) + 1)
-    let rightTimes = Math.ceil((chars.length / rightLen) + 1)
+    let leftTimes = Math.ceil((leftLen / chars.length) + 1)
+    let rightTimes = Math.ceil((rightLen /chars.length) + 1)
     let rightStr = chars.repeat(rightTimes)
     if(rightStr.length > rightLen) {
       rightStr = rightStr.slice(0,rightLen)
