@@ -2527,6 +2527,57 @@ var polikm5 = function() {
   function identity(...value) {
     return value[0]
   }
+
+    /**
+   * @descripttion: 创建一个返回给定对象的path的值的函数
+   * @param {*} value
+   * @return {*}
+   */
+  function property(path) {
+    if(!Array.isArray(path)) {
+      path = path.split(".")
+    } 
+    return function(obj) {
+      for(let i = 0; i < path.length; i++) {
+        obj = obj[path[i]]
+      }
+      return obj
+    }
+  }
+
+  /**
+   * @descripttion: 创建一个针对断言函数 func 结果取反的函数。 func 断言函数被调用的时候，this 绑定到创建的函数，并传入对应参数。
+   * @param {Function} predicate
+   * @return {Function}返回一个新的取反函数。
+   */
+  function negate(predicate) {
+    return function(val) {
+      return !predicate(val)
+    }
+  } 
+
+  /**
+   * @descripttion: 创建一个只能调用 func 一次的函数。 重复调用返回第一次调用的结果。 func 调用时， this 绑定到创建的函数，并传入对应参数
+   * @param {Function} func
+   * @return {Function} 返回新的受限函数。
+   */
+  function once(func) {
+    return function(...args) {
+      return func.bind(null,...args)()
+    }
+  }
+
+  /**
+   * @descripttion: 创建一个函数，调用func时，this绑定到创建的新函数，把参数作为数组传入
+   * @param {Function} func
+   * @param {*} start
+   * @return {Function}返回新的函数。
+   */
+  function spread(func,start=0) {
+    return function(args) {
+      return func.apply(null,args)
+    }
+  }
   return { 
     chunk,
     compact,
@@ -2678,5 +2729,9 @@ var polikm5 = function() {
     uniqueId,
     cloneDeep,
     identity,
+    property,
+    negate,
+    once,
+    spread,
   }
 }()
