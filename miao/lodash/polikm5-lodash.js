@@ -599,6 +599,25 @@ var polikm5 = function() {
     }
     return res
   }
+
+  /**
+   * @descripttion: 从array数组的起始元素开始提取元素，，直到 predicate 返回假值。predicate 会传入三个参数： (value, index, array)。
+   * @param {*} arr
+   * @param {*} predicate
+   * @return {*}返回 array 数组的切片。
+   */
+  function takeWhile(arr,predicate) {
+    let iteratee = handleIteratee(predicate)
+    let res = []
+    for(let i = 0; i < arr.length; i++) {
+      if(iteratee(arr[i],i,arr)) {
+        res.push(arr[i])
+      }else {
+        return res
+      }
+    }
+    return res
+  }
   function every(arr,predicate) {
     let type = Object.prototype.toString.call(predicate)
     for(let i = 0; i < arr.length; i++) {
@@ -1055,6 +1074,27 @@ var polikm5 = function() {
     return res
   }
 
+  /**
+   * @descripttion: 这个函数和union函数一样除了它接受一个comparator用来调用每个数组的元素用来对比
+   * @param {array} values
+   * @return {*}
+   */
+  function unionWith(...values) {
+    let comparator = values.pop()
+    let objects = values.shift()
+    let other = values.shift()
+    let len = objects.length + other.length
+    for(let oth in other) {
+      for(let obj in objects) {
+        if(comparator(objects[obj],other[oth])) {
+          delete other[oth]
+          len--
+        }
+      }
+    }
+    return objects.concat(other).slice(0,len)
+  }
+
   function uniq(arr) {
     return [...new Set(arr)]
   }
@@ -1066,6 +1106,29 @@ var polikm5 = function() {
     return unionBy(res,rest,iteratee)
   }
   
+  /**
+   * @descripttion: 和uniq函数一样，除了它接受一个comparator用来调用并比较数组中的每个元素
+   * @param {*} arr
+   * @param {*} comparator
+   * @return {*}返回新的数组
+   */
+  function uniqWith(arr,comparator) {
+    let res = []
+    let map = new Array(arr.length).fill(true)
+    for(let i = 0; i < arr.length; i++) {
+      for(let j = i + 1; j < arr.length;j++) {
+        if(map[i] && map[j] &&comparator(arr[i],arr[j])) {
+          map[j] = false
+        }
+      }
+    }
+    for(let i = 0; i < map.length; i++) {
+      if(map[i]) {
+        res.push(arr[i])
+      }
+    }
+    return res
+  }
   function zip(...arrs) {
     let res = []
     for(let j = 0; j < arrs[0].length; j++) {
@@ -1109,6 +1172,69 @@ var polikm5 = function() {
     return res
   }
 
+  /**
+   * @descripttion: 和xor函数一样除了它接受一个iteratee迭代函数用来调用数组中的每个元素并对比
+   * @param {array} values
+   * @return {*}
+   */
+  function xorBy(...values) {
+    let iteratee = handleIteratee(values.pop())
+    let res = []
+    for(let i = 0; i < values.length; i++) {
+      res.push(handleSet(values[i],iteratee,false))
+    }
+    res = handleSet(flattenDeep(res),iteratee,true)
+    return res
+    function handleSet(arr,iteratee,isFin) {
+      let arrMap = new Map()
+      let res = []
+      for(let i = 0; i < arr.length; i++) {
+        let iterVal = iteratee(arr[i])
+        let val = arrMap.get(iterVal)
+        if(isFin == false) {
+          val === undefined ? arrMap.set(iterVal,arr[i]) : null
+        }else if(isFin == true) {
+          val === undefined ? arrMap.set(iterVal,arr[i]) : arrMap.set(iterVal,null)
+        }
+      }
+      for(let [key,value] of arrMap) {
+        if(value !== null) {
+          res.push(value)
+        }
+      }
+      return res
+    }
+  }
+
+  /**
+   * @descripttion: 和xor函数一样除了它接受一个comparator来对比数组中的每个元素
+   * @param {array} values
+   * @return {*}
+   */
+  function xorWith(...values) {
+    let comparator = values.pop()
+    let objects = values.shift()
+    let others = values.shift()
+    let res = []
+    let len = objects.length + others.length
+    let map = new Array(len).fill(true)
+    for(let i = 0; i < objects.length; i++) {
+      for(let j = 0; j < others.length; j++) {
+        if(comparator(objects[i],others[j])) {
+          map[i] = false
+          map[j + objects.length] = false
+        }
+      }
+    }
+    let temp = objects.concat(others)
+    for(let i = 0; i < temp.length; i++) {
+      if(map[i]) {
+        res.push(temp[i])
+      }
+    }
+    return res
+    
+  }
   function countBy(collection, iteratee) {
     let type = checkType(iteratee)
     let res = {}
@@ -2990,5 +3116,10 @@ var polikm5 = function() {
     take,
     takeRight,
     takeRightWhile,
+    takeWhile,
+    unionWith,
+    uniqWith,
+    xorBy,
+    xorWith,
   }
 }()
