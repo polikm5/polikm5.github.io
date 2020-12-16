@@ -457,40 +457,14 @@ var polikm5 = function() {
   }
 
   function filter(arr,preciate) {
-    let type = Object.prototype.toString.call(preciate)
+    let res = []
+    let iteratee = handleIteratee(preciate)
     for(let i = 0; i < arr.length; i++) {
-      if(type == "[object Function]") {
-        if(preciate(arr[i])) {
-          return [arr[i]]
-        }
-      }
-      if(type == "[object Object]") {
-        let objA = arr[i]
-        let propA = Object.getOwnPropertyNames(objA)
-        let propB = Object.getOwnPropertyNames(preciate)
-        for(let j = 0; j < propB.length; j++) {
-          let propName = propB[j]
-          if(objA[propName] != preciate[propName]){
-            break
-          }
-          if(j == propB.length - 1) {
-            return [arr[i]]
-          }
-        }
-      }
-      if(type == "[object Array]") {
-        let item = arr[i]
-        if(item[preciate[0]] == preciate[1]) {
-          return [arr[i]]
-        }
-      }
-      if(type == "[object String]") {
-        let item = arr[i]
-        if(item[preciate] == true) {
-          return [arr[i]]
-        }
+      if(iteratee(arr[i])) {
+        res.push(arr[i])
       }
     }
+    return res
   }
 
   function find(arr, preciate, fromIndex = 0) {
@@ -1259,6 +1233,18 @@ var polikm5 = function() {
     }
     return false
   }
+
+  /**
+   * @descripttion: 创建一个数组，以iteratee处理的结果升序排序
+   * @param {*} collection
+   * @param {*} iteratee
+   * @return {*}
+   */
+  function sortBy(collection,iteratee) {
+    
+  }
+
+
 
 
   /**
@@ -2430,6 +2416,16 @@ var polikm5 = function() {
     return str
   }
 
+  function bindAll(object, methodNames) {
+
+  }
+
+
+
+
+
+
+
   /**
    * @descripttion: 创建一个包含从 start 到 end，但不包含 end 本身范围数字的数组。 
    *              如果 start 是负数，而 end 或 step 没有指定，那么 step 从 -1 为开始。
@@ -2576,6 +2572,72 @@ var polikm5 = function() {
   function spread(func,start=0) {
     return function(args) {
       return func.apply(null,args)
+    }
+  }
+
+
+  /**
+   * @descripttion: 柯里化函数
+   * @param {*} func
+   * @param {*} args
+   * @return {*}
+   */
+  function curry(func,args) {
+    let len = func.length
+    args = args || []
+    return function() {
+      let subArgs = args.slice()
+      for(let i = 0; i < arguments.length; i++) {
+        subArgs.push(arguments[i])
+      }
+      if(subArgs.length >= len) {
+        return func.apply(this,subArgs)
+      }else {
+        return curry.call(this,func,subArgs)
+      }
+    }
+  }
+
+
+  /**
+   * @descripttion: 创建一个会缓存func结果的函数，如果提供了resolver，就用resolver的返回值作为key缓存函数的结果
+   * @param {*} func
+   * @param {*} resolver
+   * @return {*}
+   */
+  function memoize(func,resolver) {
+    let map = new Map()
+    return function(args) {
+      let val = map.get(args)
+      if(val === undefined) {
+        let res = func.call(this,args)
+        map.set(args,res)
+        return res
+      }else {
+        return val
+      }
+    }
+  }
+
+  /**
+   * @descripttion: 创建一个返回value的函数
+   * @param {*} value
+   * @return {Function} 返回新的常量函数
+   */
+  function constant(value) {
+    return function() {
+      return value
+    }
+  }
+
+  /**
+   * @descripttion: 这个方法创建的函数返回给定path在object上的值
+   * @param {*} object
+   * @return {Function} 返回新的函数
+   */
+  function propertyOf(object) {
+    return function(str) {
+      return get(object,str)
     }
   }
   return { 
@@ -2733,5 +2795,11 @@ var polikm5 = function() {
     negate,
     once,
     spread,
+    curry,
+    memoize,
+    constant,
+    propertyOf,
+    bindAll,
+    sortBy,
   }
 }()
