@@ -36,7 +36,7 @@ var polikm5 = function() {
   function matches(source) {
     return function(obj) {
       for(let key in source) {
-        if(!obj[key] || !isEqual(source[key],obj[key])) {
+        if(!(key in obj) || !isEqual(source[key],obj[key])) {
           return false
         }
       }
@@ -421,6 +421,184 @@ var polikm5 = function() {
     }
   }
 
+
+  /**
+   * @descripttion: 类似sortedIndex，除了它接受一个iteratee调用每一个数组元素，返回结果和value值比较来计算排序
+   * @param {*} arr
+   * @param {*} value
+   * @param {*} iteratee
+   * @return {*}返回value值应该在数组arr中插入的索引位置index
+   */
+
+  
+  function sortedIndexBy(arr,value,iteratee) {
+    iteratee = handleIteratee(iteratee)
+    let val = iteratee(value)
+    for(let i = 0; i < arr.length; i++) {
+      if(iteratee(arr[i]) >= val) {
+        return i
+      }
+    }
+    return arr.length
+  }
+
+
+  /**
+   * @descripttion: 类似indexOf，除了它是在已经排序的数组arr上执行二进制检索
+   * @param {*} arr
+   * @param {*} value
+   * @return {*}
+   */
+  // 找下边界
+  function sortedIndexOf(arr,value) {
+    let left = 0
+    let right = arr.length - 1
+    while(left < right) {
+      let mid = (left + right) >> 1
+      if(arr[mid] < value) {
+        left = mid + 1
+      }else{
+        right = mid
+      }
+    }
+    if(arr[left] == value) {
+      return left
+    }
+    return -1
+  }
+
+  /**
+   * @descripttion: 类似于sortedIndex，除了它返回value值在array中尽可能大的索引位置
+   * @param {*} arr
+   * @param {*} value
+   * @return {*}返回 value值 应该在数组array中插入的索引位置 index。
+   */
+    // 找上边界 + 1
+  function sortedLastIndex(arr,value) {
+    let left = 0
+    let right = arr.length - 1
+    while(left < right) {
+      let mid = (left + right) >> 1
+      if(arr[mid] <= value) {
+        left = mid + 1
+      }else {
+        right = mid
+      }
+    }
+    // 原本 left与val相等的位置在left-1 但是这是需要value在arr中尽可能大的索引位置
+    return left
+  }
+
+  /**
+   * @descripttion: 类似于sortedLastIndex,除了它接受一个iteratee，调用每一个数组元素，返回结果和value值比较来计算排序
+   * @param {*} arr
+   * @param {*} value
+   * @param {*} iteratee
+   * @return {*}返回 value值 应该在数组array中插入的索引位置 index
+   */
+  function sortedLastIndexBy(arr,value,iteratee) {
+    iteratee = handleIteratee(iteratee)
+    let iterArr = arr.map((item) => iteratee(item))
+    let iterVal = iteratee(value)
+    return sortedLastIndex(iterArr,iterVal)
+  }
+
+
+  /**
+   * @descripttion: 这个方法类似lastIndexOf，除了它是在已经排序的数组array上执行二进制检索。
+   * @param {*} arr
+   * @param {*} value
+   * @return {*}返回匹配值的索引位置，否则返回 -1
+   */
+  function sortedLastIndexOf(arr,value) {
+    let left = 0
+    let right = arr.length - 1
+    while(left < right) {
+      let mid = (left + right) >> 1
+      if(arr[mid] <= value) {
+        left = mid + 1
+      }else {
+        right = mid
+      }
+    }
+    return left - 1
+  }
+
+  /**
+   * @descripttion: 去掉重复元素
+   * @param {*} arr
+   * @return {*}返回新数组
+   */
+  function sortedUniq(arr) {
+    return uniq(arr)
+  }
+
+  /**
+   * @descripttion: 跟sortedUniq函数一样，除了arr的每个元素都要通过iteratee迭代后在判断
+   * @param {*} arr
+   * @param {*} iteratee
+   * @return {*}返回新数组
+   */
+  function sortedUniqBy(arr,iteratee) {
+    iteratee = handleIteratee(iteratee)
+    let res = [arr[0]]
+    for(let i = 1; i < arr.length; i++) {
+      if(iteratee(arr[i]) == iteratee(arr[i - 1])) {
+        continue
+      }else {
+        res.push(arr[i])
+      }
+    }
+    return res
+  }
+
+  /**
+   * @descripttion: 获取除了array数组第一个元素以外的全部元素
+   * @param {*}
+   * @return {*}返回 array 数组的切片（除了array数组第一个元素以外的全部元素）。
+   */
+  function tail(arr) {
+    return arr.slcie(1)
+  }
+
+  /**
+   * @descripttion: 创建一个数组切片，从array数组的起始元素开始提取n个元素。
+   * @param {*} arr
+   * @param {*} n
+   * @return {*}返回 array 数组的切片（从起始元素开始n个元素）。
+   */
+  function take(arr,n=1) {
+    return arr.slice(0,n)
+  }
+
+  /**
+   * @descripttion: 创建一个数组切片，从array数组的最后一个元素开始提取n个元素
+   * @param {*} arr
+   * @param {*} n
+   * @return {*}返回 array 数组的切片（从结尾元素开始n个元素）。
+   */
+  function takeRight(arr,n=1) {
+    return arr.slice(arr.length - n >= 0 ? arr.length - n : 0)
+  }
+
+  /**
+   * @descripttion: 从array数组的最后一个元素开始提取元素，直到 predicate 返回假值,predicate 会传入三个参数： (value, index, array)。
+   * @param {*} arr
+   * @param {*} predicate
+   * @return {*}
+   */
+  function takeRightWhile(arr,predicate) {
+    let iteratee = handleIteratee(predicate)
+    let res = []
+    for(let i = arr.length - 1; i >= 0; i--) {
+      if(iteratee(arr[i],i,arr) == true) {
+        res.unshift(arr[i])
+      }else {
+        return res
+      }
+    }
+    return res
+  }
   function every(arr,predicate) {
     let type = Object.prototype.toString.call(predicate)
     for(let i = 0; i < arr.length; i++) {
@@ -2801,5 +2979,16 @@ var polikm5 = function() {
     propertyOf,
     bindAll,
     sortBy,
+    sortedIndexBy,
+    sortedIndexOf,
+    sortedLastIndex,
+    sortedLastIndexBy,
+    sortedLastIndexOf,
+    sortedUniq,
+    sortedUniqBy,
+    tail,
+    take,
+    takeRight,
+    takeRightWhile,
   }
 }()
