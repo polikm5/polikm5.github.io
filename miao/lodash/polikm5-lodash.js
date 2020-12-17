@@ -1653,6 +1653,20 @@ var polikm5 = function() {
   }
 
   /**
+   * @descripttion: 从collection集合中随机获取n个元素（不挑选重复数）
+   * @param {*} collection
+   * @param {*} n
+   * @return {*}
+   */
+  function sampleSize(collection,n=1) {
+    let res = []
+    while(n !== res.length && collection.length !== 0) {
+      let ind = Math.floor(Math.random() * collection.length)
+      res.push(...collection.splice(ind,1))
+    }
+    return res
+  }
+  /**
    * @descripttion: 创建一个随机打乱后的数组
    * @param {Array|Object} collection
    * @return {Array} Returns the new shuffled array.
@@ -1752,6 +1766,81 @@ var polikm5 = function() {
     return id - 1
   }
 
+  /**
+   * @descripttion: 如果value不是一个数组那么将value变为数组
+   * @param {*} value
+   * @return {*}
+   */
+  function castArray(value) {
+    if(!isArray(value)) {
+      return [value]
+    }
+    return value
+  }
+
+  /**
+   * @descripttion: 通过调用断言source的属性与 object 的相应属性值，检查 object是否符合 source
+   * @param {*} object
+   * @param {*} source
+   * @return {*}如果 object 符合，返回 true，否则 false
+   */
+  function conformsTo(object,source) {
+    let keys = Object.keys(source)
+    for(let key of keys) {
+      if(key in object) {
+        if(source[key](object[key])){
+          return true
+        }else {
+          return false
+        }
+      }
+    }
+  }
+
+  /**
+   * @descripttion: 执行SameValueZero 比较两者的值，来确定它们是否相等。
+   * @param {*} value
+   * @param {*} other
+   * @return {*}如果两个值相等返回 true ，否则返回 false 。
+   */
+  function eq(value,other) {
+    if(value !== value && other !== other) {
+      return true
+    }
+    if(value === other) {
+      return true
+    }else {
+      return false
+    }
+  }
+
+  /**
+   * @descripttion: 检查 value是否大于 other
+   * @param {*} value
+   * @param {*} other
+   * @return {*}如果value 大于 other 返回 true，否则返回 false。
+   */
+  function gt(value,other) {
+    if(value > other) {
+      return true
+    }else {
+      return false
+    }
+  }
+
+    /**
+   * @descripttion: 检查 value是否大于等于 other
+   * @param {*} value
+   * @param {*} other
+   * @return {*}如果value 大于 other 返回 true，否则返回 false。
+   */
+  function gte(value,other) {
+    if(value >= other) {
+      return true
+    }else {
+      return false
+    }
+  }
   /**
    * @descripttion: 判断是否是arguments对象
    * @param {*} value
@@ -1985,6 +2074,14 @@ var polikm5 = function() {
     return value !== value
   }
 
+  /**
+   * @descripttion: 检查 value 是否是一个原生函数。
+   * @param {*} value
+   * @return {*}如果 value 是一个 原生函数，那么返回 true，否则返回 false。
+   */
+  function isNative(value) {
+    
+  }
   /**
    * @descripttion: 判断该值是否为null或undefined
    * @param {*} value
@@ -3297,5 +3394,12 @@ var polikm5 = function() {
     forEachRight,
     includes,
     invokeMap,
+    sampleSize,
+    castArray,
+    conformsTo,
+    eq,
+    gt,
+    gte,
+    isNative,
   }
 }()
