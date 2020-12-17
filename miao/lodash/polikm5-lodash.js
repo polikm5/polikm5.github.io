@@ -1462,13 +1462,18 @@ var polikm5 = function() {
    * @param {array} args
    * @return {*}
    */
-  function invokeMap(collection,path,...args) {
+  function  invokeMap(collection,path,...args) {
     for(let i = 0; i < collection.length; i++) {
       let item = collection[i]
-      if(args.length !== 0) {
-        item[path](...args)
-      }else {
-        item[path]()
+      if(typeof path === "string") {
+        if(args.length !== 0) {
+          item[path](...args)
+        }else {
+          item[path]()
+        }
+      }
+      if(typeof path === "function") {
+        collection[i] = path.call(collection[i],...args)
       }
     }
     return collection
