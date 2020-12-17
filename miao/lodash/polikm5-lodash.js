@@ -558,7 +558,7 @@ var polikm5 = function() {
    * @return {*}返回 array 数组的切片（除了array数组第一个元素以外的全部元素）。
    */
   function tail(arr) {
-    return arr.slcie(1)
+    return arr.slice(1)
   }
 
   /**
@@ -676,7 +676,7 @@ var polikm5 = function() {
         let objA = arr[i]
         let propA = Object.getOwnPropertyNames(objA)
         let propB = Object.getOwnPropertyNames(preciate)
-        for(let j = 0; j < propB.length; j++) {
+        for(let j = fromIndex; j < propB.length; j++) {
           let propName = propB[j]
           if(objA[propName] != preciate[propName]){
             break
@@ -701,6 +701,22 @@ var polikm5 = function() {
     }
   }
 
+
+  /**
+   * @descripttion: 和find函数类似 除了它从从右往左迭代每个集合中的元素
+   * @param {Array|Object} collection
+   * @param {Function} predicate
+   * @param {*} fromIndex
+   * @return {*}返回匹配的元素，否则返回undefined
+   */
+  function findLast(collection,predicate,fromIndex=collection.length-1) {
+    iteratee = handleIteratee(predicate)
+    for(let i = fromIndex; i >= 0; i--) {
+      if(iteratee(collection[i])) {
+        return collection[i]
+      }
+    }
+  }
   function toArray(value) {
     let val = typeof value
     let res = []
@@ -1141,10 +1157,99 @@ var polikm5 = function() {
     return res
   }
 
+  /**
+   * @descripttion: 和fromPairs函数一样除了它接受两个数组，一个是属性，另一个是对应的属性值
+   * @param {Array} props
+   * @param {Array} values
+   * @return {*}
+   */
+  function zipObject(props=[],values=[]) {
+    let res = {}
+    for(let i = 0; i < props.length; i++) {
+      res[props[i]] = values[i]
+    }
+    return res
+  }
+
+
+  /**
+   * @descripttion: 函数和zipObject一样除了它能够支持路径属性以外
+   * @param {Array} props
+   * @param {Array} values
+   * @return {*}
+   */
+  function zipObjectDeep(props=[],values=[]) {
+    let obj = {} 
+    for(let i = 0; i < props.length; i++) {
+      let temp = obj
+      let path = props[i] 
+      let paths = path.split(".")
+      let ind
+      for(let j = 0; j < paths.length;j++) {
+        let pos = paths[j].indexOf("[")
+        if(pos !== -1) {
+          ind = paths[j][pos + 1]
+        }
+        if(j == paths.length - 1) { 
+          let t = {}
+          t[paths[j][0]] = values[i]
+          temp[ind] = t
+          break
+        }
+        if( paths[j][0] in temp && paths[j][0] !== "[" && paths[j][0] !== "]" && paths[j][0] !== ".") {
+          temp = temp[paths[j][0]]
+        }else if(i == 0){
+          if( pos == -1) {
+            temp[paths[j][0]] = {}
+            temp = temp[paths[j][0]]
+          }else {
+            let item = paths[j].slice(0,pos)
+            ind = paths[j][pos + 1]
+            temp[item] = []
+            temp = temp[item]
+          }
+        }
+      }
+    }
+    return obj
+  }
+
+  /**
+   * @descripttion: 和zip函数一样除了它能接受一个iteratee函数指定分组的值应该如何被组合
+   * @param {array} values
+   * @return {*} 返回分组元素的新数组
+   */
+  function zipWith(...values) {
+    let iteratee = handleIteratee(values.pop())
+    let arr = zip(...values)
+    let res = []
+    for(let i = 0; i < arr.length; i++) {
+      res.push(iteratee.call(null,...arr[i]))
+    }
+    return res
+  }
   function unzip(arr) {
     return zip(...arr)
   }
 
+
+  /**
+   * @descripttion: 和unzip函数一样除了它接受一个迭代函数 表明一个重新组合的值应该怎么被组合起来
+   * @param {*} arr
+   * @param {*} iteratee
+   * @return {*}返回新的重新组合的数组
+   */
+  function unzipWith(arr,iteratee) {
+    let res = []
+    for(let i = 0; i < arr[0].length; i++) {
+      let temp = []
+      for(let item of arr) {
+        temp.push(item[i])
+      }
+      res.push(iteratee(...temp))
+    }
+    return res
+  }
   function without(arr,...values) {
     let res = []
     for(let i = 0; i < arr.length; i++) {
@@ -1293,6 +1398,19 @@ var polikm5 = function() {
     return res
   }
 
+  /**
+   * @descripttion: 和forEacn函数类似除了它迭代元素的顺序是从右往左
+   * @param {*} collection
+   * @param {*} iteratee
+   * @return {*}
+   */
+  function forEachRight(collection,iteratee) {
+    iteratee = handleIteratee(iteratee)
+    for(let i = collection.length - 1; i >= 0; i--) {
+      iteratee(collection[i])
+    }
+    return collection
+  }
   function groupBy(collection,iteratee) {
     let type = checkType(iteratee)
     let res = {}
@@ -1310,6 +1428,51 @@ var polikm5 = function() {
     return res
   }
 
+  /**
+   * @descripttion: 检查value是否在collection集合中。如果collection是字符串，那就检查是否有value的子串
+   * @param {*} collection
+   * @param {*} value
+   * @param {*} fromIndex
+   * @return {*}
+   */
+  function includes(collection,value,fromIndex=0) {
+    if(typeof collection == "object") {
+      for(let item in collection) {
+        if(fromIndex <= 0) {
+          if(collection[item] === value) {
+            return true
+          }
+        }
+        fromIndex--
+      }
+    }
+    if(typeof collection == "string") {
+      if(collection.indexOf(value) !== -1) {
+        return true
+      }
+    }
+    return false
+  }
+
+
+  /**
+   * @descripttion: 集合中的元素都调用path中的方法，返回调用后的结果，额外的参数都给每次调用的函数
+   * @param {*} collection
+   * @param {*} path
+   * @param {array} args
+   * @return {*}
+   */
+  function invokeMap(collection,path,...args) {
+    for(let i = 0; i < collection.length; i++) {
+      let item = collection[i]
+      if(args.length !== 0) {
+        item[path](...args)
+      }else {
+        item[path]()
+      }
+    }
+    return collection
+  }
   function keyBy(collection, iteratee) {
     let type = checkType(iteratee)
     let res = {}
@@ -3121,5 +3284,13 @@ var polikm5 = function() {
     uniqWith,
     xorBy,
     xorWith,
+    unzipWith,
+    zipObject,
+    zipObjectDeep,
+    zipWith,
+    findLast,
+    forEachRight,
+    includes,
+    invokeMap,
   }
 }()
