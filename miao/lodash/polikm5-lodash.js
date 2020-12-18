@@ -730,6 +730,125 @@ var polikm5 = function() {
     return res
   }
 
+  /**
+   * @descripttion: 将值转变为有限数字
+   * @param {*} value
+   * @return {*}返回转变的数字
+   */
+  function toFinite(value) {
+    if(value !== value) {
+      return 0
+    }
+    if(value === Infinity) {
+      return Number.MAX_VALUE
+    }else if(value === -Infinity) {
+      return -Number.MAX_VALUE
+    }else {
+      return Number(value)
+    }
+  }
+
+  /**
+   * @descripttion: 将value转变为整数
+   * @param {*} value
+   * @return {*}返回转变的数字
+   */
+  function toInteger(value) {
+    let num = toFinite(value)
+    return Math.floor(num)
+  }
+
+  /**
+   * @descripttion: 转变value为用作类数组对象的长度整数
+   * @param {*} value
+   * @return {*}返回转变后的数字
+   */
+  function toLength(value) {
+    let temp = Math.pow(2,32) - 1
+    if(value > temp) {
+      return temp
+    }else {
+      return toInteger(value)
+    }
+  }
+
+  /**
+   * @descripttion: 将value变成一个数字
+   * @param {*} value
+   * @return {*}返回转变后的数字
+   */
+  function toNumber(value) {
+    return Number(value)
+  }
+
+  /**
+   * @descripttion: 分配来源对象的可枚举属性到目标对象上。 来源对象的应用规则是从左到右，随后的下一个对象的属性会覆盖上一个对象的属性。
+   * @param {*} object
+   * @param {array} sources
+   * @return {*}返回 object.(改变原对象)
+   */
+  function assign(object,...sources) {
+    for(let obj of sources) {
+      for(let item in obj) {
+        if(obj.hasOwnProperty(item)) {
+          object[item] = obj[item]
+        }
+      }
+    }
+    return object
+  }
+
+  /**
+   * @descripttion: 将value转变为一个安全整形
+   * @param {*} value
+   * @return {*}返回转变的数字
+   */
+  function toSafeInteger(value) {
+    if(value === Infinity) {
+      return Number.MAX_SAFE_INTEGER
+    }else {
+      return toInteger(value)
+    }
+  }
+
+  /**
+   * @descripttion: 加两个数字
+   * @param {*} auged 被加数
+   * @param {*} addend  加数
+   * @return {*}  返回总数
+   */
+  function add(auged,addend) {
+    while(addend !== 0) {
+      let temp = auged ^ addend
+      addend = (auged & addend) << 1
+      auged = temp
+    }
+    return auged
+  }
+
+  /**
+   * @descripttion: 除两个数
+   * @param {*} dividend
+   * @param {*} divisor
+   * @return {*} 返回商
+   */
+  function divide(dividend, divisor) {
+    return dividend / divisor
+  }
+
+  /**
+   * @descripttion: 将数字向下取整到precision位数
+   * @param {*} number
+   * @param {*} precision
+   * @return {*}
+   */
+  function floor(number,precision = 0) {
+    if(precision == 0) {
+      return Math.floor(number)
+    }
+    let temp = Math.floor(number * (10 ** precision)) / 10 ** precision
+    return temp
+  }
   function max(arr) {
     if(arr.length == 0) {
       return undefined
@@ -765,6 +884,31 @@ var polikm5 = function() {
     return res
   }
 
+  /**
+   * @descripttion: 计算数组的平均值
+   * @param {*} arr
+   * @return {*}返回平均值
+   */
+  function mean(arr) {
+    return arr.reduce((item,cur,idx) => {
+      return (item * idx + cur)  / (idx + 1)
+    })
+  }
+
+  /**
+   * @descripttion: 和mean函数一样除了它接受一个iteratee函数以外
+   * @param {*} arr
+   * @param {*} iteratee
+   * @return {*}  返回平均值
+   */
+  function meanBy(arr,iteratee) {
+    iteratee = handleIteratee(iteratee)
+    let sum = 0
+    for(let i = 0; i < arr.length; i++) {
+      sum += iteratee(arr[i])
+    }
+    return sum / arr.length
+  }
   function min(arr) {
     if(arr.length == 0) {
       return undefined
@@ -800,6 +944,39 @@ var polikm5 = function() {
     return res
   }
 
+  /**
+   * @descripttion: 乘两个数
+   * @param {*} multiplier
+   * @param {*} multiplicand
+   * @return {*}返回产生的值
+   */
+  function multiply(multiplier,multiplicand) {
+    return multiplier * multiplicand
+  }
+
+  /**
+   * @descripttion: 根据precision精度四舍五入number
+   * @param {*} number
+   * @param {*} precision
+   * @return {*}
+   */
+  function round(number, precision=0) {
+    if(precision == 0) {
+      return Math.round(number)
+    }
+    let temp = Math.round(number * (10 ** precision)) / 10 ** precision
+    return temp
+  }
+
+  /**
+   * @descripttion: 两个值相减
+   * @param {*} minuend
+   * @param {*} subtrahend
+   * @return {*}
+   */
+  function subtract(minuend,subtrahend) {
+    return minuend - subtrahend
+  }
   function sum(arr) {
     let res = 0
     for(let i = 0; i < arr.length; i++) {
@@ -823,6 +1000,44 @@ var polikm5 = function() {
       }
     }
     return res
+  }
+
+  /**
+   * @descripttion: 返回限制在 lower 和 upper 之间的值
+   * @param {*} number
+   * @param {*} lower
+   * @param {*} upper
+   * @return {*}返回被限制的值。
+   */
+  function clamp(number,lower,upper) {
+    if(number < lower) {
+      return lower
+    }else if(number > upper) {
+      return upper
+    }else {
+      return number
+    }
+  }
+
+  /**
+   * @descripttion: 检查 n 是否在 start 与 end 之间，但不包括 end。 如果 end 没有指定，那么 start 设置为0然后将start原有值赋给end。 如果 start 大于 end，那么参数会交换以便支持负范围。
+   * @param {*} number
+   * @param {*} start
+   * @param {*} end
+   * @return {*}如果number在范围内 ，那么返回true，否则返回 false
+   */
+  function inRange(number, start=0, end) {
+    if(end == undefined) {
+      end = start
+      start = 0
+    }
+    if(start > end) {
+      [start,end] = [end,start]
+    }
+    if(number >= start && number < end) {
+      return true
+    }
+    return false
   }
 
 
@@ -1773,6 +1988,9 @@ var polikm5 = function() {
    */
   function castArray(value) {
     if(!isArray(value)) {
+      if(value == undefined) {
+        return [undefined]
+      }
       return [value]
     }
     return value
@@ -2244,6 +2462,25 @@ var polikm5 = function() {
     return checkType(value) === "[object WeakSet]"
   }
 
+  /**
+   * @descripttion: 判断value是否小于other
+   * @param {*} value
+   * @param {*} other
+   * @return {*}如果value 小于 other 返回 true，否则返回 false。
+   */
+  function lt(value,other) {
+    return value < other
+  }
+
+    /**
+   * @descripttion: 判断value是否小于等于other
+   * @param {*} value
+   * @param {*} other
+   * @return {*}如果value 小于等于 other 返回 true，否则返回 false。
+   */
+  function lte(value,other) {
+    return value <= other
+  }
   /**
    * @descripttion: 向上取整数字，precision表示取整的小数位
    * @param {number} number
@@ -3401,5 +3638,23 @@ var polikm5 = function() {
     gt,
     gte,
     isNative,
+    lt,
+    lte,
+    toFinite,
+    toInteger,
+    toLength,
+    toNumber,
+    assign,
+    toSafeInteger,
+    add,
+    divide,
+    floor,
+    mean,
+    meanBy,
+    multiply,
+    round,
+    subtract,
+    clamp,
+    inRange,
   }
 }()
