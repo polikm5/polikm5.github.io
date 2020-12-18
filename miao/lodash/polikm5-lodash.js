@@ -1983,15 +1983,16 @@ var polikm5 = function() {
 
   /**
    * @descripttion: 如果value不是一个数组那么将value变为数组
-   * @param {*} value
+   * @param {*} value 
    * @return {*}
    */
   function castArray(value) {
     if(!isArray(value)) {
-      if(value == undefined) {
-        return [undefined]
+      if(arguments.length !== 0) {
+        return [value]
+      }else {
+        return []
       }
-      return [value]
     }
     return value
   }
@@ -2552,6 +2553,12 @@ var polikm5 = function() {
     return object
   }
 
+  function at(object, paths) {
+    return paths.map((item) => {
+      return get(object,item)
+    })
+    
+  }
   /**
    * @descripttion: 分配source对象的可枚举对象到目标对象所有为undefined的属性上，一旦设置了相同属性的值，后序的将被忽略掉
    * @param {Object} object
@@ -2566,11 +2573,23 @@ var polikm5 = function() {
         if(object[item] == undefined) {
           object[item] = obj[item]
         }
+        if(typeof object[item] == "object") {
+          defaults(object[item],obj[item])
+        }
       }
     }
     return object
   }
 
+  /**
+   * @descripttion: 和defaults函数一样除了它递归分配默认的属性  改变原对象
+   * @param {*} object
+   * @param {*} sources
+   * @return {*}返回对象
+   */
+  function defaultsDeep(object,...sources) {
+    return defaults(object,...sources)
+  }
   /**
    * @descripttion: 和find函数一样，除了断言函数匹配到第一个为true时直接返回
    * @param {*} object
@@ -2586,6 +2605,21 @@ var polikm5 = function() {
     }
   }
 
+  /**
+   * @descripttion: 从右往左遍历寻找符合断言函数的值 返回key
+   * @param {*} object
+   * @param {*} predicate
+   * @return {*}返回符合的key
+   */
+  function findLastKey(object,predicate) {
+    let iteratee = handleIteratee(predicate)
+    let keys = Object.keys(object)
+    for(let i = keys.length - 1; i >= 0; i--) {
+      if(iteratee(object[keys[i]])) {
+        return keys[i]
+      }
+    }
+  }
   /**
    * @descripttion: 迭代对象中的每个拥有的和继承的可枚举的属性名
    * @param {Object} object
@@ -2922,6 +2956,21 @@ var polikm5 = function() {
   }
 
   /**
+   * @descripttion: 该方法类似_.merge，除了它接受一个 customizer，调用以产生目标对象和来源对象属性的合并值。
+   * @param {*} object
+   * @param {*} sources
+   * @param {*} customizer
+   * @return {*}返回object
+   */
+  function mergeWith(object, ...sources) {
+    let customizer = sources.pop()
+    let keys = Object.keys(object)
+    keys.forEach((item) => {
+      object[item] = customizer(object[item],other[item])
+    })
+    return object
+  }
+  /**
    * @descripttion: 这个对象由忽略属性之外的object自身和继承的可枚举属性组成
    * @param {*} object
    * @param {array} paths
@@ -3066,6 +3115,23 @@ var polikm5 = function() {
     return res
   }
 
+  /**
+   * @descripttion: _.reduce的替代方法;此方法将转换object对象为一个新的accumulator对象，结果来自iteratee处理自身可枚举的属性。 每次调用可能会改变 accumulator 对象
+   * @param {*} object
+   * @param {*} iteratee
+   * @return {*}返回叠加后的值。
+   */
+  function transform(object,iteratee,accumulator) {
+    iteratee = handleIteratee(iteratee)
+    let keys = Object.keys(object)
+    let initVal = accumulator == undefined ? {} : accumulator
+      for(let i = 0; i < keys.length; i++) {
+        if(iteratee(initVal,object[keys[i]],keys[i],object) === false) {
+          break
+        }
+      }
+    return initVal
+  }
   /**
    * @descripttion: 创建object中自身可枚举的属性的属性值
    * @param {*} object
@@ -3656,5 +3722,10 @@ var polikm5 = function() {
     subtract,
     clamp,
     inRange,
+    at,
+    defaultsDeep,
+    findLastKey,
+    mergeWith,
+    transform,
   }
 }()
