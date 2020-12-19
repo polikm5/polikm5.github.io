@@ -3251,7 +3251,7 @@ var polikm5 = function() {
    * @return {*}如果字符串string以target字符串结尾，那么返回 true，否则返回 false。
    */
   function endsWith(string="",target,position = string.length) {
-    return target === string.slice(position.length - target.length,position)
+    return target === string.slice(position - target.length,position)
   }
   /**
    * @descripttion: 转义string中的 "&", "<", ">", '"', "'", 和 "`" 字符为HTML实体字符。
@@ -3441,6 +3441,239 @@ var polikm5 = function() {
     return str
   }
 
+  /**
+   * @descripttion: 替换string字符串中匹配的pattern为给定的replacement 。
+   * @param {*} string
+   * @param {*} pattern
+   * @param {*} replacement
+   * @return {*}返回替换后的字符串
+   */
+  function replace(string,pattern,replacement) {
+    return string.replace(pattern,replacement)
+  }
+
+  /**
+   * @descripttion: 转换字符串string为snake case.
+   * @param {*} string
+   * @return {*}返回转换后的字符串。
+   */
+  function snakeCase(string="") {
+    let str = ""
+    let isHead = true
+    for(let i = 0; i < string.length; i++) {
+      let asci = string[i].charCodeAt()
+      if((asci >= 65 && asci <= 90) || (asci <= 122 && asci >= 97)) {
+        if(i!== 0 && i !== string.length - 1 && (string[i + 1].charCodeAt() >= 65 && string[i + 1].charCodeAt() <= 90)) {
+          if(((string[i + 1].charCodeAt() >= 65 && string[i + 1].charCodeAt() <= 90) && (asci >= 65 && asci <= 90))
+            || ((string[i + 1].charCodeAt() >= 97 && string[i + 1].charCodeAt() <= 122) && (asci <= 122 && asci >= 97))) {
+            str += string[i].toLowerCase()
+          }else {
+            str +=  string[i].toLowerCase() + "_" + string[i + 1].toLowerCase()
+            i++
+          }
+        }else {
+          str += string[i].toLowerCase()
+        }
+      }else if(str.length !== 0 && isHead) {
+        str += "_"
+        isHead = false
+      }
+    }
+    return str
+  }
+
+  /**
+   * @descripttion: 根据separator 拆分字符串string。
+   * @param {*} string
+   * @param {*} separator
+   * @param {*} limit
+   * @return {*}返回拆分部分的字符串的数组。
+   */
+  function split(string="",separator,limit) {
+    return string.split(separator,limit)
+  }
+
+  /**
+   * @descripttion: 转换 string 字符串为start case
+   * @param {*} string
+   * @return {*}返回转换后的字符串。
+   */
+  function startCase(string="") {
+    let str = ""
+    let isHead = true
+    for(let i = 0; i < string.length; i++) {
+      let asci = string[i].charCodeAt()
+      if((asci >= 65 && asci <= 90) || (asci <= 122 && asci >= 97)) {
+        if(i!== 0 && i !== string.length - 1 && (string[i + 1].charCodeAt() >= 65 && string[i + 1].charCodeAt() <= 90)) {
+          if(((string[i + 1].charCodeAt() >= 65 && string[i + 1].charCodeAt() <= 90) && (asci >= 65 && asci <= 90))
+            || ((string[i + 1].charCodeAt() >= 97 && string[i + 1].charCodeAt() <= 122) && (asci <= 122 && asci >= 97))) {
+            str += string[i].toLowerCase()
+          }else {
+            str +=  string[i].toLowerCase() + " " + string[i + 1].toUpperCase()
+            i++
+          }
+        }else {
+          str += string[i].toLowerCase()
+        }
+      }else if(str.length !== 0 && isHead) {
+        str += " "
+        isHead = false
+      }
+    }
+    let newStr = ""
+    for(let j = 0; j < str.length; j++) {
+      if(j == 0) {
+        newStr += str[j].toUpperCase()
+      }else if(str[j] == " ") {
+        newStr += " " + str[j + 1].toUpperCase()
+        j++
+      }else {
+        newStr += str[j]
+      }
+    }
+    return newStr
+  }
+
+  /**
+   * @descripttion: 检查字符串string是否以 target 开头。
+   * @param {*} string
+   * @param {*} target
+   * @param {*} position
+   * @return {*}如果string以 target，那么返回true，否则返回 false 。
+   */
+  function startsWith(string="",target,position=0) {
+    return string.indexOf(target) === position
+  }
+
+  /**
+   * @descripttion: 转换整个string字符串的字符为小写
+   * @param {*} string
+   * @return {*} 返回小写的字符串
+   */
+  function toLower(string="") {
+    let str = ""
+    for(let i = 0; i < string.length; i++) {
+      let ascii = string[i].charCodeAt()
+      if(ascii >= 65 && ascii <= 90) {
+        str += String.fromCharCode(string[i].charCodeAt() + 32)
+      }else {
+        str += string[i]
+      }
+    }
+    return str
+  }
+
+    /**
+   * @descripttion: 转换整个string字符串的字符为大写
+   * @param {*} string
+   * @return {*} 返回大写的字符串
+   */
+  function toUpper(string="") {
+    let str = ""
+    for(let i = 0; i < string.length; i++) {
+      let ascii = string[i].charCodeAt()
+      if(ascii >= 97 && ascii <= 122) {
+        str += String.fromCharCode(string[i].charCodeAt() - 32)
+      }else {
+        str += string[i]
+      }
+    }
+    return str
+  }
+
+
+  /**
+   * @descripttion: 从string字符串中移除前面和后面的 空格 或 指定的字符
+   * @param {*} string
+   * @param {*} chars
+   * @return {*}返回处理后的字符串。
+   */
+  function trim(string="",chars=" ") {
+    let charsList = chars.split("")
+    let str = ""
+    for(let i = 0; i < string.length; i++) {
+      for(let j = 0; j < charsList.length; j++) {
+        if(string[i] == charsList[j] || string[i] == " ") {
+          break
+        }else if(j == charsList.length - 1) {
+          str += string[i]
+        }
+      }
+    }
+    return str
+  }
+
+  /**
+   * @descripttion: 从string字符串中移除后面的 空格 或 指定的字符。
+   * @param {*} string
+   * @param {*} chars
+   * @return {*}返回处理后的字符串
+   */
+  function trimEnd(string="",chars=" ") {
+    let charsList = chars.split("")
+    let i = 0
+    let j = string.length - 1
+    while(i <= j) {
+      for(let k = 0; k < charsList.length; k++) {
+        if((string[j] == charsList[k] || string[j] == " ")) {
+          j--
+          break
+        }
+        if(k == charsList.length - 1) {
+          return string.slice(i,j + 1)
+        }
+      }
+    }
+  }
+
+    /**
+   * @descripttion: 从string字符串中移除前面的 空格 或 指定的字符。
+   * @param {*} string
+   * @param {*} chars
+   * @return {*}返回处理后的字符串
+   */
+  function trimStart(string="",chars=" "){
+    let charsList = chars.split("")
+    let i = 0
+    let j = string.length - 1
+    while(i <= j) {
+      for(let k = 0; k < charsList.length; k++) {
+        if((string[i] == charsList[k] || string[i] == " ")) {
+          i++
+          break
+        }
+        if(k == charsList.length - 1) {
+          return string.slice(i,j + 1)
+        }
+      }
+    }
+  }
+
+  /**
+   * @descripttion: 截断string字符串，如果字符串超出了限定的最大值。 被截断的字符串后面会以 omission 代替，
+   * @param {*} string
+   * @param {*} options [options=] (Object): 选项对象。[options.length=30] (number): 允许的最大长度。
+   *                    [options.omission='...'] (string): 超出后的代替字符。
+   *                    [options.separator] (RegExp|string): 截断点。
+   * @return {*}返回截断的字符串
+   */
+  function truncate(string="",options = {'length':30,'separator':undefined,'omission':'...'}) {
+    if(options.omission == undefined) options.omission = "..."
+    if(options.length == undefined) options.length = 30 - options.omission.length - 1
+    let str = string.slice(0,options.length + 1)
+    if(options.separator  !== undefined) {
+      if(checkType(options.separator) == "[object RegExp]") {
+        options.separator = new RegExp(options.separator,"g")
+        let matchArr = str.match(/,? +/g)
+        options.separator = matchArr[matchArr.length - 1]
+      }
+      let pos = str.lastIndexOf(options.separator)
+      return str.slice(0,pos) + options.omission
+    }else {
+      return str + options.omission
+    }
+
+  }
   /**
    * @descripttion: 换string字符串中的 HTML 实体 &amp;, &lt;, &gt;, &quot;, &#39;, 和 &#96; 为对应的字符。
    * @param {*} string
@@ -3917,6 +4150,16 @@ var polikm5 = function() {
     kebabCase,
     lowerCase,
     lowerFirst,
+    replace,
+    snakeCase,
+    split,
+    startCase,
+    startsWith,
+    toLower,
+    toUpper,
+    trim,
+    trimEnd,
+    trimStart,
+    truncate,
   }
-
 }()
