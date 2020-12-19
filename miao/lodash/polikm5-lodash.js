@@ -2965,6 +2965,7 @@ var polikm5 = function() {
   function mergeWith(object, ...sources) {
     let customizer = sources.pop()
     let keys = Object.keys(object)
+    let other = sources[0]
     keys.forEach((item) => {
       object[item] = customizer(object[item],other[item])
     })
@@ -3132,6 +3133,41 @@ var polikm5 = function() {
       }
     return initVal
   }
+
+  /**
+   * @descripttion: 移除object对象 path 路径上的属性。会改变源对象
+   * @param {*} object
+   * @param {*} path
+   * @return {*}如果移除成功，那么返回 true ，否则返回 false。
+   */
+  function unset(object,path) {
+    let obj = object
+    let pos = path.lastIndexOf(".")
+    let method
+    if(pos !== -1) {
+      method = path.slice(pos + 1)
+      path = path.slice(0,pos)
+    }else {
+      method = path.slice(path.length - 1 )
+      path = path.slice(0,-1)
+    }
+    for(let i = 0; i < path.length;i++) {
+      if(path[i] !== "[" && path[i] !== "]" && path[i] !== ".") {
+        let item = obj[path[i]]
+        if(item !== undefined) {
+            obj = item
+        }else {
+          return false
+        }
+      }
+    }
+    if(obj[method] !== undefined ) {
+      delete obj[method]
+      return true
+    }else {
+      return false
+    }
+  }
   /**
    * @descripttion: 创建object中自身可枚举的属性的属性值
    * @param {*} object
@@ -3152,6 +3188,71 @@ var polikm5 = function() {
     return res
   }
 
+
+  /**
+   * @descripttion: 创建object中自身和继承可枚举的属性的属性值
+   * @param {*} object
+   * @return {*}
+   */
+  function valuesIn(object) {
+    let type = checkType(object)
+    let res = []
+    if(type === "[object Object]") {
+      for(let item in object) {
+        res.push(object[item])
+      }
+    }else {
+      return object.split("")
+    }
+    return res
+  }
+
+  /**
+   * @descripttion: 驼峰式写法
+   * @param {*} string
+   * @return {*}返回驼峰式字符串
+   */
+  function camelCase(string="") {
+    let str = ""
+    let isHead = true
+    let firstLetter = true
+    for(let i = 0;i < string.length; i++) {
+      let asci = string[i].charCodeAt()
+      if( (asci >= 65 && asci <= 90) || (asci <= 122 && asci >= 97)) {
+        if(firstLetter && !isHead) {
+          str += string[i].toUpperCase()
+          firstLetter = false
+        }else {
+          str += string[i].toLowerCase()
+        }
+      }else if(str.length !== 0 && isHead) {
+        isHead = false
+        firstLetter = true
+      }
+    }
+    return str
+  }
+
+  /**
+   * @descripttion: 转换字符串string首字母为大写，剩下为小写。
+   * @param {*} string
+   * @return {*}返回大写开头的字符串。
+   */
+  function capitalize(string="" ) {
+    return string.slice(0,1).toUpperCase() + string.slice(1).toLowerCase()
+  }
+
+
+  /**
+   * @descripttion: 检查字符串string是否以给定的target字符串结尾。
+   * @param {*} string
+   * @param {*} target
+   * @param {*} position
+   * @return {*}如果字符串string以target字符串结尾，那么返回 true，否则返回 false。
+   */
+  function endsWith(string="",target,position = string.length) {
+    return target === string.slice(position.length - target.length,position)
+  }
   /**
    * @descripttion: 转义string中的 "&", "<", ">", '"', "'", 和 "`" 字符为HTML实体字符。
    * @param {*} string
@@ -3179,6 +3280,86 @@ var polikm5 = function() {
     return str
   }
 
+  /**
+   * @descripttion: 转义 RegExp 字符串中特殊的字符 "^", "$", "", ".", "*", "+", "?", "(", ")", "[", "]", ", ", 和 "|" in .
+   * @param {*} string
+   * @return {*}返回转义后的字符串。
+   */
+  function escapeRegExp(string = "") {
+    let reg = /[\^\$\.\*\+\,\?\,\(\)\[\]\{\}\|]/g
+    return string.replace(reg,match => `\\${match}`)
+  }
+
+
+  /**
+   * @descripttion: 转换字符串string为kebab case.
+   * @param {*} string
+   * @return {*}返回转换后的字符串。
+   */
+  function kebabCase(string="") {
+    let str = ""
+    let isHead = true
+    for(let i = 0; i < string.length; i++) {
+      let asci = string[i].charCodeAt()
+      if((asci >= 65 && asci <= 90) || (asci <= 122 && asci >= 97)) {
+        if(i!== 0 && i !== string.length - 1 && (string[i + 1].charCodeAt() >= 65 && string[i + 1].charCodeAt() <= 90)) {
+          if(((string[i + 1].charCodeAt() >= 65 && string[i + 1].charCodeAt() <= 90) && (asci >= 65 && asci <= 90))
+            || ((string[i + 1].charCodeAt() >= 97 && string[i + 1].charCodeAt() <= 122) && (asci <= 122 && asci >= 97))) {
+            str += string[i].toLowerCase()
+          }else {
+            str +=  string[i].toLowerCase() + "-" + string[i + 1].toLowerCase()
+            i++
+          }
+        }else {
+          str += string[i].toLowerCase()
+        }
+      }else if(str.length !== 0 && isHead) {
+        str += "-"
+        isHead = false
+      }
+    }
+    return str
+  }
+
+
+  /**
+   * @descripttion: 转换字符串string以空格分开单词，并转换为小写。
+   * @param {*} string
+   * @return {*}返回转换后的字符串。
+   */
+  function lowerCase(string="") {
+    let str = ""
+    let isHead = true
+    for(let i = 0; i < string.length; i++) {
+      let asci = string[i].charCodeAt()
+      if((asci >= 65 && asci <= 90) || (asci <= 122 && asci >= 97)) {
+        if(i!== 0 && i !== string.length - 1 && (string[i + 1].charCodeAt() >= 65 && string[i + 1].charCodeAt() <= 90)) {
+          if(((string[i + 1].charCodeAt() >= 65 && string[i + 1].charCodeAt() <= 90) && (asci >= 65 && asci <= 90))
+            || ((string[i + 1].charCodeAt() >= 97 && string[i + 1].charCodeAt() <= 122) && (asci <= 122 && asci >= 97))) {
+            str += string[i].toLowerCase()
+          }else {
+            str +=  string[i].toLowerCase() + " " + string[i + 1].toLowerCase()
+            i++
+          }
+        }else {
+          str += string[i].toLowerCase()
+        }
+      }else if(str.length !== 0 && isHead) {
+        str += " "
+        isHead = false
+      }
+    }
+    return str
+  }
+
+  /**
+   * @descripttion: 转换字符串string的首字母为小写。
+   * @param {*} string
+   * @return {*}返回转换后的字符串。
+   */
+  function lowerFirst(string="") {
+    return string.slice(0,1).toLowerCase() + string.slice(1)
+  }
   /**
    * @descripttion: 如果string字符串长度小于length则从左侧和右侧填充字符，如果没法平均分配，则阶段超出的长度
    * @param {*} string
@@ -3727,5 +3908,15 @@ var polikm5 = function() {
     findLastKey,
     mergeWith,
     transform,
+    unset,
+    valuesIn,
+    camelCase,
+    capitalize,
+    endsWith,
+    escapeRegExp,
+    kebabCase,
+    lowerCase,
+    lowerFirst,
   }
+
 }()
