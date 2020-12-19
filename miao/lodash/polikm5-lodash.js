@@ -44,6 +44,28 @@ var polikm5 = function() {
     }
   }
 
+  /**
+   * @descripttion: 创建一个调用func的函数。调用func时最多接受 n个参数，忽略多出的参数。
+   * @param {*} func
+   * @param {*} n
+   * @return {*}返回新的覆盖函数。
+   */
+  function ary(func,n=func.length) {
+    return function() {
+      return func.apply(null,[...arguments].slice(0,n + 1))
+    }
+  }
+
+  /**
+   * @descripttion: 创建一个最多接受一个参数的函数，忽略多余的参数。
+   * @param {*} func
+   * @return {*}返回新函数
+   */
+  function unary(func){
+    return function() {
+      return func.apply(null,[...arguments].slice(0,1))
+    }
+  }
     /**
    * @descripttion: 创建一个深比较的方法来比较对象和source对象，如果给定的对象拥有相同的属性则返回true否则为false
    * @name: 
@@ -97,6 +119,24 @@ var polikm5 = function() {
     return res
   }
 
+  /**
+   * @descripttion: 根据索引 indexes，移除array中对应的元素，并返回被移除元素的数组。 (会改变原数组)
+   * @param {*} arr
+   * @param {*} indexes
+   * @return {*}返回原数组
+   */
+  function pullAt(arr,...indexes) {
+    for(let i = 0; i < indexes.length; i++) {
+      arr[indexes[i]] = true
+    }
+    for(let i = 0; i < arr.length; i++) {
+      if(arr[i] == true) {
+        arr.splice(i,1)
+        i--
+      }
+    }
+    return arr
+  }
   function difference(arr,...values) {
     let res = []
     let val = []
@@ -3702,14 +3742,76 @@ var polikm5 = function() {
     return str
   }
 
+  /**
+   * @descripttion: 转换字符串string为 空格 分隔的大写单词。
+   * @param {*} string
+   * @return {*}返回大写单词。
+   */
+  function upperCase(string) {
+    let str = ""
+    let isHead = true
+    for(let i = 0; i < string.length; i++) {
+      let asci = string[i].charCodeAt()
+      if((asci >= 65 && asci <= 90) || (asci <= 122 && asci >= 97)) {
+        if(i!== 0 && i !== string.length - 1 && (string[i + 1].charCodeAt() >= 65 && string[i + 1].charCodeAt() <= 90)) {
+          if(((string[i + 1].charCodeAt() >= 65 && string[i + 1].charCodeAt() <= 90) && (asci >= 65 && asci <= 90))
+            || ((string[i + 1].charCodeAt() >= 97 && string[i + 1].charCodeAt() <= 122) && (asci <= 122 && asci >= 97))) {
+            str += string[i].toUpperCase()
+          }else {
+            str +=  string[i].toUpperCase() + " " + string[i + 1].toUpperCase()
+            i++
+          }
+        }else {
+          str += string[i].toUpperCase()
+        }
+      }else if(str.length !== 0 && isHead) {
+        str += " "
+        isHead = false
+      }
+    }
+    return str
+  }
+
+  /**
+   * @descripttion: 转换字符串string的首字母为大写。
+   * @param {*} string
+   * @return {*}返回转换后的字符串。
+   */
+  function upperFirst(string='') {
+    return string.slice(0,1).toUpperCase() + string.slice(1)
+  }
+
+  /**
+   * @descripttion: 拆分字符串string中的词为数组 。
+   * @param {*} string
+   * @param {*} pattern
+   * @return {*}返回拆分string后的数组。
+   */
+  function words(string="",pattern) {
+    if(pattern == undefined) {
+      pattern = /\w+/g
+    }
+    return string.match(pattern)
+  }
+
   function bindAll(object, methodNames) {
 
   }
 
 
-
-
-
+  /**
+   * @descripttion: 检查value，以确定一个默认值是否应被返回。如果value为NaN, null, 或者 undefined，那么返回defaultValue默认值。
+   * @param {*} value
+   * @param {*} defaultValue
+   * @return {*}返回 resolved 值。
+   */
+  function defaultTo(value, defaultValue) {
+    if(!isNil(value) && !isNaN(value)) {
+      return value
+    }else {
+      return defaultValue
+    }
+  }
 
 
   /**
@@ -3754,6 +3856,46 @@ var polikm5 = function() {
     return res
   }
 
+
+    /**
+   * @descripttion: 这个方法类似_.range ， 除了它是降序生成值的。
+   * @param {*} start
+   * @param {*} end
+   * @param {*} step
+   * @return {*}
+   */
+  function rangeRight(start=0,end,step=1) {
+    return range(start,end,step).reverse()
+  }
+
+  /**
+   * @descripttion: 添加来源对象自身的所有可枚举函数属性到目标对象。 如果 object 是个函数，那么函数方法将被添加到原型链上。
+   * @param {*} object
+   * @param {*} source
+   * @param {*} option
+   * @return {*}返回 object.
+   */
+  function mixin(object,source,option={chain:true}) {
+
+  }
+
+  /**
+   * @descripttion: 转化 value 为属性路径的数组 。
+   * @param {*} value
+   * @return {*}返回包含属性路径的数组。
+   */
+  function toPath(value) {
+    let res = []
+    for(let i = 0; i < value.length; i++) {
+      let item = value[i]
+      if(item == "." || item == "[" || item == "]") {
+        continue
+      }else {
+        res.push(item)
+      }
+    }
+    return res
+  }
   function times(n, iteratee) {
     iteratee = handleIteratee(iteratee)
     let res = []
@@ -3906,6 +4048,33 @@ var polikm5 = function() {
   }
 
   /**
+   * @descripttion: 创建一个函数，调用func时候接收翻转的参数。  
+   * @param {*} func
+   * @return {*}返回新的函数
+   */
+  function flip(func) {
+    return function() {
+      return func.apply(null,[...arguments].reverse())
+    }
+  }
+
+  /**
+   * @descripttion: 创建一个函数。 这个函数会 调用 source 的属性名对应的 predicate 与传入对象相对应属性名的值进行断言处理。 如果都符合返回 true ，否则返回 false 。
+   * @param {*} source
+   * @return {*}返回新的函数。
+   */
+  function conforms(source) {
+    let keys = Object.keys(source) 
+    return function(object) {
+      for(let key of keys) {
+        if(!source[key](object[key])) {
+          return false
+        }
+      }
+      return true
+    }
+  }
+  /**
    * @descripttion: 创建一个返回value的函数
    * @param {*} value
    * @return {Function} 返回新的常量函数
@@ -3917,6 +4086,57 @@ var polikm5 = function() {
   }
 
   /**
+   * @descripttion: 创建一个函数。 返回的结果是调用提供函数的结果，this 会绑定到创建函数。 每一个连续调用，传入的参数都是前一个函数返回的结果。
+   * @param {*} funcs
+   * @return {*}返回新的函数。
+   */
+  function flow(...funcs) {
+    let that = this
+    funcs = flattenDeep(funcs)
+    return function() {
+      let res = Array.from(arguments)
+      for(let i = 0; i < funcs.length; i++) {
+        res = [funcs[i].apply(that,res)]
+      }
+      return res[0]
+    }
+  }
+
+  /**
+   * @descripttion: 创建一个调用给定对象 path 上的函数。 任何附加的参数都会传入这个调用函数中。
+   * @param {*} path
+   * @param {*} args
+   * @return {*}返回新的调用函数。
+   */
+  function method(path, args) {
+    return function(obj) {
+      return get(obj,path).apply(null,args)
+    }
+  }
+
+  /**
+   * @descripttion: 这个创建一个函数调用给定 object 的 path 上的方法， 任何附加的参数都会传入这个调用函数中。
+   * @param {*} object
+   * @param {*} args
+   * @return {*}
+   */
+  function methodOf(object,args) {
+    return function(path) {
+      return get(object,path).apply(null,args)
+    }
+  }
+
+  /**
+   * @descripttion: 创建一个函数，这个函数返回第 n 个参数。如果 n为负数，则返回从结尾开始的第n个参数
+   * @param {*} n
+   * @return {*}返回新的函数
+   */
+  function nthArg(n=0) {
+    return function() {
+      return Array.from(arguments).slice(n,n + 1)[0]
+    }
+  }
+  /**
    * @descripttion: 这个方法创建的函数返回给定path在object上的值
    * @param {*} object
    * @return {Function} 返回新的函数
@@ -3925,6 +4145,13 @@ var polikm5 = function() {
     return function(str) {
       return get(object,str)
     }
+  }
+
+  function parseJson(json) {
+    return JSON.parse(json)
+  }
+  function stringifyJson(json) {
+    return JSON.stringify(json)
   }
   return { 
     chunk,
@@ -4161,5 +4388,22 @@ var polikm5 = function() {
     trimEnd,
     trimStart,
     truncate,
+    upperCase,
+    upperFirst,
+    words,
+    defaultTo,
+    rangeRight,
+    toPath,
+    pullAt,
+    ary,
+    unary,
+    flip,
+    conforms,
+    flow,
+    method,
+    methodOf,
+    nthArg,
+    parseJson,
+    stringifyJson,
   }
 }()
