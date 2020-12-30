@@ -1,0 +1,223 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-12-28 18:45:22
+ * @LastEditTime: 2020-12-30 12:08:06
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \undefinedc:\Users\Administrator\Desktop\git test\miao\mini-regexp101.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    em {
+      font-style: normal;
+    }
+    em:nth-of-type(odd) {
+      background-color: #C6E3FF;
+    }
+    em:nth-of-type(even) {
+      background-color:#74C4FF;
+    }
+    b {
+      font-weight: normal;
+      border-left: 2px dotted #ED7FFF;
+    }
+  </style>
+</head>
+<body>
+    正则表达式：<input type="text" id="reg" value="foo(?=a)" >
+    g<input type="checkbox" name="" id="g">
+    m<input type="checkbox" name="" id="m" >
+    i<input type="checkbox" name="" id="i">
+    y<input type="checkbox" name="" id="y">
+    u<input type="checkbox" name="" id="u">
+    s<input type="checkbox" name="" id="s"><br>
+    字符串<input type="button" value="run" onclick="run()" ><br>
+    <textarea name="" id="string">foofooooofaaafooaafooaa</textarea><br>
+    结果：<div id="result"></div>
+    替换：<input type="button" value="替换" onclick="replace()"><br>
+    <input type="text" value="" id="replaceStr"><br>
+    替换结果：<br>
+    <div name="" id="replaceRes"></div>
+    <script>
+
+
+      function run() {
+        let flag = selectionFlag()
+        let regExp
+        let regStr = reg.value
+        let str = string.value
+        try{
+          regExp = new RegExp(regStr,flag)
+        }catch(e) {
+          result.innerHTML = e
+          return
+        }
+
+        let match
+        let res = ""
+        let preInd = 0 
+        while(match = regExp.exec(str)) {
+          // 只有零宽断言的情况下
+          if(match[0] == "") {
+            if(regExp.lastIndex == 0 ) {
+              res += str.slice(preInd,match.index)
+              res += "<b>" + str.slice(match.index,match.index + 1) + "</b>"
+              preInd = match.index + 1
+              break
+            }
+            res += str.slice(preInd,match.index)
+            regExp.lastIndex = regExp.lastIndex + 1
+            preInd = regExp.lastIndex
+            res += "<b>" + str.slice(regExp.lastIndex - 1,regExp.lastIndex) + "</b>"
+          }else {
+            // 没有g的情况
+            res += str.slice(preInd,match.index)
+            res += "<em>" + match[0] + "</em>"
+            if(regExp.lastIndex == 0 ) {
+              preInd = match.index + match[0].length
+              break
+            }
+            preInd = regExp.lastIndex
+          }
+        }
+        res += str.slice(preInd)  
+        result.innerHTML = res
+      }
+      let currStr = string.value
+      replaceRes.innerHTML = currStr
+      function replace() {
+        let flag = selectionFlag()
+        let regStr = reg.value
+        let str = string.value
+        let replaceVal = replaceStr.value
+        let copyStr = str
+        let regExpS
+          try{
+          regExpS = new RegExp(regStr,flag)
+        }catch(e) {
+          replaceRes.innerHTML = e
+          return
+        }
+        let res = copyStr.replace(regExpS,replaceVal)
+        replaceRes.innerHTML =  res
+      }
+
+      function selectionFlag() {
+        let flag = ""
+        if(g.checked) {
+          flag += "g"
+        }
+        if(m.checked) {
+          flag += "m"
+        }
+        if(i.checked) {
+          flag += "i"
+        }
+        if(y.checked) {
+          flag += "y"
+        }
+        if(u.checked) {
+          flag += "u"
+        }
+        if(s.checked) {
+          flag += "s"
+        }
+        return flag
+      }
+
+
+      String.prototype.replace = function(reg,val="") {
+        let str = ""
+        let matchArr
+        let preInd = 0
+        while(matchArr = reg.exec(this)) {
+          str += this.slice(preInd,matchArr.index)
+          let len = matchArr[0].length
+          str += String(val)
+          // 没有g标志
+          if(reg.lastIndex == 0) {
+            preInd = matchArr.index + len
+            break
+          }else {
+            preInd = reg.lastIndex
+          }
+        }
+        str += this.slice(preInd)
+        return str
+      }
+
+      // 对于split来说 reg是否带g标志不影响它分割 （对全局进行分割）
+      String.prototype.split = function(reg="",afterG = false) {
+        let type = Object.prototype.toString.call(reg)
+        let arr = []
+        let preInd
+        let matchArr
+        if(reg == "") {
+          for(let i = 0; i < this.length; i++) {
+            arr.push(this[i])
+          }
+          return arr
+        }
+        if(type === "[object RegExp]")  {
+          while(matchArr = reg.exec(this)) {
+            // 处理没有g的时候 exec会导致循环  new'一个新的正则带g标志
+            if(reg.lastIndex == 0 && afterG == false) {
+              let newReg = new RegExp(reg,reg.flags + "g")
+              return this.split(newReg,true)
+            }
+            reg.lastIndex++
+            if(matchArr.index == 0) continue
+            arr.push(this.slice(preInd,matchArr.index))
+            let predicateInd = 1
+            while(matchArr[predicateInd] != undefined) {
+              arr.push(matchArr[predicateInd])
+              predicateInd++
+            }
+
+            let len = matchArr[0].length
+            preInd = matchArr.index + len
+          }
+        }else if(type === "[object String]" || type === "[object Number]"){
+          let r = new RegExp(reg,"g")
+          return this.split(r)
+        }
+        arr.push(this.slice(preInd))
+        return arr
+      }
+
+      String.prototype.match = function(reg="") {
+        let arr = []
+        let matchArr
+        reg.lastIndex = 0
+        while(matchArr = reg.exec(this)) {
+          if(reg.lastIndex == 0) {
+            return matchArr
+          }
+          arr.push(matchArr[0])
+        }
+        return arr
+      }
+
+      String.prototype.search = function(reg="") {
+        let oldLastIndex = reg.lastIndex
+        reg.lastIndex = 0
+        let matchArr = reg.exec(this)
+        reg.lastIndex = oldLastIndex
+        return matchArr == null ? -1 : matchArr.index
+      }
+      RegExp.prototype.test = function(str="") {
+        if(this.exec(str) !== null) {
+          return true
+        }
+        return false
+      }
+
+
+    </script>
+</body>
+</html>

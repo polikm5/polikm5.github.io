@@ -160,12 +160,10 @@ var polikm5 = function() {
     let res = []
     let type = Object.prototype.toString.call(preciate)
     if(type == "[object Array]") {
-      console.log(arguments)
       let temp = [].slice.call(arguments)
       temp.shift()
       values = flattenDeep(temp)
       preciate = null
-      console.log(values)
     }
     for(let i = 0; i < arr.length; i++) {
       for(let j = 0; j < values.length; j++) {
@@ -1787,7 +1785,6 @@ var polikm5 = function() {
     let tempT = []
     let tempF = []
     let iteratee = handleIteratee(predicate)
-    console.log(iteratee)
     for(let item of collection) {
       if(iteratee(item) == true) {
         tempT.push(item)
@@ -3020,7 +3017,6 @@ var polikm5 = function() {
   function omit(object, ...paths) {
     paths = flattenDepth(paths,1)
     for(let deleteKey of paths) {
-      console.log(deleteKey)
       if(deleteKey in object) {
         delete object[deleteKey]
       }
@@ -3798,7 +3794,34 @@ var polikm5 = function() {
 
   }
 
-
+  /**
+   * @descripttion: 此方法类似于_.sortBy，除了它允许指定 iteratee（迭代函数）结果如何排序。 如果没指定 orders（排序），所有值以升序排序。 否则，指定为"desc" 降序，或者指定为 "asc" 升序，排序对应值。
+   * @param {*} collection
+   * @param {*} iteratees
+   * @param {*} orders
+   * @return {*}
+   */
+  function orderBy(collection,iteratees,orders) {
+    for(let i = iteratees.length - 1; i >= 0; i--) {
+      collection.sort((a, b) => {
+        let x = a[iteratees[i]]
+        let y = b[iteratees[i]]
+        // 因为有字符串的排序 所以不能单纯return a - b
+        if(orders[i] == 'desc') {
+          // 降序
+          if (x > y) {return -1;}
+          if (x < y) {return 1;}
+          return 0;
+        }else {
+          // 升序
+          if (x < y) {return -1;}
+          if (x > y) {return 1;}
+          return 0;
+        }
+      })
+    }
+    return collection
+  }
   /**
    * @descripttion: 检查value，以确定一个默认值是否应被返回。如果value为NaN, null, 或者 undefined，那么返回defaultValue默认值。
    * @param {*} value
@@ -3975,8 +3998,8 @@ var polikm5 = function() {
    * @return {Function}返回一个新的取反函数。
    */
   function negate(predicate) {
-    return function(val) {
-      return !predicate(val)
+    return function(...args) {
+      return !predicate(...args)
     }
   } 
 
@@ -4405,5 +4428,6 @@ var polikm5 = function() {
     nthArg,
     parseJson,
     stringifyJson,
+    orderBy,
   }
 }()
